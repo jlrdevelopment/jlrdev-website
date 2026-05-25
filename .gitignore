@@ -2,4 +2,10 @@
 node_modules/
 *.log
 .env
+.env.production
+dist/
+.astro/
+.DS_Store
+.idea/
+.netlify
 gc-ui-*.png
