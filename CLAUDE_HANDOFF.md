@@ -110,18 +110,14 @@ No Formspree. No third-party webhook. Fully free.
 ## HOW TO DEPLOY
 
 ```powershell
-# Token expires hourly — refresh:
-# POST https://dash.cloudflare.com/oauth2/token
-# body: grant_type=refresh_token&refresh_token=<from default.toml>&client_id=54d11594-84e4-41aa-b438-e81b8fa78ee7
-# Token file: C:\Users\Jan-Louis.Reynders\AppData\Roaming\xdg.config\.wrangler\config\default.toml
-
-$env:CLOUDFLARE_API_TOKEN = '<access_token>'
 Set-Location "C:\Users\Jan-Louis.Reynders\OneDrive\JLR_Dev\Projects\preview-dark-full"
-wrangler pages deploy . --project-name=jlrdev-website --branch=main
+.\deploy.ps1
 ```
 
-**Permanent fix:** Create a long-lived CF API token at dash.cloudflare.com/profile/api-tokens
-(permission: Cloudflare Pages — Edit) and store as `CLOUDFLARE_API_TOKEN` env var.
+`deploy.ps1` auto-checks auth. If session expired it opens a browser login (30 sec, click Allow), then deploys.
+No tokens to manage. Just run the script.
+
+**If wrangler is not installed:** `npm install -g wrangler`
 
 ---
 
