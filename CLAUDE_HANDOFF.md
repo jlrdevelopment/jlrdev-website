@@ -3,128 +3,105 @@
 
 ---
 
-## Who You Are Working With
+## WHO YOU ARE WORKING WITH
 
-**Jan-Louis Reynders** — solo software developer and AI consultant, Bloemfontein SA.
-- Business: JLR Dev (jlrdev.co.za)
+**Jan-Louis Reynders** — solo software developer & AI consultant, Bloemfontein SA.
+- Business: JLR Dev
 - Email: jan-louis@jlrdev.co.za
 - Phone: 082 852 5108
-- Cloudflare account: jan-louis@jlrdev.co.za
-- Afrihost account: jan-louis@jlrdev.co.za (domain registrar for jlrdev.co.za)
+- GitHub: jlrdevelopment (only account used for all JLR Dev work)
+- Cloudflare: jan-louis@jlrdev.co.za
+- Resend: jan-louis@jlrdev.co.za
+- OpenAI: key set, using gpt-4o-mini
+- Afrihost: domain registrar for jlrdev.co.za
 
 ---
 
-## Project: JLR Dev Website + Client Intake Pipeline
+## GITHUB REPOS
 
-### Goal
-When a prospect submits the contact form on jlrdev.co.za, the pipeline:
-1. Receives the JSON POST directly at `/api/new-lead` (Cloudflare Pages Function)
-2. Calls OpenAI API (gpt-4o-mini) to analyse the lead
-3. Sends an auto-reply to the client via Resend (from noreply@jlrdev.co.za)
-4. Sends a lead briefing email to Jan-Louis via Resend
-
----
-
-## Infrastructure — Current State (2026-05-25)
-
-### Cloudflare Pages
-- Project name: `jlrdev-website`
-- Account ID: `099dce235d2d4c94021b4fbfcb0b3acd`
-- Zone ID (jlrdev.co.za): `fc59aeb70e56dae3e829baa610ef63af`
-- Production URL: `https://jlrdev-website.pages.dev` ✅ live
-- Custom domain: `jlrdev.co.za` ✅ added — pending NS propagation
-- Last deployment: `https://aef729f1.jlrdev-website.pages.dev`
-
-### Secrets set in CF Pages (encrypted)
-| Secret | Status |
-|--------|--------|
-| `OPENAI_API_KEY` | ✅ set (gpt-4o-mini) |
-| `RESEND_API_KEY` | ✅ set (key name: jlrdev-website, full access) |
-
-### DNS (Cloudflare zone fc59aeb70e56dae3e829baa610ef63af)
-| Record | Status |
-|--------|--------|
-| CNAME `jlrdev.co.za` → `jlrdev-website.pages.dev` (proxied) | ✅ |
-| CNAME `www` → `jlrdev-website.pages.dev` (proxied) | ✅ |
-| TXT `resend._domainkey` (DKIM, DNS-only) | ✅ |
-| MX `send` → `feedback-smtp.eu-west-1.amazonses.com` priority 10 | ✅ |
-| TXT `send` → `v=spf1 include:amazonses.com ~all` | ✅ |
-| MX `jlrdev.co.za` → mx1/mx2.improvmx.com (existing email routing) | ✅ kept |
-| CNAME `brevo1._domainkey` (DNS-only) | ✅ kept |
-
-### Nameservers
-- Assigned: `holly.ns.cloudflare.com` + `jaziel.ns.cloudflare.com`
-- Updated at Afrihost: 2026-05-25 ~14:12 SAST
-- Zone status: **pending** → will become **active** automatically (CF emails when done)
-
-### Resend
-- Account: jan-louis@jlrdev.co.za
-- Domain: `jlrdev.co.za` — region Ireland (eu-west-1) — status: **pending** (waiting for NS)
-- Will auto-verify once NS propagates
-
-### Contact Form
-- Posts JSON directly to `/api/new-lead` (no Formspree — fully free)
-- No external webhook configuration needed
+| Repo | URL | Branch | Purpose |
+|------|-----|---------|---------|
+| `jlrdev-web` | github.com/jlrdevelopment/jlrdev-web | master | Live website (this folder) — **create repo first** |
+| `jlrdev-website` | github.com/jlrdevelopment/jlrdev-website | main | Old Astro site — archived |
+| `GeoTech-PDF-Extractor` | github.com/jlrdevelopment/GeoTech-PDF-Extractor | master | GeoCalibre client tool |
 
 ---
 
-## Key File Locations
+## THIS PROJECT — WHAT IT IS
 
-All website files:
-`C:\Users\Jan-Louis.Reynders\OneDrive\JLR_Dev\Projects\preview-dark-full\`
+Single-page dark-theme website + automated client intake pipeline.
+
+**Source folder:** `C:\Users\Jan-Louis.Reynders\OneDrive\JLR_Dev\Projects\preview-dark-full\`
 
 | File | Purpose |
 |------|---------|
-| `index.html` | Full single-page dark-theme website |
-| `functions/api/new-lead.js` | CF Pages Function — intake pipeline (OpenAI + Resend) |
-| `wrangler.toml` | CF Pages config |
-| `_headers` | Security headers |
+| `index.html` | Full website — Three.js scene, contact form, all content |
+| `functions/api/new-lead.js` | CF Pages Function — intake pipeline |
+| `wrangler.toml` | Cloudflare Pages config |
+| `_headers` | Security headers (CSP, HSTS, etc.) |
 | `deploy.ps1` | Deploy script |
-| `CLIENT_INTAKE.md` | Pipeline documentation (in `_Admin/`) |
+| `.gitignore` | Excludes .wrangler/, node_modules/, *.log, gc-ui-*.png |
 | `CLAUDE_HANDOFF.md` | This file |
-| `WEB_AGENT_INSTRUCTIONS.md` | Step-by-step for web agent tasks (mostly complete) |
-
-Local intake script:
-`C:\Users\Jan-Louis.Reynders\OneDrive\JLR_Dev\_Admin\scripts\new_client_intake.py`
-- Scaffolds `JLR_Dev/Clients/<Name>/` folder + Brief.md
-- Appends to `_Admin/leads.json`
+| `WEB_AGENT_INSTRUCTIONS.md` | Step-by-step for web agent tasks |
 
 ---
 
-## What Still Needs To Be Done
+## INFRASTRUCTURE
 
-### ⏳ Wait for DNS propagation (automatic — no action needed)
-- CF will email jan-louis@jlrdev.co.za when zone is active
-- Resend will auto-verify domain once NS resolves
-- Check: `nslookup -type=NS jlrdev.co.za 8.8.8.8` — should return holly/jaziel.ns.cloudflare.com
+### Cloudflare Pages
+- Project: `jlrdev-website`
+- Account ID: `099dce235d2d4c94021b4fbfcb0b3acd`
+- Zone ID: `fc59aeb70e56dae3e829baa610ef63af`
+- Live URL: `https://jlrdev-website.pages.dev` ✅
+- Custom domain: `jlrdev.co.za` (DNS propagating — pending, CF will email when active)
 
-### ✅ After propagation — do one end-to-end test
-1. Browse to `https://jlrdev.co.za` — dark theme site loads
-2. Fill contact form → submit
-3. Check `jan-louis@jlrdev.co.za` — lead briefing with OpenAI summary arrives
-4. Check sender's inbox — auto-reply from `noreply@jlrdev.co.za` arrives
+### Secrets in CF Pages (encrypted)
+| Secret | Value / Purpose |
+|--------|----------------|
+| `OPENAI_API_KEY` | gpt-4o-mini — lead analysis |
+| `RESEND_API_KEY` | Resend `jlrdev-website` key — sends both emails |
+
+### DNS (Cloudflare zone)
+| Record | Content | Proxy |
+|--------|---------|-------|
+| CNAME `jlrdev.co.za` | `jlrdev-website.pages.dev` | ON |
+| CNAME `www` | `jlrdev-website.pages.dev` | ON |
+| TXT `resend._domainkey` | DKIM key | OFF |
+| MX `send` priority 10 | `feedback-smtp.eu-west-1.amazonses.com` | OFF |
+| TXT `send` | `v=spf1 include:amazonses.com ~all` | OFF |
+| MX `jlrdev.co.za` | mx1/mx2.improvmx.com | OFF |
+
+### Nameservers
+- `holly.ns.cloudflare.com` + `jaziel.ns.cloudflare.com`
+- Set at Afrihost 2026-05-25 ~14:12 SAST — propagation in progress
+
+### Resend
+- Domain: `jlrdev.co.za` — region Ireland (eu-west-1)
+- Status: pending DNS verify (auto-verifies once NS propagates)
+- Sends from: `noreply@jlrdev.co.za`
+- Delivers to: `jan-louis@jlrdev.co.za` (lead briefing) + client (auto-reply)
 
 ---
 
-## How The Intake Pipeline Works
+## HOW THE INTAKE PIPELINE WORKS
 
 ```
 User fills contact form on jlrdev.co.za
   → fetch() POSTs JSON {name, email, subject, message} to /api/new-lead
     → Cloudflare Pages Function (functions/api/new-lead.js)
-      → OpenAI gpt-4o-mini analyses message
-          returns: {summary, projectType, draftReply, firstQuestions}
-        → Resend sends auto-reply HTML email to client (from noreply@jlrdev.co.za)
-        → Resend sends lead briefing HTML email to jan-louis@jlrdev.co.za
-            (includes: name, email, message, AI summary, draft reply, suggested questions)
+      → OpenAI gpt-4o-mini → {summary, projectType, draftReply, firstQuestions}
+        → Resend: auto-reply HTML email → client (from noreply@jlrdev.co.za)
+        → Resend: lead briefing HTML email → jan-louis@jlrdev.co.za
 ```
+
+No Formspree. No third-party webhook. Fully free.
 
 ---
 
-## How To Deploy
+## HOW TO DEPLOY
 
 ```powershell
-# Refresh OAuth token first if needed (expires hourly):
+# Token expires hourly — refresh:
 # POST https://dash.cloudflare.com/oauth2/token
 # body: grant_type=refresh_token&refresh_token=<from default.toml>&client_id=54d11594-84e4-41aa-b438-e81b8fa78ee7
 # Token file: C:\Users\Jan-Louis.Reynders\AppData\Roaming\xdg.config\.wrangler\config\default.toml
@@ -134,19 +111,76 @@ Set-Location "C:\Users\Jan-Louis.Reynders\OneDrive\JLR_Dev\Projects\preview-dark
 wrangler pages deploy . --project-name=jlrdev-website --branch=main
 ```
 
-**Recommended:** Create a permanent CF API token at dash.cloudflare.com/profile/api-tokens
-(permissions: Pages:Edit) and store it — avoids hourly OAuth refresh hassle.
+**Permanent fix:** Create a long-lived CF API token at dash.cloudflare.com/profile/api-tokens
+(permission: Cloudflare Pages — Edit) and store as `CLOUDFLARE_API_TOKEN` env var.
 
 ---
 
-## Already Complete — Do Not Redo
+## HOW TO PUSH TO GITHUB
 
-- ✅ Website built and deployed to Cloudflare Pages
-- ✅ Formspree removed — form posts directly to /api/new-lead (free)
-- ✅ Pipeline switched from Claude API to OpenAI gpt-4o-mini
-- ✅ OPENAI_API_KEY + RESEND_API_KEY set as CF Pages encrypted secrets
-- ✅ All DNS records configured in Cloudflare
-- ✅ Afrihost nameservers updated to Cloudflare (2026-05-25)
-- ✅ Resend domain + DNS records added (pending verification)
-- ✅ Security headers (_headers)
-- ✅ GeoTech PDF Extractor v1.4 delivered to Kevin Coertzen (GeoCalibre)
+```powershell
+cd "C:\Users\Jan-Louis.Reynders\OneDrive\JLR_Dev\Projects\preview-dark-full"
+git add -A
+git commit -m "your message"
+git push origin master
+# Remote: https://github.com/jlrdevelopment/jlrdev-web.git
+# Uses Windows Credential Manager — jlrdevelopment account
+# NOTE: jlrdevelopment is the ONLY GitHub account to use for JLR Dev work
+```
+
+---
+
+## WHAT STILL NEEDS TO HAPPEN (automatic — no action needed)
+
+1. **NS propagation** — CF will email jan-louis@jlrdev.co.za when jlrdev.co.za zone activates
+2. **Resend auto-verifies** once NS propagates
+
+## AFTER PROPAGATION — ONE TEST
+
+1. Browse `https://jlrdev.co.za` — dark site loads
+2. Submit contact form
+3. Check jan-louis@jlrdev.co.za — lead briefing with AI analysis arrives
+4. Check sender inbox — auto-reply from noreply@jlrdev.co.za arrives
+
+---
+
+## SITE FEATURES (index.html)
+
+- Hero: Three.js orbital 3D scene, typewriter animation
+- Terminal widget: real GeoCalibre stats (33 PDFs, 850+ data points, 8s)
+- Services: 5 cards with staggered scroll-reveal animations
+- Case study: GeoCalibre — carousel + 4 stat tiles + client quote
+- How I Work: 4 steps
+- Contact form: hint chips, posts JSON to /api/new-lead
+- WhatsApp floating button: bottom-right, links to wa.me/27828525108
+- Copy protection: user-select:none, right-click + Ctrl+U/S/A blocked
+- Location: "Bloemfontein, SA · Remote worldwide"
+- GeoCalibre wording: "GeoCalibre Geotechnical Consultancy" (Kevin approved)
+
+---
+
+## OTHER ACTIVE PROJECTS
+
+### GeoCalibre — GeoTech PDF Extractor
+- Client: Kevin Coertzen (Kevin@geocalibre.co.za)
+- Current version: v1.4 — delivered 2026-05-22, in use, Kevin happy
+- Repo: github.com/jlrdevelopment/GeoTech-PDF-Extractor
+- Source: `JLR_Dev\Clients\GeoCalibre\Projects\GeoTech-PDF-Extractor\`
+- EXE build: `--distpath C:\Build\GeoTech\dist` (OneDrive locks local build/)
+- Phase 3 planned: React+Vite PWA, Supabase, offline-first soil profiling app
+
+### JLR Dev Hub
+- Entry: `_Admin\Launch_Hub.bat` → `_Admin\jlr_hub.py` (PyQt6)
+- Features: business snapshot, deploy card, voice pipeline, client onboarding
+
+---
+
+## NEXT PLANNED FEATURE: WhatsApp Automation
+
+Add WhatsApp Business API to pipeline so incoming WhatsApp messages get:
+- OpenAI analysis
+- Auto-reply via WhatsApp
+- Lead briefing email to jan-louis@jlrdev.co.za
+
+Requires: Meta Business Account, WhatsApp Business number verification, Twilio or Meta webhook.
+Architecture ready — awaiting setup.
