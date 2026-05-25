@@ -3,7 +3,5 @@ pages_build_output_dir = "."
 
 [vars]
 # Non-secret env vars go here.
-# Secrets (ANTHROPIC_API_KEY, RESEND_API_KEY) are set via:
-#   wrangler pages secret put ANTHROPIC_API_KEY
-#   wrangler pages secret put RESEND_API_KEY
-# Or in Cloudflare dashboard → Pages → jlrdev-website → Settings → Environment variables
+# Secrets (OPENAI_API_KEY, RESEND_API_KEY) are set in:
+#   Cloudflare dashboard → Pages → jlrdev-website → Settings → Environment variables
