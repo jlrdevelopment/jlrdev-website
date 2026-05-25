@@ -699,15 +699,44 @@ window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 60);
 });
 
-// Typewriter
-const words = ['systems','tools','automations','pipelines','solutions'];
-let wi = 0;
-const tw = document.getElementById('typed-word');
-if (tw) setInterval(() => {
-  tw.style.opacity = '0'; tw.style.transform = 'translateY(-6px)';
-  setTimeout(() => { wi = (wi+1)%words.length; tw.textContent = words[wi]; tw.style.opacity='1'; tw.style.transform=''; }, 260);
-}, 2800);
-if (tw) { tw.style.transition = 'opacity 0.25s,transform 0.25s'; }
+// Typewriter — backspace current word then type next
+(function(){
+  const words = ['systems','tools','automations','pipelines','solutions'];
+  const tw = document.getElementById('typed-word');
+  if (!tw) return;
+  let wi = 0;
+  const TYPE_MS = 75, DEL_MS = 45, PAUSE_MS = 2000, GAP_MS = 180;
+
+  function type(word, cb) {
+    let i = 0;
+    tw.textContent = '';
+    (function tick() {
+      if (i <= word.length) { tw.textContent = word.slice(0, i++); setTimeout(tick, TYPE_MS); }
+      else cb();
+    })();
+  }
+
+  function erase(cb) {
+    let s = tw.textContent;
+    (function tick() {
+      if (s.length) { tw.textContent = s = s.slice(0, -1); setTimeout(tick, DEL_MS); }
+      else cb();
+    })();
+  }
+
+  function cycle() {
+    setTimeout(() => {
+      erase(() => {
+        setTimeout(() => {
+          wi = (wi + 1) % words.length;
+          type(words[wi], cycle);
+        }, GAP_MS);
+      });
+    }, PAUSE_MS);
+  }
+
+  type(words[wi], cycle);
+})();
 
 // Count-up
 function animCount(el, target, dur) {
