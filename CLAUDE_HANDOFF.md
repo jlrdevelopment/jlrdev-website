@@ -3,6 +3,15 @@
 
 ---
 
+## QUICK REFERENCE
+- **GitHub (this project):** `github.com/jlrdevelopment/jlrdev-website` · branch: `main` — only use `jlrdevelopment`
+- **Source folder:** `C:\Users\Jan-Louis.Reynders\OneDrive\JLR_Dev\Projects\preview-dark-full\`
+- **Live site:** `https://jlrdev-website.pages.dev` ✅ · Custom domain `jlrdev.co.za` (NS propagating)
+- **Deploy:** `$env:CLOUDFLARE_API_TOKEN='<token>'; wrangler pages deploy . --project-name=jlrdev-website --branch=main`
+- **GitHub token (jlrdevelopment):** stored in Windows Credential Manager · embedded in remote URL
+
+---
+
 ## WHO YOU ARE WORKING WITH
 
 **Jan-Louis Reynders** — solo software developer & AI consultant, Bloemfontein SA.
