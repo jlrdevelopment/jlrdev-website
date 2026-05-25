@@ -721,11 +721,16 @@ function animCount(el, target, dur) {
 }
 
 // Intersection Observer
+let terminalStarted = false;
 const io = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (!e.isIntersecting) return;
     e.target.classList.add('visible');
     e.target.querySelectorAll('[data-count]').forEach(el => animCount(el, +el.dataset.count, 1400));
+    if (e.target.classList.contains('terminal') && !terminalStarted) {
+      terminalStarted = true;
+      startTerminal();
+    }
   });
 }, { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
@@ -742,52 +747,42 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
   }, 3000);
 })();
 
-// Terminal typewriter
-(function(){
+// Terminal typewriter — called by IntersectionObserver when terminal scrolls into view
+function startTerminal() {
   const lines = document.querySelectorAll('.tl');
-  if(!lines.length) return;
-  const delays = [600, 1400, 2400, 3400]; // ms before each line starts
-  const speed  = 28;                       // ms per character
+  if (!lines.length) return;
+  const delays = [0, 900, 1900, 2900];
+  const speed  = 28;
 
   lines.forEach((line, idx) => {
-    // Collect inner HTML spans, extract raw text per span
     const spans = Array.from(line.children);
-    const origHTML = line.innerHTML;
+    const texts = spans.map(s => s.textContent);
+    const types = spans.map(s => s.className);
     line.innerHTML = '';
     line.style.opacity = '1';
 
     setTimeout(() => {
-      // Re-build spans character by character
-      let spanIdx = 0;
-      let charIdx = 0;
-      const texts = spans.map(s => s.textContent);
-      const types = spans.map(s => s.className);
-
+      let spanIdx = 0, charIdx = 0;
       const currentSpan = () => {
-        if(!line.children[spanIdx]){
+        if (!line.children[spanIdx]) {
           const el = document.createElement('span');
-          if(types[spanIdx]) el.className = types[spanIdx];
+          if (types[spanIdx]) el.className = types[spanIdx];
           line.appendChild(el);
         }
         return line.children[spanIdx];
       };
-
       const tick = () => {
-        if(spanIdx >= spans.length){ line.classList.add('typed'); return; }
+        if (spanIdx >= spans.length) { line.classList.add('typed'); return; }
         const text = texts[spanIdx];
-        if(charIdx < text.length){
-          currentSpan().textContent += text[charIdx];
-          charIdx++;
+        if (charIdx < text.length) {
+          currentSpan().textContent += text[charIdx++];
           setTimeout(tick, speed);
-        } else {
-          spanIdx++; charIdx = 0;
-          setTimeout(tick, speed);
-        }
+        } else { spanIdx++; charIdx = 0; setTimeout(tick, speed); }
       };
       tick();
     }, delays[idx] || idx * 900);
   });
-})();
+}
 
 setTimeout(() => {
   document.querySelectorAll('.stat-n[data-count]').forEach(el => animCount(el, +el.dataset.count, 1800));
