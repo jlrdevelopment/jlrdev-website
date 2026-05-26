@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Development Proposal — Onze Rust Primary School</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;700;800&family=Fira+Code:wght@400;500;600&display=swap');
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+      color: #1a1a2e;
+      background: #f4f6fb;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .page {
+      max-width: 820px;
+      margin: 32px auto;
+      background: #fff;
+      box-shadow: 0 4px 40px rgba(0,0,0,0.12);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    /* ── HEADER ── */
+    .doc-header {
+      background: linear-gradient(135deg, #0a1628 0%, #1a3a6b 50%, #1e5db5 100%);
+      padding: 40px 48px 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .doc-header::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 4px;
+      background: linear-gradient(90deg, #4F8EF7, #7EB3FF, transparent);
+    }
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 28px;
+    }
+    .brand-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 0;
+      line-height: 1;
+      font-family: 'Space Grotesk', 'Inter', sans-serif;
+    }
+    .brand-logo .bl-bracket {
+      font-size: 1.9rem;
+      font-weight: 900;
+      color: #4F8EF7;
+      letter-spacing: -0.04em;
+    }
+    .brand-logo .bl-jlr {
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.03em;
+    }
+    .brand-logo .bl-dev {
+      font-size: 0.55rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: rgba(79,142,247,0.6);
+      margin-top: 3px;
+      text-align: center;
+    }
+    .brand-tagline {
+      font-size: 0.6rem;
+      color: rgba(255,255,255,0.45);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-top: 5px;
+      font-family: 'Space Grotesk', 'Inter', sans-serif;
+    }
+    .doc-meta {
+      text-align: right;
+    }
+    .doc-meta .prop-label {
+      font-size: 0.6rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.45);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .doc-meta .prop-value {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.88);
+    }
+    .doc-meta .prop-number {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #4F8EF7;
+    }
+
+    .doc-title-block { }
+    .doc-label {
+      font-size: 0.6rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.45);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+    }
+    .doc-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #fff;
+      margin-top: 4px;
+      line-height: 1.2;
+    }
+    .doc-subtitle {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.65);
+      margin-top: 6px;
+    }
+
+    /* ── BODY ── */
+    .doc-body { padding: 40px 48px; }
+
+    /* To/From block */
+    .parties-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 36px;
+    }
+    .party-card {
+      background: #f8f9fd;
+      border-radius: 8px;
+      padding: 18px 20px;
+      border-left: 4px solid #1a3a6b;
+    }
+    .party-card.right { border-left-color: #4F8EF7; }
+    .party-role {
+      font-size: 0.6rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #8a9ab8;
+      margin-bottom: 6px;
+    }
+    .party-name {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #1a3a6b;
+      margin-bottom: 3px;
+    }
+    .party-detail {
+      font-size: 0.72rem;
+      color: #5a6a80;
+      line-height: 1.65;
+    }
+
+    /* Section headings */
+    .sec-title {
+      font-size: 0.62rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #4F8EF7;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .sec-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(79,142,247,0.3), transparent);
+    }
+
+    .section { margin-bottom: 32px; }
+
+    /* Scope list */
+    .scope-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .scope-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      background: #f8f9fd;
+      border-radius: 6px;
+      padding: 10px 12px;
+      font-size: 0.75rem;
+      color: #3a4a60;
+      border-left: 3px solid rgba(26,58,107,0.2);
+    }
+    .scope-item.sci-b { border-left-color: rgba(79,142,247,0.35); }
+    .scope-item.sci-g { border-left-color: rgba(42,176,96,0.35); }
+    .scope-icon {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #1a3a6b;
+      color: #fff;
+      font-size: 0.6rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .scope-item.sci-b .scope-icon { background: #4F8EF7; }
+    .scope-item.sci-g .scope-icon { background: #2ab060; }
+    .scope-item strong { display: block; font-size: 0.73rem; color: #1a3a6b; margin-bottom: 1px; }
+    .scope-item.sci-b strong { color: #2a5ab8; }
+    .scope-item.sci-g strong { color: #1a7a40; }
+    .scope-cat-label {
+      grid-column: 1 / -1;
+      font-family: 'Fira Code', 'Courier New', monospace;
+      font-size: 0.58rem;
+      font-weight: 600;
+      color: rgba(79,142,247,0.5);
+      letter-spacing: 0.1em;
+      padding: 10px 2px 4px;
+      border-bottom: 1px solid rgba(79,142,247,0.1);
+      margin-bottom: 2px;
+    }
+    .scope-cat-label:first-child { padding-top: 0; }
+
+    /* Timeline */
+    .timeline-row {
+      display: flex;
+      gap: 0;
+      margin-bottom: 0;
+      position: relative;
+      padding-top: 4px;
+    }
+    .timeline-row::before {
+      content: '';
+      position: absolute;
+      top: 18px;
+      left: 12.5%;
+      right: 12.5%;
+      height: 2px;
+      background: linear-gradient(90deg, #2ab060 0%, #1a3a6b 33%, #4F8EF7 66%, #7EB3FF 100%);
+      z-index: 0;
+    }
+    .tl-phase {
+      flex: 1;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .tl-dot {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #1a3a6b;
+      color: #fff;
+      font-size: 0.65rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 6px;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 0 0 3px #fff, 0 0 0 5px rgba(79,142,247,0.25);
+    }
+    .tl-phase:nth-child(2) .tl-dot { background: #4F8EF7; }
+    .tl-phase:nth-child(3) .tl-dot { background: #2ab060; }
+    .tl-phase:nth-child(4) .tl-dot { background: #7EB3FF; }
+    .tl-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: #1a3a6b;
+      margin-bottom: 2px;
+    }
+    .tl-week {
+      font-size: 0.6rem;
+      color: #8a9ab8;
+    }
+    .tl-desc {
+      font-size: 0.62rem;
+      color: #5a6a80;
+      margin-top: 3px;
+      line-height: 1.4;
+    }
+
+    /* Payment table */
+    .payment-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.78rem;
+    }
+    .payment-table thead tr {
+      background: #1a3a6b;
+      color: #fff;
+    }
+    .payment-table thead th {
+      padding: 10px 14px;
+      text-align: left;
+      font-weight: 700;
+      font-size: 0.68rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .payment-table tbody tr {
+      border-bottom: 1px solid #edf0f7;
+    }
+    .payment-table tbody tr:nth-child(even) { background: #f8f9fd; }
+    .payment-table tbody td {
+      padding: 11px 14px;
+      vertical-align: top;
+    }
+    .payment-table .amt {
+      font-weight: 800;
+      font-size: 0.9rem;
+      white-space: nowrap;
+    }
+    .payment-table .amt.deposit { color: #4F8EF7; }
+    .payment-table .amt.milestone { color: #1a3a6b; }
+    .payment-table .amt.final { color: #2ab060; }
+    .badge {
+      display: inline-block;
+      font-size: 0.58rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 2px 8px;
+      border-radius: 20px;
+      margin-bottom: 3px;
+    }
+    .badge.dep  { background: #e6f0ff; color: #1a4a9b; }
+    .badge.ms   { background: #e6ecf8; color: #1a3a6b; }
+    .badge.fin  { background: #e6f7ee; color: #1a7a40; }
+
+    .total-row {
+      background: #1a3a6b !important;
+      color: #fff;
+    }
+    .total-row td {
+      font-weight: 800;
+      color: #fff !important;
+      font-size: 0.85rem;
+    }
+    .total-row .amt { color: #7EB3FF !important; font-size: 1rem; }
+
+    /* ── PAYMENT CARDS ── */
+    .pay-cards { display: flex; flex-direction: column; gap: 10px; margin-bottom: 10px; }
+    .pay-card { border-radius: 8px; overflow: hidden; border: 1px solid #e0e6f0; }
+    .pay-card-header {
+      background: #0D1B2E;
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .pay-phase {
+      font-family: 'Fira Code', 'Courier New', monospace;
+      font-size: 0.62rem;
+      font-weight: 600;
+      color: #4F8EF7;
+    }
+    .pay-trigger {
+      font-family: 'Fira Code', 'Courier New', monospace;
+      font-size: 0.62rem;
+      color: rgba(126,179,255,0.35);
+      flex: 1;
+    }
+    .pay-badge {
+      font-size: 0.55rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 2px 8px;
+      border-radius: 3px;
+      font-family: 'Fira Code', monospace;
+    }
+    .pay-badge.dep { background: rgba(79,142,247,0.18); color: #7EB3FF; border: 1px solid rgba(79,142,247,0.3); }
+    .pay-badge.ms  { background: rgba(79,142,247,0.1);  color: #4F8EF7; border: 1px solid rgba(79,142,247,0.2); }
+    .pay-badge.fin { background: rgba(42,176,96,0.15);  color: #2ab060; border: 1px solid rgba(42,176,96,0.25); }
+    .pay-card-body { padding: 14px 18px; background: #fff; }
+    .pay-title { font-size: 0.8rem; font-weight: 700; color: #1a3a6b; margin-bottom: 4px; }
+    .pay-desc  { font-size: 0.72rem; color: #5a6a80; line-height: 1.5; margin-bottom: 12px; }
+    .pay-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid #edf0f7;
+      padding-top: 10px;
+    }
+    .pay-due { font-size: 0.68rem; color: #8a9ab8; }
+    .pay-lbl {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.55rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #4F8EF7;
+      margin-right: 5px;
+    }
+    .pay-amt { font-size: 1rem; font-weight: 800; white-space: nowrap; }
+    .pay-amt.deposit  { color: #4F8EF7; }
+    .pay-amt.milestone{ color: #1a3a6b; }
+    .pay-amt.final    { color: #2ab060; }
+    .pay-total {
+      background: #0D1B2E;
+      border-radius: 8px;
+      padding: 14px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 2px;
+    }
+    .pay-total-label {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.62rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: rgba(126,179,255,0.45);
+    }
+    .pay-total-amt { font-size: 1.4rem; font-weight: 900; color: #7EB3FF; }
+
+    /* Terms */
+    .terms-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+    }
+    .terms-list li {
+      font-size: 0.72rem;
+      color: #5a6a80;
+      padding: 7px 10px 7px 28px;
+      background: #f8f9fd;
+      border-radius: 5px;
+      position: relative;
+      line-height: 1.4;
+    }
+    .terms-list li::before {
+      content: '§';
+      position: absolute;
+      left: 10px;
+      color: #1a3a6b;
+      font-weight: 700;
+      font-size: 0.7rem;
+    }
+
+    /* Acceptance */
+    .acceptance-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 12px;
+    }
+    .sig-block {
+      border-top: 2px solid #1a3a6b;
+      padding-top: 10px;
+    }
+    .sig-block.right { border-top-color: #4F8EF7; }
+    .sig-label {
+      font-size: 0.62rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #8a9ab8;
+      margin-bottom: 4px;
+    }
+    .sig-name {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #1a3a6b;
+    }
+    .sig-role { font-size: 0.68rem; color: #8a9ab8; }
+    .sig-date {
+      margin-top: 10px;
+      font-size: 0.68rem;
+      color: #8a9ab8;
+    }
+    .sig-line {
+      height: 32px;
+      border-bottom: 1px dashed #c5cfe0;
+      margin-top: 8px;
+    }
+
+    /* Footer */
+    .doc-footer {
+      background: #f0f3fa;
+      border-top: 1px solid #e0e6f0;
+      padding: 16px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.62rem;
+      color: #8a9ab8;
+    }
+    .doc-footer strong { color: #1a3a6b; }
+
+    /* Highlight box */
+    .highlight-box {
+      background: linear-gradient(135deg, #0a1628, #1a3a6b);
+      border-radius: 10px;
+      padding: 20px 24px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 32px;
+      gap: 20px;
+    }
+    .highlight-box .total-label {
+      font-size: 0.62rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 3px;
+    }
+    .highlight-box .total-amount {
+      font-size: 2rem;
+      font-weight: 900;
+      color: #4F8EF7;
+      line-height: 1;
+    }
+    .highlight-box .total-vat {
+      font-size: 0.65rem;
+      color: rgba(255,255,255,0.45);
+      margin-top: 3px;
+    }
+    .highlight-box .validity {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.7);
+      text-align: right;
+      line-height: 1.6;
+    }
+
+    /* ── ACCEPTANCE TERMINAL ── */
+    .accept-terminal { background:#0D1B2E; border-radius:8px; overflow:hidden; border:1px solid rgba(79,142,247,0.2); margin-top:14px; }
+    .accept-hdr { padding:8px 16px; border-bottom:1px solid rgba(79,142,247,0.1); display:flex; align-items:center; gap:10px; }
+    .accept-prompt { font-family:'Fira Code',monospace; color:#4F8EF7; font-size:0.85rem; font-weight:700; }
+    .accept-cmd { font-family:'Fira Code',monospace; color:rgba(126,179,255,0.5); font-size:0.65rem; flex:1; }
+    .accept-body { padding:16px 20px; }
+    .accept-desc { font-size:0.72rem; color:rgba(226,232,245,0.65); margin-bottom:14px; line-height:1.5; }
+    .accept-fields { display:flex; gap:10px; margin-bottom:12px; }
+    .accept-input {
+      flex:1; background:rgba(255,255,255,0.05); border:1px solid rgba(79,142,247,0.25);
+      border-radius:5px; padding:8px 12px; color:#e2e8f5; font-size:0.75rem;
+      font-family:'Inter',sans-serif; outline:none; transition:border-color 0.15s;
+    }
+    .accept-input:focus { border-color:#4F8EF7; }
+    .accept-input::placeholder { color:rgba(126,179,255,0.3); }
+    .accept-input.err { border-color:#ef4444; }
+    .accept-btn {
+      background:#4F8EF7; color:#fff; border:none; border-radius:5px;
+      padding:10px 24px; font-size:0.78rem; font-weight:700; cursor:pointer;
+      font-family:'Inter',sans-serif; transition:background 0.15s; letter-spacing:0.02em;
+    }
+    .accept-btn:hover { background:#7EB3FF; color:#0D1B2E; }
+    .accept-success { display:flex; align-items:center; gap:14px; padding:6px 0; }
+    .accept-check { width:36px; height:36px; background:#2ab060; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-size:1.1rem; flex-shrink:0; }
+    .accept-success-text strong { display:block; color:#e2e8f5; font-size:0.8rem; margin-bottom:3px; }
+    .accept-ts { font-family:'Fira Code',monospace; font-size:0.62rem; color:#4ade80; }
+
+    @media print {
+      body { background: #fff; }
+      .page { margin: 0; box-shadow: none; border-radius: 0; }
+      .accept-terminal { display: none; }
+    }
+  </style>
+  <script>
+  // ═══════════════════════════════════════════════════════
+  // JLR DEV — PROPOSAL CONFIG
+  // Duplicate this file for each new client. Edit ONLY here.
+  // ═══════════════════════════════════════════════════════
+  const JLR = {
+    // ── Proposal meta ──
+    proposal_no:    "JLR-2026-011",
+    date_issued:    "26 May 2026",
+    date_valid:     "26 June 2026",
+    // ── Client ──
+    client_name:    "Onze Rust Primary School",
+    client_contact: "Jaco Richards / Jasper Herbst",
+    client_role:    "Principal / Deputy Principal — Onze Rust Primary School",
+    client_address: "14 Generaal Hatting Street, Uitsig, Bloemfontein",
+    client_email:   "",
+    // ── Project ──
+    project_title:  "Website Design & Development",
+    demo_url:       "https://onzerust-demo.surge.sh",
+    // ── Payment ──
+    inst1: 7000,
+    inst2: 5000,
+    inst3: 5000,
+    // ── Banking (JLR global — don't change per client) ──
+    acct_holder: "JL Reynders",
+    bank:        "ABSA Bank",
+    acct_type:   "Current Account",
+    acct_number: "4076184185",
+    branch_code: "632005",
+    notify: "jan-louis@jlrdev.co.za",
+  };
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxt2dSaIWGTv5wIO1aUeaTf-3tP6BJ5106gN1YI84PCwR9X7IvM65vV4dH57yfmyAOqDw/exec';
+  JLR.total = JLR.inst1 + JLR.inst2 + JLR.inst3;
+  JLR.ref   = JLR.proposal_no + ' / ' + JLR.client_name.replace(/\s+/g,'').substring(0,8).toUpperCase();
+  const fmt = n => 'R ' + n.toLocaleString('en-ZA');
+
+  document.addEventListener('DOMContentLoaded', () => {
+    if (JLR.ejs_key !== 'YOUR_PUBLIC_KEY') emailjs.init(JLR.ejs_key);
+    document.querySelectorAll('[data-v]').forEach(el => {
+      const k = el.dataset.v, v = JLR[k];
+      if (v !== undefined) el.textContent = ['inst1','inst2','inst3','total'].includes(k) ? fmt(v) : v;
+    });
+    document.querySelectorAll('[data-href]').forEach(el => {
+      if (JLR[el.dataset.href]) el.href = JLR[el.dataset.href];
+    });
+  });
+
+  async function acceptProposal() {
+    const nameEl  = document.getElementById('acceptName');
+    const titleEl = document.getElementById('acceptTitle');
+    const emailEl = document.getElementById('acceptEmail');
+    const name  = nameEl.value.trim();
+    const title = titleEl.value.trim();
+    const email = emailEl ? emailEl.value.trim() : '';
+    if (!name) { nameEl.classList.add('err'); nameEl.focus(); return; }
+    nameEl.classList.remove('err');
+    const ts = new Date().toLocaleString('en-ZA', { dateStyle:'full', timeStyle:'medium' });
+    const btn = document.querySelector('.accept-btn');
+    if (btn) { btn.textContent = 'Sending...'; btn.disabled = true; }
+    try {
+      await fetch(SCRIPT_URL, {
+        method: 'POST',
+        body: JSON.stringify({
+          type:         'ACCEPTANCE',
+          proposal_no:  JLR.proposal_no,
+          client_name:  JLR.client_name,
+          signer_name:  name,
+          signer_title: title || '',
+          email:        email,
+          timestamp:    new Date().toISOString(),
+        }),
+      });
+    } catch(e) { console.warn('Notification error:', e); }
+    document.getElementById('acceptTs').textContent = 'Accepted by ' + name + (title ? ', ' + title : '') + '  ·  ' + ts;
+    document.getElementById('acceptPending').style.display = 'none';
+    document.getElementById('acceptDone').style.display    = 'flex';
+  }
+  </script>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="doc-header">
+    <div class="header-top">
+      <div>
+        <div class="brand-logo">
+          <div>
+            <div><span class="bl-bracket">&lt;</span><span class="bl-jlr">JLR</span><span class="bl-bracket">/&gt;</span></div>
+            <div class="bl-dev">Dev</div>
+          </div>
+        </div>
+        <div class="brand-tagline">Software Developer &amp; AI Consultant</div>
+      </div>
+      <div class="doc-meta">
+        <div class="prop-label">Proposal No.</div>
+        <div class="prop-number" data-v="proposal_no">JLR-2026-011</div>
+        <div style="margin-top:8px;">
+          <div class="prop-label">Date Issued</div>
+          <div class="prop-value" data-v="date_issued">26 May 2026</div>
+        </div>
+        <div style="margin-top:6px;">
+          <div class="prop-label">Valid Until</div>
+          <div class="prop-value" data-v="date_valid">26 June 2026</div>
+        </div>
+      </div>
+    </div>
+    <div class="doc-title-block">
+      <div class="doc-label">Web Development Proposal</div>
+      <div class="doc-title">Onze Rust Primary School<br>Website Design &amp; Development</div>
+      <div class="doc-subtitle">Custom 6-page website · Staff directory · Events calendar · Content protection · Responsive design</div>
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:14px;">
+        <div style="display:inline-flex;align-items:center;gap:10px;background:rgba(245,164,26,0.18);border:1px solid rgba(245,164,26,0.4);border-radius:20px;padding:6px 18px 6px 12px;">
+          <span style="width:8px;height:8px;border-radius:50%;background:#f5a41a;flex-shrink:0;box-shadow:0 0 6px #f5a41a;"></span>
+          <span style="font-size:0.7rem;color:rgba(255,255,255,0.9);font-weight:700;letter-spacing:0.04em;">Project Status: <strong style="color:#f5a41a;">50% Complete</strong> &nbsp;·&nbsp; Prototype delivered &amp; demonstrated to client</span>
+        </div>
+        <a href="https://onzerust-demo.surge.sh" target="_blank" style="display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.3);border-radius:20px;padding:6px 16px 6px 14px;text-decoration:none;color:#fff;font-size:0.7rem;font-weight:700;letter-spacing:0.04em;transition:background 0.2s;">
+          <span style="width:7px;height:7px;border-radius:50%;background:#2ab060;flex-shrink:0;box-shadow:0 0 5px #2ab060;"></span>
+          View Live Prototype &nbsp;→
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="doc-body">
+
+    <!-- Parties -->
+    <div class="parties-grid">
+      <div class="party-card">
+        <div class="party-role">Service Provider</div>
+        <div class="party-name">JLR Dev</div>
+        <div class="party-detail">
+          Jan-Louis Reynders<br>
+          jan-louis@jlrdev.co.za<br>
+          Bloemfontein, South Africa
+        </div>
+      </div>
+      <div class="party-card right">
+        <div class="party-role">Client</div>
+        <div class="party-name" data-v="client_name">Onze Rust Primary School</div>
+        <div class="party-detail" data-v="client_address">
+          Jaco Richards (Principal)<br>
+          Jasper Herbst (Deputy Principal)<br>
+          14 Generaal Hatting Street, Uitsig, Bloemfontein
+        </div>
+      </div>
+    </div>
+
+    <!-- Investment Summary -->
+    <div class="highlight-box">
+      <div>
+        <div class="total-label">Total Project Investment</div>
+        <div class="total-amount" data-v="total">R 17,000</div>
+        <div class="total-vat">Excl. VAT · Payable in 3 instalments · 50% already delivered</div>
+      </div>
+      <div class="validity">
+        Proposal valid for <strong style="color:#7EB3FF;">30 days</strong><br>
+        from date of issue.<br>
+        <span style="color:rgba(255,255,255,0.55);">Prototype demo already built<br>and demonstrated to client.</span>
+      </div>
+    </div>
+
+    <!-- Scope of Work -->
+    <div class="section">
+      <div class="sec-title">Scope of Work &amp; Deliverables</div>
+      <div class="scope-grid">
+        <div class="scope-cat-label">// core_website — pages, branding &amp; content</div>
+        <div class="scope-item">
+          <div class="scope-icon">1</div>
+          <div>
+            <strong>6-Page Custom Website</strong>
+            Home, Our School, Information, About, Pre-Primary, Contact — fully custom-designed to school branding.
+          </div>
+        </div>
+        <div class="scope-item">
+          <div class="scope-icon">2</div>
+          <div>
+            <strong>Staff Directory</strong>
+            All teaching, support and admin staff with photos, names and roles — Management through to Administration.
+          </div>
+        </div>
+        <div class="scope-item">
+          <div class="scope-icon">3</div>
+          <div>
+            <strong>School Branding &amp; Identity</strong>
+            School crest, Rissie Rascal mascot, official colour scheme (blue &amp; orange), dual-medium copy.
+          </div>
+        </div>
+        <div class="scope-item">
+          <div class="scope-icon">4</div>
+          <div>
+            <strong>Interactive Events Calendar</strong>
+            Monthly calendar with sport, academic and culture events, QR-to-phone sync panel.
+          </div>
+        </div>
+        <div class="scope-cat-label">// interactive_features — calendar, gallery &amp; maps</div>
+        <div class="scope-item sci-b">
+          <div class="scope-icon">5</div>
+          <div>
+            <strong>Photo Gallery with Lightbox</strong>
+            School Life gallery strip with full-screen lightbox viewer and prev/next navigation.
+          </div>
+        </div>
+        <div class="scope-item sci-b">
+          <div class="scope-icon">6</div>
+          <div>
+            <strong>Google Maps Integration</strong>
+            Embedded interactive map on Home page and Contact page pinpointing the school.
+          </div>
+        </div>
+        <div class="scope-item sci-b">
+          <div class="scope-icon">7</div>
+          <div>
+            <strong>Content Protection System</strong>
+            Right-click disabled, copy/paste blocked, DevTools detection, image drag protection, print lock.
+          </div>
+        </div>
+        <div class="scope-item sci-b">
+          <div class="scope-icon">8</div>
+          <div>
+            <strong>Hosting &amp; Deployment</strong>
+            Live URL published and accessible. Domain setup guidance included. 12-month hosting support.
+          </div>
+        </div>
+        <div class="scope-cat-label">// technical_delivery — seo, forms, analytics &amp; hosting</div>
+        <div class="scope-item sci-g">
+          <div class="scope-icon">9</div>
+          <div>
+            <strong>SEO Optimisation</strong>
+            Meta titles, descriptions, Open Graph tags, sitemap.xml, robots.txt, semantic HTML structure — Google-ready on day one.
+          </div>
+        </div>
+        <div class="scope-item sci-g">
+          <div class="scope-icon">10</div>
+          <div>
+            <strong>Contact Form Integration</strong>
+            Working contact form routed directly to the school's email — no server, no subscription. Spam-filtered via Formspree or EmailJS.
+          </div>
+        </div>
+        <div class="scope-item sci-g">
+          <div class="scope-icon">11</div>
+          <div>
+            <strong>Calendar Integration</strong>
+            Events calendar with Google Calendar embed + ICS/iCal export links — parents can sync school events directly to their phone.
+          </div>
+        </div>
+        <div class="scope-item sci-g">
+          <div class="scope-icon">12</div>
+          <div>
+            <strong>Performance &amp; Analytics</strong>
+            Lazy loading, image optimisation, Google Analytics setup, mobile performance score target 90+.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Timeline -->
+    <div class="section">
+      <div class="sec-title">Project Timeline — As Fast As 2 Weeks to Go-Live</div>
+      <div class="timeline-row">
+        <div class="tl-phase">
+          <div class="tl-dot" style="background:#2ab060;">✓</div>
+          <div class="tl-label">Prototype Done</div>
+          <div class="tl-week" style="color:#2ab060;font-weight:700;">✓ Complete</div>
+          <div class="tl-desc">6-page prototype built, staff directory, calendar &amp; branding demonstrated to client. <strong>50% done.</strong><br><a href="https://onzerust-demo.surge.sh" target="_blank" style="color:#2ab060;font-weight:600;font-size:0.75rem;text-decoration:none;">🔗 onzerust-demo.surge.sh</a></div>
+        </div>
+        <div class="tl-phase">
+          <div class="tl-dot">2</div>
+          <div class="tl-label">Acceptance</div>
+          <div class="tl-week">Days 1–3</div>
+          <div class="tl-desc">Proposal signed &amp; deposit received. Client supplies final content, missing photos &amp; corrections.</div>
+        </div>
+        <div class="tl-phase">
+          <div class="tl-dot">3</div>
+          <div class="tl-label">Finalise</div>
+          <div class="tl-week">Days 4–10</div>
+          <div class="tl-desc">All feedback applied, final content integrated, milestone payment received — go-live prep begins.</div>
+        </div>
+        <div class="tl-phase">
+          <div class="tl-dot">4</div>
+          <div class="tl-label">Go Live</div>
+          <div class="tl-week">Day 14</div>
+          <div class="tl-desc">Live deployment, domain &amp; hosting handover, client walkthrough. Final payment due.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Payment Schedule -->
+    <div class="section">
+      <div class="sec-title">Payment Schedule</div>
+      <div class="pay-cards">
+
+        <div class="pay-card">
+          <div class="pay-card-header">
+            <span class="pay-phase">instalment_01</span>
+            <span class="pay-trigger">// trigger: proposal.accepted &amp;&amp; deposit.received</span>
+            <span class="pay-badge dep">DEPOSIT</span>
+          </div>
+          <div class="pay-card-body">
+            <div class="pay-title">Project Acceptance Deposit</div>
+            <div class="pay-desc">Acknowledges the 50% prototype already built and demonstrated. Confirms scope acceptance and triggers the finalisation phase. Development resumes within 2 business days of receipt.</div>
+            <div class="pay-footer">
+              <span class="pay-due"><span class="pay-lbl">due:</span> On signed acceptance &nbsp;·&nbsp; <strong>Ref: JLR-2026-011-DEP</strong></span>
+              <span class="pay-amt deposit" data-v="inst1">R 7,000</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pay-card">
+          <div class="pay-card-header">
+            <span class="pay-phase">instalment_02</span>
+            <span class="pay-trigger">// trigger: client.approved(prototype) &amp;&amp; content.delivered</span>
+            <span class="pay-badge ms">MILESTONE</span>
+          </div>
+          <div class="pay-card-body">
+            <div class="pay-title">Design Approval &amp; Content Sign-Off</div>
+            <div class="pay-desc">Due upon client approval of all pages, staff directory, integrations and branding. Client has supplied all final content, photos and corrections. Unlocks final build and go-live prep.</div>
+            <div class="pay-footer">
+              <span class="pay-due"><span class="pay-lbl">due:</span> Milestone 1 &nbsp;·&nbsp; ~Week 2–3 &nbsp;·&nbsp; <strong>Ref: JLR-2026-011-MS1</strong></span>
+              <span class="pay-amt milestone" data-v="inst2">R 5,000</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pay-card">
+          <div class="pay-card-header">
+            <span class="pay-phase">instalment_03</span>
+            <span class="pay-trigger">// trigger: site.deployed &amp;&amp; handover.complete</span>
+            <span class="pay-badge fin">FINAL</span>
+          </div>
+          <div class="pay-card-body">
+            <div class="pay-title">Go-Live &amp; Final Delivery</div>
+            <div class="pay-desc">Due upon successful live deployment, completion of handover session and delivery of all project assets — source files, login credentials, hosting access, documentation.</div>
+            <div class="pay-footer">
+              <span class="pay-due"><span class="pay-lbl">due:</span> On delivery &nbsp;·&nbsp; ~Week 5 &nbsp;·&nbsp; <strong>Ref: JLR-2026-011-FINAL</strong></span>
+              <span class="pay-amt final" data-v="inst3">R 5,000</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="pay-total">
+        <span class="pay-total-label">total_investment</span>
+        <span class="pay-total-amt" data-v="total">R 17,000</span>
+      </div>
+      <p style="font-size:0.65rem;color:#8a9ab8;margin-top:8px;font-family:'Fira Code',monospace;">// ZAR · excl. VAT · EFT · banking details provided on acceptance</p>
+    </div>
+
+    <!-- Terms -->
+    <div class="section">
+      <div class="sec-title">Terms &amp; Conditions</div>
+      <ul class="terms-list">
+        <li>The deposit is non-refundable once work has commenced.</li>
+        <li>Up to 2 rounds of revisions are included per page at no additional cost.</li>
+        <li>All content (text, photos, logos) to be supplied by client within 5 business days of project start.</li>
+        <li>Intellectual property of the final website transfers to the client upon receipt of final payment.</li>
+        <li>JLR Dev retains the right to display the project in a professional portfolio.</li>
+        <li>Additional pages or features outside this scope will be quoted separately.</li>
+        <li>12-month post-launch support is included for bug fixes (excludes new features).</li>
+        <li>Hosting fees (beyond included period) are payable by the client directly to the hosting provider.</li>
+        <li>Project timeline assumes timely provision of content and feedback from the client.</li>
+        <li>This proposal expires 30 days from the date of issue if not signed.</li>
+      </ul>
+    </div>
+
+    <!-- Banking Details -->
+    <div class="section">
+      <div class="sec-title">Banking Details</div>
+      <div style="background:#0D1B2E;border-radius:8px;padding:18px 20px;font-family:'Fira Code','Courier New',monospace;font-size:0.72rem;line-height:2.1;">
+        <div style="display:grid;grid-template-columns:160px 1fr;gap:0 8px;">
+          <span style="color:rgba(126,179,255,0.4);">account_holder</span><span style="color:#e2e8f5;">JL Reynders</span>
+          <span style="color:rgba(126,179,255,0.4);">bank</span><span style="color:#e2e8f5;">ABSA Bank</span>
+          <span style="color:rgba(126,179,255,0.4);">account_type</span><span style="color:#e2e8f5;">Current Account</span>
+          <span style="color:rgba(126,179,255,0.4);">account_number</span><span style="color:#4F8EF7;font-weight:600;letter-spacing:0.05em;">4076184185</span>
+          <span style="color:rgba(126,179,255,0.4);">branch_code</span><span style="color:#e2e8f5;">632005</span>
+          <span style="color:rgba(126,179,255,0.4);">deposit_ref</span><span style="color:#7EB3FF;font-weight:600;">JLR-2026-011-DEP</span>
+          <span style="color:rgba(126,179,255,0.4);">milestone_ref</span><span style="color:#7EB3FF;font-weight:600;">JLR-2026-011-MS1</span>
+          <span style="color:rgba(126,179,255,0.4);">final_ref</span><span style="color:#7EB3FF;font-weight:600;">JLR-2026-011-FINAL</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Acceptance -->
+    <div class="section">
+      <div class="sec-title">Proposal Acceptance</div>
+      <p style="font-size:0.75rem;color:#5a6a80;margin-bottom:14px;">Accept digitally below, or simply reply to this email confirming the scope and payment schedule — either is sufficient to kick off the project.</p>
+      <div class="accept-terminal">
+        <div class="accept-hdr">
+          <span class="accept-prompt">$</span>
+          <span class="accept-cmd">proposal.accept("<span data-v="client_name">Onze Rust Primary School</span>", { proposal: "<span data-v="proposal_no">JLR-2026-011</span>" })</span>
+        </div>
+        <div class="accept-body">
+          <div id="acceptPending">
+            <p class="accept-desc">By clicking Accept, you confirm agreement with the scope of work, timeline and payment schedule as set out in this proposal.</p>
+            <div class="accept-fields">
+              <input type="text"  id="acceptName"  class="accept-input" placeholder="Your full name *">
+              <input type="text"  id="acceptTitle" class="accept-input" placeholder="Title / role (optional)">
+            </div>
+            <div class="accept-fields" style="margin-bottom:14px;">
+              <input type="email" id="acceptEmail" class="accept-input" placeholder="Your email address (for confirmation)">
+            </div>
+            <button class="accept-btn" onclick="acceptProposal()">&#10003; &nbsp;Accept Proposal</button>
+          </div>
+          <div id="acceptDone" style="display:none;" class="accept-success">
+            <div class="accept-check">✓</div>
+            <div class="accept-success-text">
+              <strong>Proposal accepted</strong>
+              <span class="accept-ts" id="acceptTs"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p style="font-size:0.62rem;color:#8a9ab8;margin-top:10px;font-family:'Fira Code',monospace;">// digital acceptance is recorded with name + timestamp + email · sent to jan-louis@jlrdev.co.za</p>
+      <p style="font-size:0.62rem;color:#6a7a8a;margin-top:6px;font-family:'Inter',sans-serif;line-height:1.6;"><strong style="color:#8a9ab8;">Electronic acceptance is legally binding</strong> in terms of the <strong style="color:#8a9ab8;">Electronic Communications and Transactions Act 25 of 2002 (ECTA)</strong>. A digital acceptance with your name and timestamp constitutes a valid data message under South African law.</p>
+    </div>
+
+  </div><!-- /doc-body -->
+
+  <!-- FOOTER -->
+  <div class="doc-footer">
+    <div><strong>JLR Dev</strong> · jan-louis@jlrdev.co.za · Bloemfontein, South Africa</div>
+    <div>Proposal <strong>JLR-2026-011</strong> · Onze Rust Primary School · Page 1 of 1</div>
+    <div>Confidential &amp; Proprietary</div>
+  </div>
+
+</div>
+</body>
+</html>

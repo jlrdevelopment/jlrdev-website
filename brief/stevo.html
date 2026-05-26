@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stevo Brews Coffee — Website Brief</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy: #060D18;
+  --navy2: #0A1628;
+  --navy3: #0D1B2E;
+  --blue: #4F8EF7;
+  --sky: #7EB3FF;
+  --white: #ffffff;
+  --muted: rgba(255,255,255,0.45);
+  --border: rgba(79,142,247,0.18);
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--navy);
+  color: var(--white);
+  min-height: 100vh;
+  padding: 0;
+}
+
+/* GRAIN */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  background-size: 200px;
+  opacity: 0.35;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* GLOW ORB */
+body::after {
+  content: '';
+  position: fixed;
+  width: 700px; height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(79,142,247,0.08), transparent 70%);
+  top: -200px; right: -200px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* HEADER */
+.header {
+  position: relative; z-index: 1;
+  border-bottom: 1px solid var(--border);
+  padding: 20px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(6,13,24,0.8);
+  backdrop-filter: blur(12px);
+}
+.logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 800;
+  font-size: 18px;
+  letter-spacing: -0.04em;
+}
+.logo span {
+  background: linear-gradient(140deg, #7EB3FF, #4F8EF7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.header-tag {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+}
+
+/* HERO */
+.hero {
+  position: relative; z-index: 1;
+  padding: 64px 32px 48px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.hero-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: rgba(126,179,255,0.5);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.hero-label::before {
+  content: '';
+  display: inline-block;
+  width: 28px; height: 1.5px;
+  background: rgba(79,142,247,0.4);
+}
+.hero h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 800;
+  font-size: clamp(28px, 5vw, 42px);
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+.hero h1 em {
+  font-style: normal;
+  background: linear-gradient(140deg, #7EB3FF, #4F8EF7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero p {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 540px;
+}
+.hero-meta {
+  display: flex;
+  gap: 24px;
+  margin-top: 24px;
+}
+.hero-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: rgba(126,179,255,0.6);
+}
+.hero-chip-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: #4F8EF7;
+}
+
+/* FORM */
+.form-wrap {
+  position: relative; z-index: 1;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 32px 80px;
+}
+
+.section-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 40px 0 28px;
+}
+.section-divider-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+.section-divider-label {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: rgba(126,179,255,0.35);
+  white-space: nowrap;
+}
+
+.field {
+  margin-bottom: 28px;
+}
+.field-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+.field-label .req {
+  color: #4F8EF7;
+  font-size: 12px;
+}
+.field-hint {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+/* Radio / Checkbox options */
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  user-select: none;
+}
+.option:hover {
+  border-color: rgba(79,142,247,0.35);
+  background: rgba(79,142,247,0.05);
+}
+.option input[type="radio"],
+.option input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  border: 2px solid rgba(126,179,255,0.3);
+  background: transparent;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  position: relative;
+}
+.option input[type="checkbox"] { border-radius: 5px; }
+
+.option input[type="radio"]:checked,
+.option input[type="checkbox"]:checked {
+  background: #4F8EF7;
+  border-color: #4F8EF7;
+}
+.option input[type="radio"]:checked::after {
+  content: '';
+  position: absolute;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: white;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+}
+.option input[type="checkbox"]:checked::after {
+  content: '';
+  position: absolute;
+  width: 10px; height: 6px;
+  border-left: 2px solid white;
+  border-bottom: 2px solid white;
+  transform: translate(-50%, -60%) rotate(-45deg);
+  top: 50%; left: 50%;
+}
+.option:has(input:checked) {
+  border-color: rgba(79,142,247,0.5);
+  background: rgba(79,142,247,0.08);
+}
+.option-text {
+  font-size: 13.5px;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.4;
+}
+
+/* Text inputs */
+input[type="text"],
+textarea {
+  width: 100%;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  padding: 13px 16px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: white;
+  outline: none;
+  transition: border-color 0.15s;
+  resize: vertical;
+}
+input[type="text"]::placeholder,
+textarea::placeholder { color: rgba(255,255,255,0.25); }
+input[type="text"]:focus,
+textarea:focus {
+  border-color: rgba(79,142,247,0.5);
+  background: rgba(79,142,247,0.04);
+}
+
+/* SUBMIT */
+.submit-wrap {
+  margin-top: 44px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.btn-submit {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 14px 36px;
+  background: linear-gradient(135deg, #4F8EF7, #7EB3FF);
+  color: white;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  letter-spacing: -0.01em;
+  transition: opacity 0.15s, transform 0.15s;
+}
+.btn-submit:hover { opacity: 0.88; transform: translateY(-1px); }
+.btn-submit:active { transform: translateY(0); }
+.submit-note {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* SUCCESS */
+.success {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: var(--navy);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px;
+}
+.success.show { display: flex; }
+.success-icon {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  background: rgba(79,142,247,0.12);
+  border: 1px solid rgba(79,142,247,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 28px;
+  font-size: 28px;
+}
+.success h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 800;
+  font-size: 32px;
+  letter-spacing: -0.04em;
+  margin-bottom: 12px;
+}
+.success p {
+  font-size: 15px;
+  color: var(--muted);
+  max-width: 420px;
+  line-height: 1.7;
+}
+
+/* Progress bar */
+.progress-bar {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #4F8EF7, #7EB3FF);
+  transition: width 0.3s ease;
+  z-index: 100;
+}
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progress"></div>
+
+<div class="header">
+  <div class="logo"><span>&lt;JLR/&gt;</span></div>
+  <div class="header-tag">Client Brief</div>
+</div>
+
+<div class="hero">
+  <div class="hero-label">Website Brief</div>
+  <h1>Let's build something <em>world-class.</em></h1>
+  <p>Takes 3–5 minutes. Your answers let me build exactly what you need — no back-and-forth guessing. The more detail you give, the better the result.</p>
+  <div class="hero-meta">
+    <div class="hero-chip"><div class="hero-chip-dot"></div>8 questions</div>
+    <div class="hero-chip"><div class="hero-chip-dot"></div>3–5 minutes</div>
+    <div class="hero-chip"><div class="hero-chip-dot"></div>No sign-in required</div>
+  </div>
+</div>
+
+<div class="form-wrap">
+  <form id="brief-form">
+
+    <div class="section-divider">
+      <div class="section-divider-line"></div>
+      <div class="section-divider-label">Your Goals</div>
+      <div class="section-divider-line"></div>
+    </div>
+
+    <!-- Q1 -->
+    <div class="field">
+      <div class="field-label">In the next 12 months, what do you most want your website to bring you? <span class="req">*</span></div>
+      <div class="field-hint">Pick the one that matters most right now.</div>
+      <div class="options">
+        <label class="option"><input type="radio" name="q1" value="More private coaching and training clients" required><span class="option-text">More private coaching and training clients</span></label>
+        <label class="option"><input type="radio" name="q1" value="Sponsorship and brand partnership deals"><span class="option-text">Sponsorship and brand partnership deals</span></label>
+        <label class="option"><input type="radio" name="q1" value="Speaking, judging, and event appearances"><span class="option-text">Speaking, judging, and event appearances</span></label>
+        <label class="option"><input type="radio" name="q1" value="A credible online presence that matches my reputation"><span class="option-text">A credible online presence that matches my reputation</span></label>
+        <label class="option"><input type="radio" name="q1" value="All of the above — I need it to work on every level"><span class="option-text">All of the above — I need it to work on every level</span></label>
+      </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="field">
+      <div class="field-label">Who should feel most at home on your site? <span class="req">*</span></div>
+      <div class="field-hint">Select all that apply — this shapes the tone and layout of every page.</div>
+      <div class="options">
+        <label class="option"><input type="checkbox" name="q2" value="Baristas looking to level up their skills"><span class="option-text">Baristas looking to level up their skills</span></label>
+        <label class="option"><input type="checkbox" name="q2" value="Coffee brands scouting ambassadors or trainers"><span class="option-text">Coffee brands scouting ambassadors or trainers</span></label>
+        <label class="option"><input type="checkbox" name="q2" value="Sponsors wanting to partner with a world champion"><span class="option-text">Sponsors wanting to partner with a world champion</span></label>
+        <label class="option"><input type="checkbox" name="q2" value="Competition organisers and industry bodies"><span class="option-text">Competition organisers and industry bodies</span></label>
+        <label class="option"><input type="checkbox" name="q2" value="Journalists and media covering the coffee world"><span class="option-text">Journalists and media covering the coffee world</span></label>
+        <label class="option"><input type="checkbox" name="q2" value="Coffee lovers who follow your journey"><span class="option-text">Coffee lovers who follow your journey</span></label>
+      </div>
+    </div>
+
+    <div class="section-divider">
+      <div class="section-divider-line"></div>
+      <div class="section-divider-label">Your Services</div>
+      <div class="section-divider-line"></div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="field">
+      <div class="field-label">Which services do you want to offer or promote through the site? <span class="req">*</span></div>
+      <div class="field-hint">Select all that apply — these become the core sections of your site.</div>
+      <div class="options">
+        <label class="option"><input type="checkbox" name="q3" value="1-on-1 barista coaching / private training sessions"><span class="option-text">1-on-1 barista coaching / private training sessions</span></label>
+        <label class="option"><input type="checkbox" name="q3" value="Group workshops and masterclasses"><span class="option-text">Group workshops and masterclasses</span></label>
+        <label class="option"><input type="checkbox" name="q3" value="Corporate coffee training for businesses"><span class="option-text">Corporate coffee training for businesses</span></label>
+        <label class="option"><input type="checkbox" name="q3" value="Competition prep and mentoring"><span class="option-text">Competition prep and mentoring</span></label>
+        <label class="option"><input type="checkbox" name="q3" value="Brand ambassador / product endorsement work"><span class="option-text">Brand ambassador / product endorsement work</span></label>
+        <label class="option"><input type="checkbox" name="q3" value="Speaking engagements and event appearances"><span class="option-text">Speaking engagements and event appearances</span></label>
+        <label class="option"><input type="checkbox" name="q3" value="Online content, courses, or digital products"><span class="option-text">Online content, courses, or digital products (future)</span></label>
+      </div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="field">
+      <div class="field-label">How do you want people to book or contact you? <span class="req">*</span></div>
+      <div class="field-hint">This determines what kind of contact/booking system we build.</div>
+      <div class="options">
+        <label class="option"><input type="radio" name="q4" value="Simple contact form — I'll respond and sort details personally" required><span class="option-text">Simple contact form — I'll respond and sort details personally</span></label>
+        <label class="option"><input type="radio" name="q4" value="WhatsApp button — people message me directly"><span class="option-text">WhatsApp button — people message me directly</span></label>
+        <label class="option"><input type="radio" name="q4" value="Online booking with deposit payment"><span class="option-text">Online booking with deposit payment</span></label>
+        <label class="option"><input type="radio" name="q4" value="Enquiry form with a few questions first, then I follow up"><span class="option-text">Enquiry form with a few questions first, then I follow up</span></label>
+      </div>
+    </div>
+
+    <div class="section-divider">
+      <div class="section-divider-line"></div>
+      <div class="section-divider-label">Look &amp; Feel</div>
+      <div class="section-divider-line"></div>
+    </div>
+
+    <!-- Q5 -->
+    <div class="field">
+      <div class="field-label">How should your site feel the moment someone lands on it? <span class="req">*</span></div>
+      <div class="options">
+        <label class="option"><input type="radio" name="q5" value="Premium and dark — like a world champion's brand should feel" required><span class="option-text">Premium and dark — like a world champion's brand should feel</span></label>
+        <label class="option"><input type="radio" name="q5" value="Warm and inviting — coffee culture, approachable, human"><span class="option-text">Warm and inviting — coffee culture, approachable, human</span></label>
+        <label class="option"><input type="radio" name="q5" value="Clean and minimal — let the photography do the work"><span class="option-text">Clean and minimal — let the photography do the work</span></label>
+        <label class="option"><input type="radio" name="q5" value="Bold and energetic — competition spirit, high performance"><span class="option-text">Bold and energetic — competition spirit, high performance</span></label>
+      </div>
+    </div>
+
+    <!-- Q6 -->
+    <div class="field">
+      <div class="field-label">Name a website, brand, or athlete whose online presence you respect.</div>
+      <div class="field-hint">Doesn't have to be coffee. Could be a sportsperson, brand, photographer — anything that inspires you visually.</div>
+      <input type="text" name="q6" placeholder="e.g. redbull.com, worldbaristachampionship.org, a specific athlete's site...">
+    </div>
+
+    <div class="section-divider">
+      <div class="section-divider-line"></div>
+      <div class="section-divider-label">Content &amp; Assets</div>
+      <div class="section-divider-line"></div>
+    </div>
+
+    <!-- Q7 -->
+    <div class="field">
+      <div class="field-label">What do you already have ready to hand over? <span class="req">*</span></div>
+      <div class="field-hint">The more you have, the faster we move. Don't worry if the list is short — I can guide you on what to get.</div>
+      <div class="options">
+        <label class="option"><input type="checkbox" name="q7" value="Professional photos (action shots, portraits, competition)"><span class="option-text">Professional photos (action shots, portraits, competition)</span></label>
+        <label class="option"><input type="checkbox" name="q7" value="Logo files from your designer"><span class="option-text">Logo files from your designer</span></label>
+        <label class="option"><input type="checkbox" name="q7" value="A written bio or your story in words"><span class="option-text">A written bio or your story in words</span></label>
+        <label class="option"><input type="checkbox" name="q7" value="YouTube or video competition footage links"><span class="option-text">YouTube or video competition footage links</span></label>
+        <label class="option"><input type="checkbox" name="q7" value="Press feature links (Coffee Magazine, Barista Mag, etc.)"><span class="option-text">Press feature links (Coffee Magazine, Barista Mag, etc.)</span></label>
+        <label class="option"><input type="checkbox" name="q7" value="Your active social media handles"><span class="option-text">Your active social media handles</span></label>
+        <label class="option"><input type="checkbox" name="q7" value="A colour palette or brand guide from your designer"><span class="option-text">A colour palette or brand guide from your designer</span></label>
+        <label class="option"><input type="checkbox" name="q7" value="Nothing yet — starting from scratch"><span class="option-text">Nothing yet — starting from scratch</span></label>
+      </div>
+    </div>
+
+    <!-- Q8 -->
+    <div class="field">
+      <div class="field-label">Is there anything else about your story, your goals, or your vision I should know?</div>
+      <div class="field-hint">This is your chance to tell me anything that would help me build the right site — the stuff that won't show up in a checkbox.</div>
+      <textarea name="q8" rows="5" placeholder="e.g. I want to eventually launch an online course... / I hate how most barista sites look like coffee shop menus... / My biggest competition moment was..."></textarea>
+    </div>
+
+    <div class="submit-wrap">
+      <button type="submit" class="btn-submit">Submit Brief</button>
+      <span class="submit-note">Your responses go directly to Jan-Louis at JLR Dev.</span>
+    </div>
+
+  </form>
+</div>
+
+<!-- SUCCESS SCREEN -->
+<div class="success" id="success">
+  <div class="success-icon">&#10003;</div>
+  <h2>Brief received.</h2>
+  <p>Thanks, Stevo. Jan-Louis will review your answers and be in touch within 24 hours to confirm everything before we kick off.</p>
+</div>
+
+<script>
+// Progress bar based on form completion
+const form = document.getElementById('brief-form');
+const progress = document.getElementById('progress');
+const required = form.querySelectorAll('[required]');
+
+function updateProgress() {
+  let filled = 0;
+  required.forEach(el => {
+    if (el.type === 'radio') {
+      if (form.querySelector(`[name="${el.name}"]:checked`)) filled++;
+    } else if (el.value.trim()) {
+      filled++;
+    }
+  });
+  const unique = [...new Set([...required].map(e => e.name))].length;
+  const pct = Math.round((filled / unique) * 100);
+  progress.style.width = pct + '%';
+}
+
+form.addEventListener('change', updateProgress);
+form.addEventListener('input', updateProgress);
+
+// Submit
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxt2dSaIWGTv5wIO1aUeaTf-3tP6BJ5106gN1YI84PCwR9X7IvM65vV4dH57yfmyAOqDw/exec';
+
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+  const btn = form.querySelector('.btn-submit');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+
+  const data = {};
+  const fd = new FormData(form);
+
+  // Handle checkboxes (multiple values)
+  ['q2','q5'].forEach(name => {
+    data[name] = fd.getAll(name).join(', ');
+  });
+  ['q1','q3','q4','q6','q7','q8'].forEach(name => {
+    data[name] = fd.get(name) || '';
+  });
+
+  try {
+    if (SCRIPT_URL !== 'PASTE_APPS_SCRIPT_URL_HERE') {
+      await fetch(SCRIPT_URL, {
+        method: 'POST',
+        body: JSON.stringify(data),
+      });
+    }
+    document.getElementById('success').classList.add('show');
+  } catch {
+    // Show success anyway — data can be collected from localStorage fallback
+    localStorage.setItem('jlr_brief_' + Date.now(), JSON.stringify(data));
+    document.getElementById('success').classList.add('show');
+  }
+});
+
+updateProgress();
+</script>
+</body>
+</html>
