@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JLR Dev — Software that does the work.</title>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230d0f14'/%3E%3Ctext x='16' y='22' font-family='Arial,sans-serif' font-size='13' font-weight='700' fill='%237EB3FF' text-anchor='middle' letter-spacing='-0.5'%3EJL%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230A1628'/><text x='2' y='23' font-family='Arial Black,Arial,sans-serif' font-size='14' font-weight='900' fill='%234F8EF7'>&lt;</text><text x='9' y='23' font-family='Arial Black,Arial,sans-serif' font-size='13' font-weight='900' fill='%23ffffff'>JLR</text><text x='24' y='23' font-family='Arial Black,Arial,sans-serif' font-size='12' font-weight='900' fill='%234F8EF7'>/></text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;600;700;800;900&display=swap" rel="stylesheet">
@@ -58,8 +58,11 @@ nav{
 }
 nav.scrolled{background:rgba(13,15,20,0.88);box-shadow:0 1px 40px rgba(0,0,0,0.4)}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
-.nav-logo{font-family:var(--grotesk);font-size:1.2rem;font-weight:800;color:var(--text);text-decoration:none;letter-spacing:-0.03em}
-.nav-logo em{color:var(--accent);font-style:normal;text-shadow:0 0 20px rgba(79,142,247,0.5)}
+.nav-logo{display:inline-flex;align-items:center;text-decoration:none;gap:0;line-height:1}
+.nav-logo .nbr{font-family:var(--grotesk);font-size:1.25rem;font-weight:800;background:linear-gradient(135deg,#7EB3FF,#4F8EF7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 0 8px rgba(79,142,247,0.6));letter-spacing:-0.04em}
+.nav-logo .njlr{font-family:var(--grotesk);font-size:1.25rem;font-weight:800;color:#fff;letter-spacing:-0.03em}
+.nav-logo .nsep{width:1px;height:18px;background:rgba(126,179,255,0.3);margin:0 10px;align-self:center}
+.nav-logo .ndev{font-family:var(--grotesk);font-size:1.05rem;font-weight:400;color:rgba(255,255,255,0.5);letter-spacing:0em}
 .nav-links{display:flex;gap:32px;align-items:center}
 .nav-links a{color:var(--muted);text-decoration:none;font-size:0.88rem;font-weight:500;transition:color 0.2s}
 .nav-links a:hover{color:var(--text)}
@@ -203,8 +206,8 @@ nav.scrolled{background:rgba(13,15,20,0.88);box-shadow:0 1px 40px rgba(0,0,0,0.4
 /* ── CASE STUDY CARD ── */
 .case-card{background:var(--card);border-radius:var(--radius);padding:32px;border:1px solid var(--border);height:100%;box-sizing:border-box;display:flex;flex-direction:column}
 .case-card .approach-title{font-family:var(--grotesk);font-size:1.4rem;font-weight:800;color:var(--text);margin:8px 0 0;letter-spacing:-0.03em;line-height:1.2}
-.case-carousel{position:relative;border-radius:10px;overflow:hidden;margin:20px 0 16px;flex:1;min-height:160px;background:#000;border:1px solid var(--border)}
-.case-slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top left;opacity:0;transition:opacity 0.9s ease}
+.case-carousel{position:relative;border-radius:10px;overflow:hidden;margin:20px 0 16px;aspect-ratio:16/7;background:#000;border:1px solid var(--border)}
+.case-slide{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center top;opacity:0;transition:opacity 0.9s ease}
 .case-slide.active{opacity:1}
 .case-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px}
 .case-stat{text-align:center;padding:10px 4px;background:rgba(126,179,255,0.06);border:1px solid rgba(126,179,255,0.15);border-radius:8px}
@@ -302,8 +305,11 @@ footer{
   background:rgba(8,10,16,0.6);
 }
 .footer-inner{display:flex;justify-content:space-between;align-items:flex-start;gap:48px;flex-wrap:wrap;margin-bottom:40px}
-.footer-brand .logo{font-family:var(--grotesk);font-size:1.2rem;font-weight:800;color:var(--text);margin-bottom:12px;display:block;text-decoration:none}
-.footer-brand .logo em{color:var(--accent);font-style:normal}
+.footer-brand .logo{display:inline-flex;align-items:center;text-decoration:none;gap:0;line-height:1;margin-bottom:12px}
+.footer-brand .logo .nbr{font-family:var(--grotesk);font-size:1.2rem;font-weight:800;background:linear-gradient(135deg,#7EB3FF,#4F8EF7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-0.04em}
+.footer-brand .logo .njlr{font-family:var(--grotesk);font-size:1.2rem;font-weight:800;color:#fff;letter-spacing:-0.03em}
+.footer-brand .logo .nsep{width:1px;height:16px;background:rgba(126,179,255,0.25);margin:0 9px;align-self:center}
+.footer-brand .logo .ndev{font-family:var(--grotesk);font-size:1rem;font-weight:400;color:rgba(255,255,255,0.45)}
 .footer-brand p{font-size:0.83rem;color:var(--muted2);max-width:280px;line-height:1.7}
 .footer-links{display:flex;gap:52px;flex-wrap:wrap}
 .footer-col h4{font-size:0.72rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--muted2);font-weight:700;margin-bottom:16px}
@@ -353,7 +359,11 @@ footer{
   <!-- NAV -->
   <nav id="nav">
     <div class="container nav-inner">
-      <a href="#" class="nav-logo">JLR<em>.</em>Dev</a>
+      <a href="#" class="nav-logo">
+        <span class="nbr">&lt;</span><span class="njlr">JLR</span><span class="nbr">/&gt;</span>
+        <span class="nsep"></span>
+        <span class="ndev">Dev</span>
+      </a>
       <div class="nav-links">
         <a href="#services">Services</a>
         <a href="#about">About</a>
@@ -597,13 +607,14 @@ footer{
             <div class="field"><label>Subject</label><input type="text" name="subject" placeholder="I'd like to discuss..."></div>
             <div class="field">
               <label>Message</label>
-              <textarea name="message" rows="5" placeholder="e.g. I run a small logistics company and every Monday I manually copy data from 3 spreadsheets into a report. The ideal result would be a single click that does it automatically." required></textarea>
+              <textarea name="message" rows="5" placeholder="e.g. I run a small logistics company. Every Monday my team spends 4 hours copying data from 3 spreadsheets into a report. We use Excel and a custom system. My budget is around R15 000 and I need it done within 6 weeks." required></textarea>
               <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:8px">
                 <span style="font-size:0.72rem;color:var(--muted);width:100%;margin-bottom:2px;text-transform:uppercase;letter-spacing:0.08em">Helpful to include:</span>
                 <span class="hint-chip" onclick="addHint(this)">The task that takes the most time is</span>
                 <span class="hint-chip" onclick="addHint(this)">I currently use</span>
-                <span class="hint-chip" onclick="addHint(this)">This happens</span>
-                <span class="hint-chip" onclick="addHint(this)">The ideal result would be</span>
+                <span class="hint-chip" onclick="addHint(this)">We spend roughly ___ hours a week on this</span>
+                <span class="hint-chip" onclick="addHint(this)">A working solution should</span>
+                <span class="hint-chip" onclick="addHint(this)">My budget for this is around</span>
               </div>
             </div>
             <div class="form-feedback" id="formFeedback"></div>
@@ -655,7 +666,11 @@ footer{
     <div class="container">
       <div class="footer-inner">
         <div class="footer-brand">
-          <a href="#" class="logo">JLR<em>.</em>Dev</a>
+          <a href="#" class="logo">
+            <span class="nbr">&lt;</span><span class="njlr">JLR</span><span class="nbr">/&gt;</span>
+            <span class="nsep"></span>
+            <span class="ndev">Dev</span>
+          </a>
           <p>Custom software that removes the manual work slowing your business down — automation tools, data pipelines, desktop apps, and websites.</p>
         </div>
         <div class="footer-links">
