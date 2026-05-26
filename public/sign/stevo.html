@@ -6,7 +6,7 @@
 <title>Sign Proposal — PROP-2026-001</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700;800&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://unpkg.com/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
@@ -468,17 +468,20 @@ async function submitSignature() {
   const date  = document.getElementById('sign-date').value;
   const email = document.getElementById('client-email').value.trim();
 
-  btn.textContent = 'Generating PDF...';
+  btn.textContent = 'Generating...';
   btn.disabled    = true;
 
-  let pdfBase64 = null;
-  try {
-    pdfBase64 = await generateSignedPDF(name, date, email);
-  } catch (err) {
-    console.error('PDF generation failed:', err);
+  // Generate signed PDF receipt
+  let pdfBase64 = '';
+  if (window.jspdf) {
+    try {
+      pdfBase64 = await generateSignedPDF(name, date, email);
+    } catch (err) {
+      console.warn('PDF generation failed (non-fatal):', err);
+    }
   }
 
-  btn.textContent = 'Sending...';
+  btn.textContent = 'Submitting...';
 
   const sigData = currentTab === 'draw'
     ? (hasSig ? canvas.toDataURL('image/png') : '')
@@ -495,13 +498,15 @@ async function submitSignature() {
     signature:  sigData,
     timestamp:  new Date().toISOString(),
     accepted:   true,
-    pdf_base64: pdfBase64 || ''
+    pdf_base64: pdfBase64
   };
 
   try {
+    // mode: no-cors avoids CORS preflight issues with Google Apps Script
     await fetch(SCRIPT_URL, {
       method: 'POST',
-      body: JSON.stringify(payload),
+      mode:   'no-cors',
+      body:   JSON.stringify(payload),
     });
   } catch (err) {
     console.warn('Submission error (non-fatal):', err);
