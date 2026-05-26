@@ -1,5 +1,5 @@
 # Claude Handoff — JLR Dev Website & Client Intake Pipeline
-## Last updated: 2026-05-26
+## Last updated: 2026-05-26 (NS confirmed, legal pages added)
 
 ---
 
@@ -45,6 +45,8 @@ Single-page dark-theme website + automated client intake pipeline.
 | File | Purpose |
 |------|---------|
 | `index.html` | Full website — Three.js scene, contact form, all content |
+| `privacy.html` | POPIA-compliant Privacy Policy page |
+| `terms.html` | ECTA-compliant Terms of Service page |
 | `functions/api/new-lead.js` | CF Pages Function — intake pipeline |
 | `wrangler.toml` | Cloudflare Pages config |
 | `_headers` | Security headers (CSP, HSTS, etc.) |
@@ -81,9 +83,8 @@ Single-page dark-theme website + automated client intake pipeline.
 | MX `jlrdev.co.za` | mx1/mx2.improvmx.com | OFF |
 
 ### Nameservers
-- **Target:** `holly.ns.cloudflare.com` + `jaziel.ns.cloudflare.com`
-- ⚠️ **STATUS 2026-05-26:** NS change did NOT apply — still resolving to Afrihost DNS (`dns1.co.za`/`dns2.co.za`)
-- **Action needed:** Log into Afrihost → Domain Manager → jlrdev.co.za → Change Nameservers → set both CF nameservers above → Save
+- `holly.ns.cloudflare.com` + `jaziel.ns.cloudflare.com`
+- ✅ **STATUS 2026-05-26:** NS successfully updated at Afrihost (~14:xx SAST) — propagation in progress (allow up to 2 hrs)
 
 ### Resend
 - Domain: `jlrdev.co.za` — region Ireland (eu-west-1)
@@ -138,17 +139,12 @@ git push origin main
 
 ## WHAT STILL NEEDS TO HAPPEN
 
-### ⚠️ MANUAL ACTION REQUIRED — Afrihost Nameserver Fix
-The NS change set on 2026-05-25 did not apply. Do this:
-1. Go to [myaccount.afrihost.co.za](https://myaccount.afrihost.co.za)
-2. **Domain Manager** → `jlrdev.co.za` → **Manage Nameservers**
-3. Replace all existing NS with:
-   - `holly.ns.cloudflare.com`
-   - `jaziel.ns.cloudflare.com`
-4. Save — propagation takes 1–24 hrs (usually <1 hr)
-5. CF will email jan-louis@jlrdev.co.za when zone activates
+### ✅ DONE — Afrihost Nameserver Updated (2026-05-26)
+NS changed at Afrihost to:
+- `holly.ns.cloudflare.com`
+- `jaziel.ns.cloudflare.com`
 
-### Automatic (after NS propagates)
+### Automatic (after NS propagates — allow up to 2 hrs)
 - **Resend auto-verifies** — sends from noreply@jlrdev.co.za
 - **jlrdev.co.za** loads the dark site
 
@@ -173,6 +169,31 @@ The NS change set on 2026-05-25 did not apply. Do this:
 - Copy protection: user-select:none, right-click + Ctrl+U/S/A blocked
 - Location: "Bloemfontein, SA · Remote worldwide"
 - GeoCalibre wording: "GeoCalibre Geotechnical Consultancy" (Kevin approved)
+
+---
+
+## LEGAL COMPLIANCE
+
+### Laws complied with
+| Law | What it requires | How we comply |
+|-----|-----------------|---------------|
+| POPIA (Act 4 of 2013) | Privacy Policy, lawful processing, data subject rights | `privacy.html` — full POPIA policy |
+| ECTA (Act 25 of 2002) | Business disclosure on website | Footer + `terms.html` Section 1 |
+| Consumer Protection Act | Plain language, fair terms | Plain-language terms throughout |
+
+### Legal pages
+- `privacy.html` — POPIA privacy policy (linked in footer)
+- `terms.html` — ECTA terms of service (linked in footer)
+
+### Data collected by this site
+- Contact form: name, email, subject, message
+- Processed via: OpenAI (analysis) → Resend (email delivery)
+- Cloudflare collects IP/browser data (their privacy policy applies)
+- No tracking cookies. No analytics.
+
+### Information Officer
+Jan-Louis Reynders — jan-louis@jlrdev.co.za
+(Register with Information Regulator at inforeg.org.za when applicable)
 
 ---
 

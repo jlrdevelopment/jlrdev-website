@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms of Service — JLR Dev</title>
+<meta name="description" content="JLR Dev Terms of Service — the terms governing use of this website and engagement of our software development services.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230A1628'/><text x='2' y='23' font-family='Arial Black,Arial,sans-serif' font-size='14' font-weight='900' fill='%234F8EF7'>&lt;</text><text x='9' y='23' font-family='Arial Black,Arial,sans-serif' font-size='13' font-weight='900' fill='%23ffffff'>JLR</text><text x='24' y='23' font-family='Arial Black,Arial,sans-serif' font-size='12' font-weight='900' fill='%234F8EF7'>/></text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{
+  --accent:#4F8EF7;--accent-lt:#7EB3FF;--accent-dim:rgba(79,142,247,0.12);
+  --bg:#0d0f14;--bg2:#111318;--card:rgba(17,19,28,0.82);
+  --border:rgba(79,142,247,0.12);--border-hi:rgba(79,142,247,0.3);
+  --text:#e2e8f5;--muted:rgba(180,196,230,0.55);--muted2:rgba(180,196,230,0.35);
+  --grotesk:'Space Grotesk',sans-serif;--sans:'Inter',sans-serif;
+  --radius:16px;
+}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:400;line-height:1.7;min-height:100vh}
+body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");background-size:200px;opacity:0.5;mix-blend-mode:overlay}
+.wrap{position:relative;z-index:1}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(13,15,20,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 28px;height:64px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:inline-flex;align-items:center;text-decoration:none;gap:0;line-height:1}
+.nav-logo .nbr{font-family:var(--grotesk);font-size:1.15rem;font-weight:800;background:linear-gradient(135deg,#7EB3FF,#4F8EF7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-0.04em}
+.nav-logo .njlr{font-family:var(--grotesk);font-size:1.15rem;font-weight:800;color:#fff;letter-spacing:-0.03em}
+.nav-logo .nsep{width:1px;height:16px;background:rgba(126,179,255,0.3);margin:0 9px;align-self:center}
+.nav-logo .ndev{font-family:var(--grotesk);font-size:1rem;font-weight:400;color:rgba(255,255,255,0.5)}
+.back-link{display:inline-flex;align-items:center;gap:6px;color:var(--muted);text-decoration:none;font-size:0.875rem;transition:color .2s}
+.back-link:hover{color:var(--accent)}
+.back-link svg{width:14px;height:14px}
+
+/* LAYOUT */
+.container{max-width:800px;margin:0 auto;padding:0 28px}
+.page{padding:72px 0 100px}
+
+/* HERO */
+.page-hero{margin-bottom:60px;padding-bottom:40px;border-bottom:1px solid var(--border)}
+.page-tag{display:inline-block;font-size:0.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);background:var(--accent-dim);border:1px solid rgba(79,142,247,0.2);border-radius:20px;padding:4px 14px;margin-bottom:20px}
+.page-hero h1{font-family:var(--grotesk);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;letter-spacing:-0.03em;line-height:1.15;margin-bottom:16px}
+.page-hero p{color:var(--muted);font-size:0.95rem;max-width:560px}
+.page-hero .updated{margin-top:12px;font-size:0.8rem;color:var(--muted2)}
+
+/* CONTENT */
+.legal-body{display:flex;flex-direction:column;gap:48px}
+.legal-section h2{font-family:var(--grotesk);font-size:1.15rem;font-weight:700;color:var(--accent-lt);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.legal-section h3{font-family:var(--grotesk);font-size:0.95rem;font-weight:600;color:var(--text);margin:20px 0 8px}
+.legal-section p{color:var(--muted);font-size:0.92rem;margin-bottom:12px}
+.legal-section p:last-child{margin-bottom:0}
+.legal-section ul,.legal-section ol{color:var(--muted);font-size:0.92rem;padding-left:20px;display:flex;flex-direction:column;gap:7px}
+.legal-section li{padding-left:4px}
+.legal-section a{color:var(--accent);text-decoration:none}
+.legal-section a:hover{text-decoration:underline}
+.legal-section strong{color:var(--text)}
+
+/* INFO BOX */
+.info-box{background:var(--accent-dim);border:1px solid rgba(79,142,247,0.2);border-radius:var(--radius);padding:20px 24px;margin-bottom:16px}
+.info-box strong{color:var(--text);display:block;margin-bottom:4px;font-size:0.9rem}
+.info-box span{color:var(--muted);font-size:0.88rem}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:32px 28px;text-align:center}
+footer p{color:var(--muted2);font-size:0.82rem}
+footer a{color:var(--muted);text-decoration:none}
+footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<nav>
+  <a href="/" class="nav-logo">
+    <span class="nbr">&lt;</span><span class="njlr">JLR</span><span class="nbr">/&gt;</span>
+    <span class="nsep"></span>
+    <span class="ndev">Dev</span>
+  </a>
+  <a href="/" class="back-link">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Back to site
+  </a>
+</nav>
+
+<div class="container page">
+
+  <div class="page-hero">
+    <span class="page-tag">Legal</span>
+    <h1>Terms of Service</h1>
+    <p>These terms govern your use of jlrdev.co.za and the engagement of software development services provided by JLR Dev. By using this website or engaging our services, you agree to these terms.</p>
+    <p class="updated">Last updated: 26 May 2026</p>
+  </div>
+
+  <div class="legal-body">
+
+    <!-- 1. ECTA DISCLOSURE -->
+    <div class="legal-section">
+      <h2>1. Business Information (ECTA Section 43 Disclosure)</h2>
+      <p>As required by the Electronic Communications and Transactions Act 25 of 2002 (ECTA), the following information is disclosed:</p>
+      <div class="info-box">
+        <strong>JLR Dev</strong>
+        <span><strong>Owner:</strong> Jan-Louis Reynders (Sole Proprietor)</span><br>
+        <span><strong>Legal status:</strong> Sole proprietor — not a registered company</span><br>
+        <span><strong>Physical address:</strong> Bloemfontein, Free State, South Africa</span><br>
+        <span><strong>Email:</strong> <a href="mailto:jan-louis@jlrdev.co.za">jan-louis@jlrdev.co.za</a></span><br>
+        <span><strong>Phone:</strong> <a href="tel:+27828525108">082 852 5108</a></span><br>
+        <span><strong>Website:</strong> <a href="https://jlrdev.co.za">jlrdev.co.za</a></span><br>
+        <span><strong>VAT registration:</strong> Not registered for VAT</span>
+      </div>
+    </div>
+
+    <!-- 2. ACCEPTANCE -->
+    <div class="legal-section">
+      <h2>2. Acceptance of Terms</h2>
+      <p>By accessing or using this website (jlrdev.co.za), submitting an enquiry, or engaging JLR Dev for services, you confirm that you have read, understood, and agree to be bound by these Terms of Service and our <a href="/privacy.html">Privacy Policy</a>.</p>
+      <p>If you do not agree to these terms, please do not use this website or engage our services.</p>
+      <p>These terms are governed by the laws of the Republic of South Africa, including ECTA, the Consumer Protection Act 68 of 2008 (CPA), and POPIA.</p>
+    </div>
+
+    <!-- 3. SERVICES -->
+    <div class="legal-section">
+      <h2>3. Services</h2>
+      <p>JLR Dev provides custom software development services, including but not limited to:</p>
+      <ul>
+        <li>Custom desktop applications and automation tools</li>
+        <li>Data pipelines and processing systems</li>
+        <li>Website design and development</li>
+        <li>AI integration and workflow automation</li>
+        <li>Software consulting and technical advisory</li>
+      </ul>
+      <p>All services are provided on a project basis. The specific scope, deliverables, timelines, and fees for each engagement are agreed upon in writing before work commences, typically in a project proposal or service agreement.</p>
+    </div>
+
+    <!-- 4. ENQUIRIES & QUOTES -->
+    <div class="legal-section">
+      <h2>4. Enquiries and Quotes</h2>
+      <p>Submitting an enquiry through the contact form on this website does not constitute a binding agreement. It is an invitation for us to assess your requirements and provide a proposal.</p>
+      <p>A binding engagement only commences once:</p>
+      <ul>
+        <li>A written proposal or project agreement has been issued by JLR Dev; and</li>
+        <li>The client has accepted it in writing (including by email); and</li>
+        <li>Any required deposit has been received where applicable.</li>
+      </ul>
+    </div>
+
+    <!-- 5. PAYMENT -->
+    <div class="legal-section">
+      <h2>5. Payment Terms</h2>
+      <p>Payment terms are specified in each project agreement. Standard terms unless otherwise agreed:</p>
+      <ul>
+        <li><strong>Deposit:</strong> A deposit (typically 50%) is required before project work commences.</li>
+        <li><strong>Final payment:</strong> The remaining balance is due upon project completion and delivery.</li>
+        <li><strong>Currency:</strong> All fees are quoted and invoiced in South African Rand (ZAR) unless explicitly agreed otherwise.</li>
+        <li><strong>Late payment:</strong> Invoices unpaid after 30 days may attract interest at the prevailing prime rate plus 2% per annum.</li>
+        <li><strong>Suspension:</strong> JLR Dev reserves the right to suspend work on any project where payment obligations are outstanding.</li>
+      </ul>
+    </div>
+
+    <!-- 6. INTELLECTUAL PROPERTY -->
+    <div class="legal-section">
+      <h2>6. Intellectual Property</h2>
+      <h3>Client-commissioned work</h3>
+      <p>Upon receipt of full payment, ownership of all custom code, designs, and deliverables produced specifically for a client project transfers to the client, unless otherwise stated in the project agreement.</p>
+
+      <h3>JLR Dev tools and frameworks</h3>
+      <p>Any proprietary tools, libraries, frameworks, or methodologies developed by JLR Dev and used in the delivery of your project remain the intellectual property of JLR Dev. Clients receive a perpetual licence to use these as part of the delivered solution but may not resell or sub-licence them independently.</p>
+
+      <h3>Third-party components</h3>
+      <p>Open-source libraries and third-party components incorporated into deliverables remain subject to their respective licences, which will be disclosed in the project documentation.</p>
+
+      <h3>This website</h3>
+      <p>All content on jlrdev.co.za — including text, design, code, and graphics — is the property of JLR Dev and is protected by South African copyright law. You may not reproduce, copy, or distribute any content from this website without prior written permission.</p>
+    </div>
+
+    <!-- 7. CONFIDENTIALITY -->
+    <div class="legal-section">
+      <h2>7. Confidentiality</h2>
+      <p>JLR Dev treats all client project information as confidential. We will not disclose your project details, business data, or proprietary information to third parties without your consent, except:</p>
+      <ul>
+        <li>Where required by law or court order;</li>
+        <li>To service providers (operators) strictly necessary to deliver the project, under confidentiality obligations; or</li>
+        <li>Where information is already in the public domain through no fault of JLR Dev.</li>
+      </ul>
+      <p>Where a formal Non-Disclosure Agreement (NDA) is required, this can be arranged before any project discussions commence.</p>
+    </div>
+
+    <!-- 8. WARRANTIES & LIMITATION -->
+    <div class="legal-section">
+      <h2>8. Warranties and Limitation of Liability</h2>
+      <h3>What we warrant</h3>
+      <ul>
+        <li>All work will be performed with reasonable skill and care.</li>
+        <li>Deliverables will substantially conform to the agreed specification.</li>
+        <li>We will address material defects reported within 30 days of delivery at no additional cost.</li>
+      </ul>
+
+      <h3>What we do not warrant</h3>
+      <ul>
+        <li>This website is provided "as is" without warranty of any kind regarding uptime or fitness for a particular purpose.</li>
+        <li>We do not warrant that software will be entirely free of bugs after the warranty period, or that it will meet requirements not specified in the project agreement.</li>
+      </ul>
+
+      <h3>Limitation of liability</h3>
+      <p>To the maximum extent permitted by South African law, JLR Dev's total liability to you for any claim arising from our services is limited to the total fees paid by you for the specific project giving rise to the claim.</p>
+      <p>We are not liable for any indirect, incidental, consequential, or special damages, including loss of profits, data, or business opportunity, even if advised of the possibility of such damages.</p>
+      <p><em>Note: Nothing in these terms limits liability for death or personal injury caused by negligence, fraud, or any liability that cannot be excluded by law, including rights under the Consumer Protection Act.</em></p>
+    </div>
+
+    <!-- 9. WEBSITE USE -->
+    <div class="legal-section">
+      <h2>9. Acceptable Use of This Website</h2>
+      <p>You agree not to use this website to:</p>
+      <ul>
+        <li>Violate any applicable South African or international law or regulation;</li>
+        <li>Transmit any unsolicited commercial communications (spam);</li>
+        <li>Attempt to gain unauthorised access to any systems or data;</li>
+        <li>Reproduce, copy, or distribute any content without permission;</li>
+        <li>Submit false, misleading, or fraudulent enquiries.</li>
+      </ul>
+    </div>
+
+    <!-- 10. TERMINATION -->
+    <div class="legal-section">
+      <h2>10. Termination of Engagements</h2>
+      <p>Either party may terminate a project engagement by providing written notice. In such a case:</p>
+      <ul>
+        <li>The client is liable for payment of all work completed up to the date of termination.</li>
+        <li>Any deposit paid is non-refundable unless JLR Dev is unable to commence or continue work due to our own fault.</li>
+        <li>Deliverables produced up to termination will be provided to the client upon receipt of outstanding payment.</li>
+      </ul>
+    </div>
+
+    <!-- 11. PRIVACY -->
+    <div class="legal-section">
+      <h2>11. Privacy</h2>
+      <p>Our collection and use of personal information is governed by our <a href="/privacy.html">Privacy Policy</a>, which forms part of these Terms of Service and complies with the Protection of Personal Information Act 4 of 2013 (POPIA).</p>
+    </div>
+
+    <!-- 12. GOVERNING LAW -->
+    <div class="legal-section">
+      <h2>12. Governing Law and Disputes</h2>
+      <p>These terms are governed by and construed in accordance with the laws of the Republic of South Africa. Any dispute arising from these terms or your use of this website shall be subject to the jurisdiction of the South African courts.</p>
+      <p>We encourage resolution of any disputes through direct communication in the first instance. Where a dispute cannot be resolved amicably, either party may approach a South African court of competent jurisdiction.</p>
+    </div>
+
+    <!-- 13. CHANGES -->
+    <div class="legal-section">
+      <h2>13. Changes to These Terms</h2>
+      <p>We may update these Terms of Service from time to time. Material changes will be reflected by an updated "Last updated" date. Continued use of this website after changes constitutes acceptance of the updated terms.</p>
+      <p>For active project engagements, changes to terms will only apply to new projects unless both parties agree in writing to apply them to existing work.</p>
+    </div>
+
+    <!-- 14. CONTACT -->
+    <div class="legal-section">
+      <h2>14. Contact</h2>
+      <p>For any questions about these Terms of Service, please contact:</p>
+      <div class="info-box">
+        <strong>Jan-Louis Reynders — JLR Dev</strong>
+        <span>Email: <a href="mailto:jan-louis@jlrdev.co.za">jan-louis@jlrdev.co.za</a></span><br>
+        <span>Phone: <a href="tel:+27828525108">082 852 5108</a></span><br>
+        <span>Website: <a href="https://jlrdev.co.za">jlrdev.co.za</a></span>
+      </div>
+    </div>
+
+  </div><!-- /legal-body -->
+</div><!-- /container -->
+
+<footer>
+  <p>© 2026 JLR Dev — Jan-Louis Reynders (Sole Proprietor) · Bloemfontein, Free State, SA &nbsp;|&nbsp; <a href="/privacy.html">Privacy Policy</a> &nbsp;|&nbsp; <a href="/terms.html">Terms of Service</a></p>
+</footer>
+
+</div><!-- /wrap -->
+</body>
+</html>

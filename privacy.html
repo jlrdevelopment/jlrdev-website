@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — JLR Dev</title>
+<meta name="description" content="JLR Dev Privacy Policy — how we collect, use, and protect your personal information in accordance with the Protection of Personal Information Act (POPIA).">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230A1628'/><text x='2' y='23' font-family='Arial Black,Arial,sans-serif' font-size='14' font-weight='900' fill='%234F8EF7'>&lt;</text><text x='9' y='23' font-family='Arial Black,Arial,sans-serif' font-size='13' font-weight='900' fill='%23ffffff'>JLR</text><text x='24' y='23' font-family='Arial Black,Arial,sans-serif' font-size='12' font-weight='900' fill='%234F8EF7'>/></text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{
+  --accent:#4F8EF7;--accent-lt:#7EB3FF;--accent-dim:rgba(79,142,247,0.12);
+  --bg:#0d0f14;--bg2:#111318;--card:rgba(17,19,28,0.82);
+  --border:rgba(79,142,247,0.12);--border-hi:rgba(79,142,247,0.3);
+  --text:#e2e8f5;--muted:rgba(180,196,230,0.55);--muted2:rgba(180,196,230,0.35);
+  --grotesk:'Space Grotesk',sans-serif;--sans:'Inter',sans-serif;
+  --radius:16px;
+}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:400;line-height:1.7;min-height:100vh}
+body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");background-size:200px;opacity:0.5;mix-blend-mode:overlay}
+.wrap{position:relative;z-index:1}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(13,15,20,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 28px;height:64px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:inline-flex;align-items:center;text-decoration:none;gap:0;line-height:1}
+.nav-logo .nbr{font-family:var(--grotesk);font-size:1.15rem;font-weight:800;background:linear-gradient(135deg,#7EB3FF,#4F8EF7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-0.04em}
+.nav-logo .njlr{font-family:var(--grotesk);font-size:1.15rem;font-weight:800;color:#fff;letter-spacing:-0.03em}
+.nav-logo .nsep{width:1px;height:16px;background:rgba(126,179,255,0.3);margin:0 9px;align-self:center}
+.nav-logo .ndev{font-family:var(--grotesk);font-size:1rem;font-weight:400;color:rgba(255,255,255,0.5)}
+.back-link{display:inline-flex;align-items:center;gap:6px;color:var(--muted);text-decoration:none;font-size:0.875rem;transition:color .2s}
+.back-link:hover{color:var(--accent)}
+.back-link svg{width:14px;height:14px}
+
+/* LAYOUT */
+.container{max-width:800px;margin:0 auto;padding:0 28px}
+.page{padding:72px 0 100px}
+
+/* HERO */
+.page-hero{margin-bottom:60px;padding-bottom:40px;border-bottom:1px solid var(--border)}
+.page-tag{display:inline-block;font-size:0.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);background:var(--accent-dim);border:1px solid rgba(79,142,247,0.2);border-radius:20px;padding:4px 14px;margin-bottom:20px}
+.page-hero h1{font-family:var(--grotesk);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;letter-spacing:-0.03em;line-height:1.15;margin-bottom:16px}
+.page-hero p{color:var(--muted);font-size:0.95rem;max-width:560px}
+.page-hero .updated{margin-top:12px;font-size:0.8rem;color:var(--muted2)}
+
+/* CONTENT */
+.legal-body{display:flex;flex-direction:column;gap:48px}
+.legal-section h2{font-family:var(--grotesk);font-size:1.15rem;font-weight:700;color:var(--accent-lt);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.legal-section h3{font-family:var(--grotesk);font-size:0.95rem;font-weight:600;color:var(--text);margin:20px 0 8px}
+.legal-section p{color:var(--muted);font-size:0.92rem;margin-bottom:12px}
+.legal-section p:last-child{margin-bottom:0}
+.legal-section ul,.legal-section ol{color:var(--muted);font-size:0.92rem;padding-left:20px;display:flex;flex-direction:column;gap:7px}
+.legal-section li{padding-left:4px}
+.legal-section a{color:var(--accent);text-decoration:none}
+.legal-section a:hover{text-decoration:underline}
+
+/* INFO BOX */
+.info-box{background:var(--accent-dim);border:1px solid rgba(79,142,247,0.2);border-radius:var(--radius);padding:20px 24px;margin-bottom:16px}
+.info-box strong{color:var(--text);display:block;margin-bottom:4px;font-size:0.9rem}
+.info-box span{color:var(--muted);font-size:0.88rem}
+
+/* TABLE */
+.data-table{width:100%;border-collapse:collapse;font-size:0.88rem;margin-top:12px}
+.data-table th{text-align:left;color:var(--muted2);font-weight:500;font-size:0.78rem;text-transform:uppercase;letter-spacing:.08em;padding:8px 12px;border-bottom:1px solid var(--border)}
+.data-table td{padding:10px 12px;color:var(--muted);border-bottom:1px solid rgba(79,142,247,0.06);vertical-align:top}
+.data-table tr:last-child td{border-bottom:none}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:32px 28px;text-align:center}
+footer p{color:var(--muted2);font-size:0.82rem}
+footer a{color:var(--muted);text-decoration:none}
+footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<nav>
+  <a href="/" class="nav-logo">
+    <span class="nbr">&lt;</span><span class="njlr">JLR</span><span class="nbr">/&gt;</span>
+    <span class="nsep"></span>
+    <span class="ndev">Dev</span>
+  </a>
+  <a href="/" class="back-link">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Back to site
+  </a>
+</nav>
+
+<div class="wrap">
+<div class="container page">
+
+  <div class="page-hero">
+    <span class="page-tag">Legal</span>
+    <h1>Privacy Policy</h1>
+    <p>How JLR Dev collects, uses, and protects your personal information — in full compliance with the Protection of Personal Information Act 4 of 2013 (POPIA) and the Electronic Communications and Transactions Act 25 of 2002 (ECTA).</p>
+    <p class="updated">Last updated: 26 May 2026</p>
+  </div>
+
+  <div class="legal-body">
+
+    <!-- 1. RESPONSIBLE PARTY -->
+    <div class="legal-section">
+      <h2>1. Responsible Party (Information Officer)</h2>
+      <p>The responsible party for the purposes of POPIA is:</p>
+      <div class="info-box">
+        <strong>JLR Dev (sole proprietor — Jan-Louis Reynders)</strong>
+        <span>Physical address: Bloemfontein, Free State, South Africa</span><br>
+        <span>Email: <a href="mailto:jan-louis@jlrdev.co.za">jan-louis@jlrdev.co.za</a></span><br>
+        <span>Phone: <a href="tel:+27828525108">082 852 5108</a></span><br>
+        <span>Website: <a href="https://jlrdev.co.za">jlrdev.co.za</a></span>
+      </div>
+      <p>As a sole proprietor, Jan-Louis Reynders acts as the Information Officer and is responsible for ensuring that personal information is processed lawfully, in accordance with POPIA.</p>
+    </div>
+
+    <!-- 2. INFORMATION COLLECTED -->
+    <div class="legal-section">
+      <h2>2. Personal Information We Collect</h2>
+      <p>We only collect personal information that is necessary to respond to your enquiry or provide our services (the principle of minimality — POPIA Section 10).</p>
+
+      <h3>Information you provide directly</h3>
+      <p>When you submit the contact form on this website, we collect:</p>
+      <ul>
+        <li><strong>Full name</strong> — to address you correctly</li>
+        <li><strong>Email address</strong> — to respond to your enquiry</li>
+        <li><strong>Project subject</strong> — to understand the nature of your request</li>
+        <li><strong>Message content</strong> — the details of your enquiry</li>
+      </ul>
+
+      <h3>Information collected automatically</h3>
+      <p>When you visit this website, our hosting provider (Cloudflare) may automatically collect:</p>
+      <ul>
+        <li><strong>IP address</strong> — for security and DDoS protection purposes</li>
+        <li><strong>Browser type and version</strong> — for compatibility purposes</li>
+        <li><strong>Date and time of visit</strong> — for server logs</li>
+      </ul>
+      <p>This information is collected by Cloudflare and governed by <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Cloudflare's Privacy Policy</a>. We do not use third-party analytics tools (e.g. Google Analytics) and we do not place tracking cookies.</p>
+    </div>
+
+    <!-- 3. PURPOSE -->
+    <div class="legal-section">
+      <h2>3. Purpose of Processing</h2>
+      <p>We process your personal information only for the following specific, legitimate purposes (POPIA Section 13):</p>
+      <ul>
+        <li>To respond to your project enquiry or question</li>
+        <li>To assess whether we can assist with your requirements</li>
+        <li>To send you an automated acknowledgement that your enquiry was received</li>
+        <li>To follow up on potential or existing client engagements</li>
+      </ul>
+      <p>We will not use your personal information for any other purpose without obtaining your consent first.</p>
+    </div>
+
+    <!-- 4. LAWFUL BASIS -->
+    <div class="legal-section">
+      <h2>4. Lawful Basis for Processing</h2>
+      <p>We process your personal information on the following lawful grounds (POPIA Section 11):</p>
+      <ul>
+        <li><strong>Consent</strong> — by submitting the contact form, you consent to us processing your information to respond to your enquiry.</li>
+        <li><strong>Legitimate interest</strong> — we have a legitimate interest in communicating with prospective and existing clients to provide our services.</li>
+        <li><strong>Contractual necessity</strong> — where we have an existing service agreement with you, processing is necessary to perform our obligations.</li>
+      </ul>
+    </div>
+
+    <!-- 5. THIRD PARTIES -->
+    <div class="legal-section">
+      <h2>5. Third Parties (Operators) Who Process Your Information</h2>
+      <p>We use the following third-party service providers (operators) who may process your personal information on our behalf. Each is bound by contractual and legal obligations to protect your information:</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Operator</th>
+            <th>Purpose</th>
+            <th>Data processed</th>
+            <th>Location</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Cloudflare</strong></td>
+            <td>Website hosting, CDN, security</td>
+            <td>IP address, browser data, server logs</td>
+            <td>Global (including USA)</td>
+          </tr>
+          <tr>
+            <td><strong>OpenAI</strong></td>
+            <td>AI-assisted analysis of contact form submissions to prepare a project brief</td>
+            <td>Name, email, subject, message</td>
+            <td>USA</td>
+          </tr>
+          <tr>
+            <td><strong>Resend</strong></td>
+            <td>Email delivery — auto-reply to you and lead briefing to us</td>
+            <td>Name, email address</td>
+            <td>USA / Ireland</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>Your information is transferred to these operators in the ordinary course of processing your enquiry. Where transfers occur outside South Africa, we rely on the operator's binding data processing terms and Privacy Shield / Standard Contractual Clauses as appropriate.</p>
+    </div>
+
+    <!-- 6. COOKIES -->
+    <div class="legal-section">
+      <h2>6. Cookies</h2>
+      <p>This website does <strong>not</strong> use cookies for tracking, advertising, or analytics purposes.</p>
+      <p>Cloudflare, as our hosting provider, may set technical cookies strictly necessary for security and performance (e.g. bot detection). These cookies do not identify you personally and do not require your consent under POPIA as they are essential to the functioning of the website.</p>
+      <p>No third-party marketing, social media, or analytics cookies are placed on this site.</p>
+    </div>
+
+    <!-- 7. RETENTION -->
+    <div class="legal-section">
+      <h2>7. Retention of Personal Information</h2>
+      <p>We retain your personal information only for as long as necessary to fulfil the purpose for which it was collected (POPIA Section 14):</p>
+      <ul>
+        <li><strong>Contact form enquiries</strong> — retained for up to 3 years from the date of last contact, or for the duration of any resulting business relationship, whichever is longer.</li>
+        <li><strong>Client project records</strong> — retained for 5 years after project completion, as required for accounting and legal purposes.</li>
+        <li><strong>Email communications</strong> — retained for as long as the business relationship exists plus 3 years.</li>
+      </ul>
+      <p>After the applicable retention period, personal information is securely deleted or anonymised.</p>
+    </div>
+
+    <!-- 8. SECURITY -->
+    <div class="legal-section">
+      <h2>8. Security of Your Information</h2>
+      <p>We take reasonable technical and organisational measures to protect your personal information from loss, misuse, unauthorised access, disclosure, alteration, or destruction (POPIA Section 19). These measures include:</p>
+      <ul>
+        <li>HTTPS encryption for all data transmitted to and from this website (TLS 1.2 / 1.3)</li>
+        <li>Secure storage of API keys and secrets in Cloudflare's encrypted environment variables (not in source code)</li>
+        <li>Access to personal information restricted to Jan-Louis Reynders only</li>
+        <li>Third-party operators selected based on their security standards and contractual commitments</li>
+      </ul>
+      <p>In the event of a data breach that is likely to result in a risk to your rights, we will notify the Information Regulator and affected data subjects as required by POPIA Section 22.</p>
+    </div>
+
+    <!-- 9. YOUR RIGHTS -->
+    <div class="legal-section">
+      <h2>9. Your Rights as a Data Subject</h2>
+      <p>Under POPIA (Sections 5, 23–25), you have the following rights regarding your personal information:</p>
+      <ul>
+        <li><strong>Right of access</strong> — you may request confirmation of whether we hold your personal information and request a copy.</li>
+        <li><strong>Right to correction</strong> — you may request that inaccurate, incomplete, or outdated information be corrected or updated.</li>
+        <li><strong>Right to deletion</strong> — you may request that your personal information be deleted where we no longer have a lawful basis or legitimate reason to retain it.</li>
+        <li><strong>Right to object</strong> — you may object to the processing of your personal information on reasonable grounds.</li>
+        <li><strong>Right to withdraw consent</strong> — where processing is based on consent, you may withdraw it at any time without affecting the lawfulness of prior processing.</li>
+        <li><strong>Right not to be subject to automated decision-making</strong> — we do not make legally significant automated decisions about you.</li>
+      </ul>
+      <p>To exercise any of these rights, contact us at <a href="mailto:jan-louis@jlrdev.co.za">jan-louis@jlrdev.co.za</a>. We will respond within a reasonable time and no later than 30 days.</p>
+    </div>
+
+    <!-- 10. INFORMATION REGULATOR -->
+    <div class="legal-section">
+      <h2>10. Right to Lodge a Complaint</h2>
+      <p>If you believe your personal information has been processed unlawfully or your rights under POPIA have been infringed, you have the right to lodge a complaint with the Information Regulator of South Africa:</p>
+      <div class="info-box">
+        <strong>Information Regulator (South Africa)</strong>
+        <span>Website: <a href="https://www.inforeg.org.za" target="_blank" rel="noopener noreferrer">www.inforeg.org.za</a></span><br>
+        <span>Email: <a href="mailto:POPIAComplaints@inforeg.org.za">POPIAComplaints@inforeg.org.za</a></span><br>
+        <span>Phone: 010 023 5207</span>
+      </div>
+      <p>We encourage you to contact us directly first so we can attempt to resolve your concern.</p>
+    </div>
+
+    <!-- 11. LINKS -->
+    <div class="legal-section">
+      <h2>11. Links to Third-Party Websites</h2>
+      <p>This website may contain links to external websites. We are not responsible for the privacy practices or content of those sites. We encourage you to review the privacy policy of any third-party site you visit.</p>
+    </div>
+
+    <!-- 12. UPDATES -->
+    <div class="legal-section">
+      <h2>12. Updates to This Policy</h2>
+      <p>We may update this Privacy Policy from time to time to reflect changes in our practices or applicable law. Where changes are material, we will update the "Last updated" date at the top of this page. Continued use of this website after an update constitutes acceptance of the revised policy.</p>
+    </div>
+
+    <!-- 13. CONTACT -->
+    <div class="legal-section">
+      <h2>13. Contact Us</h2>
+      <p>For any questions, requests, or concerns regarding this Privacy Policy or the processing of your personal information, please contact:</p>
+      <div class="info-box">
+        <strong>Jan-Louis Reynders — Information Officer, JLR Dev</strong>
+        <span>Email: <a href="mailto:jan-louis@jlrdev.co.za">jan-louis@jlrdev.co.za</a></span><br>
+        <span>Phone: <a href="tel:+27828525108">082 852 5108</a></span><br>
+        <span>Website: <a href="https://jlrdev.co.za">jlrdev.co.za</a></span>
+      </div>
+    </div>
+
+  </div><!-- /legal-body -->
+</div><!-- /container -->
+</div><!-- /wrap -->
+
+<footer>
+  <p>© 2026 JLR Dev — Jan-Louis Reynders · Bloemfontein, SA &nbsp;|&nbsp; <a href="/privacy.html">Privacy Policy</a> &nbsp;|&nbsp; <a href="/terms.html">Terms of Service</a></p>
+</footer>
+
+</div><!-- /wrap -->
+</body>
+</html>
