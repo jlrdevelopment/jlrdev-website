@@ -1,5 +1,5 @@
 # Claude Handoff — JLR Dev Website & Client Intake Pipeline
-## Last updated: 2026-05-25
+## Last updated: 2026-05-26
 
 ---
 
@@ -81,8 +81,9 @@ Single-page dark-theme website + automated client intake pipeline.
 | MX `jlrdev.co.za` | mx1/mx2.improvmx.com | OFF |
 
 ### Nameservers
-- `holly.ns.cloudflare.com` + `jaziel.ns.cloudflare.com`
-- Set at Afrihost 2026-05-25 ~14:12 SAST — propagation in progress
+- **Target:** `holly.ns.cloudflare.com` + `jaziel.ns.cloudflare.com`
+- ⚠️ **STATUS 2026-05-26:** NS change did NOT apply — still resolving to Afrihost DNS (`dns1.co.za`/`dns2.co.za`)
+- **Action needed:** Log into Afrihost → Domain Manager → jlrdev.co.za → Change Nameservers → set both CF nameservers above → Save
 
 ### Resend
 - Domain: `jlrdev.co.za` — region Ireland (eu-west-1)
@@ -127,18 +128,29 @@ No tokens to manage. Just run the script.
 cd "C:\Users\Jan-Louis.Reynders\OneDrive\JLR_Dev\Projects\preview-dark-full"
 git add -A
 git commit -m "your message"
-git push origin master
-# Remote: https://github.com/jlrdevelopment/jlrdev-web.git
+git push origin main
+# Remote: https://github.com/jlrdevelopment/jlrdev-website.git
 # Uses Windows Credential Manager — jlrdevelopment account
 # NOTE: jlrdevelopment is the ONLY GitHub account to use for JLR Dev work
 ```
 
 ---
 
-## WHAT STILL NEEDS TO HAPPEN (automatic — no action needed)
+## WHAT STILL NEEDS TO HAPPEN
 
-1. **NS propagation** — CF will email jan-louis@jlrdev.co.za when jlrdev.co.za zone activates
-2. **Resend auto-verifies** once NS propagates
+### ⚠️ MANUAL ACTION REQUIRED — Afrihost Nameserver Fix
+The NS change set on 2026-05-25 did not apply. Do this:
+1. Go to [myaccount.afrihost.co.za](https://myaccount.afrihost.co.za)
+2. **Domain Manager** → `jlrdev.co.za` → **Manage Nameservers**
+3. Replace all existing NS with:
+   - `holly.ns.cloudflare.com`
+   - `jaziel.ns.cloudflare.com`
+4. Save — propagation takes 1–24 hrs (usually <1 hr)
+5. CF will email jan-louis@jlrdev.co.za when zone activates
+
+### Automatic (after NS propagates)
+- **Resend auto-verifies** — sends from noreply@jlrdev.co.za
+- **jlrdev.co.za** loads the dark site
 
 ## AFTER PROPAGATION — ONE TEST
 
