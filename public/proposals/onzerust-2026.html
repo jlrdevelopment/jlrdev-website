@@ -29,7 +29,7 @@
     /* ── HEADER ── */
     .doc-header {
       background: linear-gradient(135deg, #0a1628 0%, #1a3a6b 50%, #1e5db5 100%);
-      padding: 40px 48px 32px;
+      padding: 22px 40px 20px;
       position: relative;
       overflow: hidden;
     }
@@ -42,7 +42,7 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      margin-bottom: 28px;
+      margin-bottom: 14px;
     }
     .brand-logo {
       display: inline-flex;
@@ -561,6 +561,13 @@
       font-family:'Inter',sans-serif; transition:background 0.15s; letter-spacing:0.02em;
     }
     .accept-btn:hover { background:#7EB3FF; color:#0D1B2E; }
+    .sig-wrap { margin:12px 0 14px; }
+    .sig-label { font-size:0.62rem; color:rgba(126,179,255,0.55); font-family:'Fira Code',monospace; margin-bottom:5px; }
+    .sig-canvas-box { position:relative; border:1px solid rgba(79,142,247,0.35); border-radius:6px; background:rgba(255,255,255,0.04); overflow:hidden; }
+    #sigCanvas { display:block; width:100%; height:110px; cursor:crosshair; touch-action:none; }
+    .sig-clear { position:absolute; top:6px; right:8px; background:none; border:none; color:rgba(126,179,255,0.4); font-size:0.62rem; cursor:pointer; font-family:'Inter',sans-serif; padding:2px 6px; }
+    .sig-clear:hover { color:#7EB3FF; }
+    .sig-hint { font-size:0.58rem; color:rgba(126,179,255,0.3); font-style:italic; margin-top:4px; }
     .accept-success { display:flex; align-items:center; gap:14px; padding:6px 0; }
     .accept-check { width:36px; height:36px; background:#2ab060; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-size:1.1rem; flex-shrink:0; }
     .accept-success-text strong { display:block; color:#e2e8f5; font-size:0.8rem; margin-bottom:3px; }
@@ -580,7 +587,7 @@
   const JLR = {
     // ── Proposal meta ──
     proposal_no:    "JLR-2026-011",
-    date_issued:    "26 May 2026",
+    date_issued:    "27 May 2026",
     date_valid:     "26 June 2026",
     // ── Client ──
     client_name:    "Onze Rust Primary School",
@@ -590,7 +597,7 @@
     client_email:   "",
     // ── Project ──
     project_title:  "Website Design & Development",
-    demo_url:       "https://onzerust-demo.surge.sh",
+    demo_url:       "https://jlrdevelopment.github.io/onzerust-prototype-v2",
     // ── Payment ──
     inst1: 7000,
     inst2: 5000,
@@ -619,6 +626,41 @@
     });
   });
 
+  // ── Signature canvas ──
+  let sigDrawing = false, sigCtx = null;
+  function initSig() {
+    const canvas = document.getElementById('sigCanvas');
+    if (!canvas) return;
+    canvas.width  = canvas.offsetWidth  * (window.devicePixelRatio || 1);
+    canvas.height = canvas.offsetHeight * (window.devicePixelRatio || 1);
+    sigCtx = canvas.getContext('2d');
+    sigCtx.scale(window.devicePixelRatio || 1, window.devicePixelRatio || 1);
+    sigCtx.strokeStyle = '#7EB3FF'; sigCtx.lineWidth = 2; sigCtx.lineCap = 'round'; sigCtx.lineJoin = 'round';
+    function pos(e) {
+      const r = canvas.getBoundingClientRect();
+      const src = e.touches ? e.touches[0] : e;
+      return { x: src.clientX - r.left, y: src.clientY - r.top };
+    }
+    canvas.addEventListener('mousedown',  e => { sigDrawing = true; const p = pos(e); sigCtx.beginPath(); sigCtx.moveTo(p.x, p.y); });
+    canvas.addEventListener('mousemove',  e => { if (!sigDrawing) return; const p = pos(e); sigCtx.lineTo(p.x, p.y); sigCtx.stroke(); });
+    canvas.addEventListener('mouseup',    () => sigDrawing = false);
+    canvas.addEventListener('mouseleave', () => sigDrawing = false);
+    canvas.addEventListener('touchstart', e => { e.preventDefault(); sigDrawing = true; const p = pos(e); sigCtx.beginPath(); sigCtx.moveTo(p.x, p.y); }, { passive: false });
+    canvas.addEventListener('touchmove',  e => { e.preventDefault(); if (!sigDrawing) return; const p = pos(e); sigCtx.lineTo(p.x, p.y); sigCtx.stroke(); }, { passive: false });
+    canvas.addEventListener('touchend',   () => sigDrawing = false);
+  }
+  function clearSig() {
+    const canvas = document.getElementById('sigCanvas');
+    if (sigCtx) sigCtx.clearRect(0, 0, canvas.offsetWidth, canvas.offsetHeight);
+  }
+  function isSigEmpty() {
+    const canvas = document.getElementById('sigCanvas');
+    if (!canvas) return true;
+    const data = sigCtx.getImageData(0, 0, canvas.width, canvas.height).data;
+    return !data.some(v => v !== 0);
+  }
+  document.addEventListener('DOMContentLoaded', initSig);
+
   async function acceptProposal() {
     const nameEl  = document.getElementById('acceptName');
     const titleEl = document.getElementById('acceptTitle');
@@ -629,11 +671,14 @@
     if (!name) { nameEl.classList.add('err'); nameEl.focus(); return; }
     nameEl.classList.remove('err');
     const ts = new Date().toLocaleString('en-ZA', { dateStyle:'full', timeStyle:'medium' });
+    const sigData = document.getElementById('sigCanvas') ? document.getElementById('sigCanvas').toDataURL('image/png') : '';
     const btn = document.querySelector('.accept-btn');
     if (btn) { btn.textContent = 'Sending...'; btn.disabled = true; }
     try {
       await fetch(SCRIPT_URL, {
         method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain' },
         body: JSON.stringify({
           type:         'ACCEPTANCE',
           proposal_no:  JLR.proposal_no,
@@ -642,9 +687,13 @@
           signer_title: title || '',
           email:        email,
           timestamp:    new Date().toISOString(),
+          signature:    sigData,
         }),
       });
     } catch(e) { console.warn('Notification error:', e); }
+    // Show signature in success state
+    const sigDone = document.getElementById('sigPreview');
+    if (sigDone && sigData) { sigDone.src = sigData; sigDone.style.display = 'block'; }
     document.getElementById('acceptTs').textContent = 'Accepted by ' + name + (title ? ', ' + title : '') + '  ·  ' + ts;
     document.getElementById('acceptPending').style.display = 'none';
     document.getElementById('acceptDone').style.display    = 'flex';
@@ -671,7 +720,7 @@
         <div class="prop-number" data-v="proposal_no">JLR-2026-011</div>
         <div style="margin-top:8px;">
           <div class="prop-label">Date Issued</div>
-          <div class="prop-value" data-v="date_issued">26 May 2026</div>
+          <div class="prop-value" data-v="date_issued">27 May 2026</div>
         </div>
         <div style="margin-top:6px;">
           <div class="prop-label">Valid Until</div>
@@ -684,11 +733,11 @@
       <div class="doc-title">Onze Rust Primary School<br>Website Design &amp; Development</div>
       <div class="doc-subtitle">Custom 6-page website · Staff directory · Events calendar · Content protection · Responsive design</div>
       <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:14px;">
-        <div style="display:inline-flex;align-items:center;gap:10px;background:rgba(245,164,26,0.18);border:1px solid rgba(245,164,26,0.4);border-radius:20px;padding:6px 18px 6px 12px;">
-          <span style="width:8px;height:8px;border-radius:50%;background:#f5a41a;flex-shrink:0;box-shadow:0 0 6px #f5a41a;"></span>
-          <span style="font-size:0.7rem;color:rgba(255,255,255,0.9);font-weight:700;letter-spacing:0.04em;">Project Status: <strong style="color:#f5a41a;">50% Complete</strong> &nbsp;·&nbsp; Prototype delivered &amp; demonstrated to client</span>
+        <div style="display:inline-flex;align-items:center;gap:10px;background:rgba(79,142,247,0.15);border:1px solid rgba(79,142,247,0.35);border-radius:20px;padding:6px 18px 6px 12px;">
+          <span style="width:8px;height:8px;border-radius:50%;background:#4F8EF7;flex-shrink:0;box-shadow:0 0 6px #4F8EF7;"></span>
+          <span style="font-size:0.7rem;color:rgba(255,255,255,0.9);font-weight:700;letter-spacing:0.04em;">Live Demo Available &nbsp;·&nbsp; Scope to be confirmed</span>
         </div>
-        <a href="https://onzerust-demo.surge.sh" target="_blank" style="display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.3);border-radius:20px;padding:6px 16px 6px 14px;text-decoration:none;color:#fff;font-size:0.7rem;font-weight:700;letter-spacing:0.04em;transition:background 0.2s;">
+        <a href="https://jlrdevelopment.github.io/onzerust-prototype-v2" target="_blank" style="display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.3);border-radius:20px;padding:6px 16px 6px 14px;text-decoration:none;color:#fff;font-size:0.7rem;font-weight:700;letter-spacing:0.04em;transition:background 0.2s;">
           <span style="width:7px;height:7px;border-radius:50%;background:#2ab060;flex-shrink:0;box-shadow:0 0 5px #2ab060;"></span>
           View Live Prototype &nbsp;→
         </a>
@@ -726,12 +775,12 @@
       <div>
         <div class="total-label">Total Project Investment</div>
         <div class="total-amount" data-v="total">R 17,000</div>
-        <div class="total-vat">Excl. VAT · Payable in 3 instalments · 50% already delivered</div>
+        <div class="total-vat">Excl. VAT · Payable in 3 instalments</div>
       </div>
       <div class="validity">
         Proposal valid for <strong style="color:#7EB3FF;">30 days</strong><br>
         from date of issue.<br>
-        <span style="color:rgba(255,255,255,0.55);">Prototype demo already built<br>and demonstrated to client.</span>
+        <span style="color:rgba(255,255,255,0.55);">Live demo available<br>for your review.</span>
       </div>
     </div>
 
@@ -834,10 +883,10 @@
       <div class="sec-title">Project Timeline — As Fast As 2 Weeks to Go-Live</div>
       <div class="timeline-row">
         <div class="tl-phase">
-          <div class="tl-dot" style="background:#2ab060;">✓</div>
-          <div class="tl-label">Prototype Done</div>
-          <div class="tl-week" style="color:#2ab060;font-weight:700;">✓ Complete</div>
-          <div class="tl-desc">6-page prototype built, staff directory, calendar &amp; branding demonstrated to client. <strong>50% done.</strong><br><a href="https://onzerust-demo.surge.sh" target="_blank" style="color:#2ab060;font-weight:600;font-size:0.75rem;text-decoration:none;">🔗 onzerust-demo.surge.sh</a></div>
+          <div class="tl-dot" style="background:#4F8EF7;">◉</div>
+          <div class="tl-label">Demo Available</div>
+          <div class="tl-week" style="color:#4F8EF7;font-weight:700;">Live Now</div>
+          <div class="tl-desc">6-page demo built to show the full scope of what's possible — staff directory, calendar &amp; branding. Pending scope confirmation.<br><a href="https://jlrdevelopment.github.io/onzerust-prototype-v2" target="_blank" style="color:#2ab060;font-weight:600;font-size:0.75rem;text-decoration:none;">🔗 View Live Demo →</a></div>
         </div>
         <div class="tl-phase">
           <div class="tl-dot">2</div>
@@ -873,7 +922,7 @@
           </div>
           <div class="pay-card-body">
             <div class="pay-title">Project Acceptance Deposit</div>
-            <div class="pay-desc">Acknowledges the 50% prototype already built and demonstrated. Confirms scope acceptance and triggers the finalisation phase. Development resumes within 2 business days of receipt.</div>
+            <div class="pay-desc">Confirms scope acceptance and engagement. Development begins within 2 business days of receipt.</div>
             <div class="pay-footer">
               <span class="pay-due"><span class="pay-lbl">due:</span> On signed acceptance &nbsp;·&nbsp; <strong>Ref: JLR-2026-011-DEP</strong></span>
               <span class="pay-amt deposit" data-v="inst1">R 7,000</span>
@@ -974,6 +1023,14 @@
             <div class="accept-fields" style="margin-bottom:14px;">
               <input type="email" id="acceptEmail" class="accept-input" placeholder="Your email address (for confirmation)">
             </div>
+            <div class="sig-wrap">
+              <div class="sig-label">// draw_signature below</div>
+              <div class="sig-canvas-box">
+                <canvas id="sigCanvas"></canvas>
+                <button class="sig-clear" onclick="clearSig()">✕ clear</button>
+              </div>
+              <div class="sig-hint">Draw your signature above using mouse or finger</div>
+            </div>
             <button class="accept-btn" onclick="acceptProposal()">&#10003; &nbsp;Accept Proposal</button>
           </div>
           <div id="acceptDone" style="display:none;" class="accept-success">
@@ -981,6 +1038,7 @@
             <div class="accept-success-text">
               <strong>Proposal accepted</strong>
               <span class="accept-ts" id="acceptTs"></span>
+              <img id="sigPreview" style="display:none;margin-top:8px;max-height:50px;border:1px solid rgba(79,142,247,0.3);border-radius:4px;background:rgba(255,255,255,0.04);padding:4px;" alt="Signature">
             </div>
           </div>
         </div>
