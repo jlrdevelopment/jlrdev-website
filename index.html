@@ -849,7 +849,7 @@ footer{
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       Close
     </button>
-    <svg viewBox="0 0 1000 800" xmlns="http://www.w3.org/2000/svg" style="display:block">
+    <svg id="cycleSvg" viewBox="0 0 1000 800" xmlns="http://www.w3.org/2000/svg" style="display:block">
       <style>
         .ring-a{transform-origin:500px 400px;animation:ringSpin 30s linear infinite}
         .ring-b{transform-origin:500px 400px;animation:ringSpin 18s linear infinite reverse}
@@ -925,108 +925,116 @@ footer{
         </filter>
       </defs>
 
-      <!-- Background centre glow -->
+      <!-- Background glow -->
       <circle cx="500" cy="400" r="360" fill="url(#bgG)"/>
-
-      <!-- Rotating outer rings -->
-      <circle class="ring-a" cx="500" cy="400" r="340" fill="none" stroke="rgba(79,142,247,0.08)" stroke-width="1" stroke-dasharray="3 14"/>
-      <circle class="ring-b" cx="500" cy="400" r="320" fill="none" stroke="rgba(79,142,247,0.05)" stroke-width="1" stroke-dasharray="1 10"/>
-      <!-- Guide ring (static) -->
-      <circle cx="500" cy="400" r="245" fill="none" stroke="rgba(79,142,247,0.07)" stroke-width="1.5"/>
-      <!-- Inner ring -->
-      <circle cx="500" cy="400" r="130" fill="none" stroke="rgba(79,142,247,0.04)" stroke-width="1" stroke-dasharray="2 8"/>
+      <!-- Rotating rings -->
+      <circle class="ring-a" cx="500" cy="400" r="340" fill="none" stroke="rgba(79,142,247,0.07)" stroke-width="1" stroke-dasharray="3 14"/>
+      <circle class="ring-b" cx="500" cy="400" r="322" fill="none" stroke="rgba(79,142,247,0.04)" stroke-width="1" stroke-dasharray="1 10"/>
+      <!-- Guide ring + inner ring -->
+      <circle cx="500" cy="400" r="245" fill="none" stroke="rgba(79,142,247,0.08)" stroke-width="1.5"/>
+      <circle cx="500" cy="400" r="128" fill="none" stroke="rgba(79,142,247,0.04)" stroke-width="1" stroke-dasharray="2 7"/>
 
       <!-- Title -->
-      <text x="500" y="24" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="10.5" font-weight="700" fill="rgba(79,142,247,0.45)" letter-spacing="0.28em">THE COMPOUNDING CYCLE</text>
+      <text x="500" y="24" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="10.5" font-weight="700" fill="rgba(79,142,247,0.4)" letter-spacing="0.28em">THE COMPOUNDING CYCLE</text>
 
-      <!-- Center label -->
-      <text x="500" y="392" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="13" font-weight="800" fill="rgba(79,142,247,0.14)" letter-spacing="0.2em">THE</text>
-      <text x="500" y="412" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="13" font-weight="800" fill="rgba(79,142,247,0.14)" letter-spacing="0.2em">LOOP</text>
+      <!-- Center -->
+      <text x="500" y="391" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="13" font-weight="800" fill="rgba(79,142,247,0.13)" letter-spacing="0.2em">THE</text>
+      <text x="500" y="411" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="13" font-weight="800" fill="rgba(79,142,247,0.13)" letter-spacing="0.2em">LOOP</text>
 
-      <!-- ── INJECTION ── -->
-      <rect x="394" y="10" width="212" height="30" rx="7" fill="rgba(79,142,247,0.12)" stroke="#4F8EF7" stroke-width="1.5" stroke-opacity="0.5"/>
+      <!-- Injection badge -->
+      <rect x="394" y="10" width="212" height="30" rx="7" fill="rgba(79,142,247,0.12)" stroke="#4F8EF7" stroke-opacity="0.5" stroke-width="1.5"/>
       <text x="500" y="30" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="10.5" font-weight="800" fill="#7EB3FF" letter-spacing="0.18em">SMART SYSTEM</text>
-      <line class="inj-line" x1="500" y1="40" x2="500" y2="98" stroke="#4F8EF7" stroke-width="2" stroke-dashoffset="0" marker-end="url(#ainj)"/>
+      <!-- Static dashed line decoration -->
+      <line x1="500" y1="40" x2="500" y2="98" stroke="rgba(79,142,247,0.2)" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <!-- Animated injection particle (JS-controlled) -->
+      <circle id="injP" cx="500" cy="40" r="7" fill="#4F8EF7" opacity="0"/>
 
-      <!-- ── ARC CONNECTORS (curved, following the ring) ── -->
-      <!-- N0→N1 (blue) -->
-      <path d="M 549,160 A 245,245 0 0,1 658,212" fill="none" stroke="#4F8EF7" stroke-width="2.5" stroke-opacity=".7" marker-end="url(#a0)"/>
-      <!-- N1→N2 (violet) -->
-      <path d="M 718,288 A 245,245 0 0,1 745,406" fill="none" stroke="#8b5cf6" stroke-width="2.5" stroke-opacity=".7" marker-end="url(#a1)"/>
-      <!-- N2→N3 (cyan) -->
-      <path d="M 722,502 A 245,245 0 0,1 648,594" fill="none" stroke="#06b6d4" stroke-width="2.5" stroke-opacity=".7" marker-end="url(#a2)"/>
-      <!-- N3→N4 (emerald) -->
-      <path d="M 560,638 A 245,245 0 0,1 440,638" fill="none" stroke="#10b981" stroke-width="2.5" stroke-opacity=".7" marker-end="url(#a3)"/>
-      <!-- N4→N5 (amber) -->
-      <path d="M 352,594 A 245,245 0 0,1 278,502" fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-opacity=".7" marker-end="url(#a4)"/>
-      <!-- N5→N6 (pink) -->
-      <path d="M 255,406 A 245,245 0 0,1 282,288" fill="none" stroke="#ec4899" stroke-width="2.5" stroke-opacity=".7" marker-end="url(#a5)"/>
-      <!-- N6→N0 (purple) -->
-      <path d="M 342,212 A 245,245 0 0,1 451,160" fill="none" stroke="#a78bfa" stroke-width="2.5" stroke-opacity=".7" marker-end="url(#a6)"/>
+      <!-- Arc paths — IDs used by JS, start invisible, JS draws them -->
+      <path id="a01" d="M 549,160 A 245,245 0 0,1 658,212" fill="none" stroke="#4F8EF7" stroke-width="3.5" stroke-linecap="round" style="stroke-opacity:0.1"/>
+      <path id="a12" d="M 718,288 A 245,245 0 0,1 745,406" fill="none" stroke="#8b5cf6" stroke-width="3.5" stroke-linecap="round" style="stroke-opacity:0.1"/>
+      <path id="a23" d="M 722,502 A 245,245 0 0,1 648,594" fill="none" stroke="#06b6d4" stroke-width="3.5" stroke-linecap="round" style="stroke-opacity:0.1"/>
+      <path id="a34" d="M 560,638 A 245,245 0 0,1 440,638" fill="none" stroke="#10b981" stroke-width="3.5" stroke-linecap="round" style="stroke-opacity:0.1"/>
+      <path id="a45" d="M 352,594 A 245,245 0 0,1 278,502" fill="none" stroke="#f59e0b" stroke-width="3.5" stroke-linecap="round" style="stroke-opacity:0.1"/>
+      <path id="a56" d="M 255,406 A 245,245 0 0,1 282,288" fill="none" stroke="#ec4899" stroke-width="3.5" stroke-linecap="round" style="stroke-opacity:0.1"/>
+      <path id="a60" d="M 342,212 A 245,245 0 0,1 451,160" fill="none" stroke="#a78bfa" stroke-width="3.5" stroke-linecap="round" style="stroke-opacity:0.1"/>
 
-      <!-- ── NODE 0: TIME SAVED (ENTRY) ── blue #4F8EF7 -->
-      <circle class="glow-pulse" cx="500" cy="155" r="72" fill="#4F8EF7" fill-opacity=".18"/>
-      <circle cx="500" cy="155" r="54" fill="rgba(30,58,138,.5)" stroke="#4F8EF7" stroke-width="2.5" filter="url(#ef0)"/>
-      <text x="500" y="149" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7" font-weight="700" fill="rgba(126,179,255,0.6)" letter-spacing="0.2em">ENTRY</text>
-      <text x="500" y="164" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="14" font-weight="800" fill="#e2e8f5" letter-spacing="0.04em">TIME SAVED</text>
+      <!-- NODE 0: TIME SAVED — blue -->
+      <g id="nd0">
+        <circle class="ng" cx="500" cy="155" r="78" fill="#4F8EF7" fill-opacity=".18" opacity="0" style="transition:opacity .45s"/>
+        <circle class="nc" cx="500" cy="155" r="56" fill="rgba(30,58,138,.55)" stroke="#4F8EF7" stroke-width="2.5" style="opacity:.18;transition:opacity .45s"/>
+        <text class="nl" x="500" y="147" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7" font-weight="700" fill="rgba(126,179,255,.7)" letter-spacing=".2em" style="opacity:.2;transition:opacity .45s">ENTRY POINT</text>
+        <text class="nl" x="500" y="165" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="15" font-weight="800" fill="#e2e8f5" style="opacity:.2;transition:opacity .45s">TIME SAVED</text>
+        <text class="nd" x="500" y="224" text-anchor="middle" font-family="Inter,sans-serif" font-size="11.5" font-weight="600" fill="rgba(226,232,245,.85)" style="opacity:0;transition:opacity .55s .1s">The system creates margin</text>
+        <text class="nd" x="500" y="240" text-anchor="middle" font-family="Inter,sans-serif" font-size="10.5" fill="rgba(180,196,230,.6)" style="opacity:0;transition:opacity .55s .1s">for everything that follows</text>
+      </g>
 
-      <!-- ── NODE 1: QUALITY RISES ── violet #8b5cf6 -->
-      <circle cx="691" cy="247" r="50" fill="rgba(76,29,149,.45)" stroke="#8b5cf6" stroke-width="2" filter="url(#ef1)"/>
-      <text x="691" y="241" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7" font-weight="700" fill="rgba(196,181,253,.55)" letter-spacing="0.2em">PSYCHOLOGICAL</text>
-      <text x="691" y="256" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="13" font-weight="800" fill="#e2e8f5" letter-spacing="0.03em">QUALITY RISES</text>
-      <!-- callout right -->
-      <line x1="742" y1="247" x2="758" y2="247" stroke="rgba(139,92,246,.35)" stroke-width="1"/>
-      <text x="762" y="241" text-anchor="start" font-family="Inter,sans-serif" font-size="12" font-weight="600" fill="rgba(226,232,245,.8)">Less pressure</text>
-      <text x="762" y="257" text-anchor="start" font-family="Inter,sans-serif" font-size="11" fill="rgba(180,196,230,.5)">better focus, better output</text>
+      <!-- NODE 1: QUALITY RISES — violet -->
+      <g id="nd1">
+        <circle class="ng" cx="691" cy="247" r="70" fill="#8b5cf6" fill-opacity=".18" opacity="0" style="transition:opacity .45s"/>
+        <circle class="nc" cx="691" cy="247" r="52" fill="rgba(76,29,149,.5)" stroke="#8b5cf6" stroke-width="2.5" style="opacity:.18;transition:opacity .45s"/>
+        <text class="nl" x="691" y="240" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7" font-weight="700" fill="rgba(196,181,253,.7)" letter-spacing=".2em" style="opacity:.2;transition:opacity .45s">PSYCHOLOGICAL</text>
+        <text class="nl" x="691" y="258" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="14" font-weight="800" fill="#e2e8f5" style="opacity:.2;transition:opacity .45s">QUALITY RISES</text>
+        <text class="nd" x="762" y="244" text-anchor="start" font-family="Inter,sans-serif" font-size="11.5" font-weight="600" fill="rgba(226,232,245,.85)" style="opacity:0;transition:opacity .55s .1s">Less pressure on the team</text>
+        <text class="nd" x="762" y="260" text-anchor="start" font-family="Inter,sans-serif" font-size="10.5" fill="rgba(180,196,230,.6)" style="opacity:0;transition:opacity .55s .1s">more focus → better output</text>
+      </g>
 
-      <!-- ── NODE 2: FEWER COMEBACKS ── cyan #06b6d4 -->
-      <circle cx="739" cy="455" r="50" fill="rgba(22,78,99,.45)" stroke="#06b6d4" stroke-width="2" filter="url(#ef2)"/>
-      <text x="739" y="449" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7" font-weight="700" fill="rgba(103,232,249,.55)" letter-spacing="0.2em">PROCESS</text>
-      <text x="739" y="464" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="13" font-weight="800" fill="#e2e8f5" letter-spacing="0.03em">FEWER COMEBACKS</text>
-      <!-- callout right -->
-      <line x1="790" y1="455" x2="806" y2="455" stroke="rgba(6,182,212,.35)" stroke-width="1"/>
-      <text x="810" y="449" text-anchor="start" font-family="Inter,sans-serif" font-size="12" font-weight="600" fill="rgba(226,232,245,.8)">Errors stop at source</text>
-      <text x="810" y="465" text-anchor="start" font-family="Inter,sans-serif" font-size="11" fill="rgba(180,196,230,.5)">not at the client's door</text>
+      <!-- NODE 2: FEWER COMEBACKS — cyan -->
+      <g id="nd2">
+        <circle class="ng" cx="739" cy="455" r="70" fill="#06b6d4" fill-opacity=".18" opacity="0" style="transition:opacity .45s"/>
+        <circle class="nc" cx="739" cy="455" r="52" fill="rgba(22,78,99,.5)" stroke="#06b6d4" stroke-width="2.5" style="opacity:.18;transition:opacity .45s"/>
+        <text class="nl" x="739" y="447" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7" font-weight="700" fill="rgba(103,232,249,.7)" letter-spacing=".2em" style="opacity:.2;transition:opacity .45s">PROCESS</text>
+        <text class="nl" x="739" y="465" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="14" font-weight="800" fill="#e2e8f5" style="opacity:.2;transition:opacity .45s">FEWER COMEBACKS</text>
+        <text class="nd" x="808" y="451" text-anchor="start" font-family="Inter,sans-serif" font-size="11.5" font-weight="600" fill="rgba(226,232,245,.85)" style="opacity:0;transition:opacity .55s .1s">Errors stop at the source</text>
+        <text class="nd" x="808" y="467" text-anchor="start" font-family="Inter,sans-serif" font-size="10.5" fill="rgba(180,196,230,.6)" style="opacity:0;transition:opacity .55s .1s">not at the client's door</text>
+      </g>
 
-      <!-- ── NODE 3: MORE CAPACITY ── emerald #10b981 -->
-      <circle cx="606" cy="621" r="50" fill="rgba(6,78,59,.45)" stroke="#10b981" stroke-width="2" filter="url(#ef3)"/>
-      <text x="606" y="615" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7" font-weight="700" fill="rgba(110,231,183,.55)" letter-spacing="0.2em">BUSINESS</text>
-      <text x="606" y="630" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="13" font-weight="800" fill="#e2e8f5" letter-spacing="0.03em">MORE CAPACITY</text>
-      <!-- callout below -->
-      <line x1="606" y1="672" x2="606" y2="686" stroke="rgba(16,185,129,.35)" stroke-width="1"/>
-      <text x="606" y="700" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" font-weight="600" fill="rgba(226,232,245,.8)">Space to grow</text>
-      <text x="606" y="716" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="rgba(180,196,230,.5)">take on more without burning out</text>
+      <!-- NODE 3: MORE CAPACITY — emerald -->
+      <g id="nd3">
+        <circle class="ng" cx="606" cy="621" r="70" fill="#10b981" fill-opacity=".18" opacity="0" style="transition:opacity .45s"/>
+        <circle class="nc" cx="606" cy="621" r="52" fill="rgba(6,78,59,.5)" stroke="#10b981" stroke-width="2.5" style="opacity:.18;transition:opacity .45s"/>
+        <text class="nl" x="606" y="613" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7" font-weight="700" fill="rgba(110,231,183,.7)" letter-spacing=".2em" style="opacity:.2;transition:opacity .45s">BUSINESS</text>
+        <text class="nl" x="606" y="631" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="14" font-weight="800" fill="#e2e8f5" style="opacity:.2;transition:opacity .45s">MORE CAPACITY</text>
+        <text class="nd" x="606" y="698" text-anchor="middle" font-family="Inter,sans-serif" font-size="11.5" font-weight="600" fill="rgba(226,232,245,.85)" style="opacity:0;transition:opacity .55s .1s">Space to grow and take on more</text>
+        <text class="nd" x="606" y="714" text-anchor="middle" font-family="Inter,sans-serif" font-size="10.5" fill="rgba(180,196,230,.6)" style="opacity:0;transition:opacity .55s .1s">without burning the team out</text>
+      </g>
 
-      <!-- ── NODE 4: FINANCIAL RETURN ── amber #f59e0b -->
-      <circle cx="394" cy="621" r="50" fill="rgba(120,53,15,.45)" stroke="#f59e0b" stroke-width="2" filter="url(#ef4)"/>
-      <text x="394" y="615" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7" font-weight="700" fill="rgba(252,211,77,.55)" letter-spacing="0.2em">FINANCIAL</text>
-      <text x="394" y="630" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="13" font-weight="800" fill="#e2e8f5" letter-spacing="0.03em">FINANCIAL RETURN</text>
-      <!-- callout below -->
-      <line x1="394" y1="672" x2="394" y2="686" stroke="rgba(245,158,11,.35)" stroke-width="1"/>
-      <text x="394" y="700" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" font-weight="600" fill="rgba(226,232,245,.8)">Revenue up · rework costs down</text>
-      <text x="394" y="716" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="rgba(180,196,230,.5)">every hour saved is an hour that earns</text>
+      <!-- NODE 4: FINANCIAL RETURN — amber -->
+      <g id="nd4">
+        <circle class="ng" cx="394" cy="621" r="70" fill="#f59e0b" fill-opacity=".18" opacity="0" style="transition:opacity .45s"/>
+        <circle class="nc" cx="394" cy="621" r="52" fill="rgba(120,53,15,.5)" stroke="#f59e0b" stroke-width="2.5" style="opacity:.18;transition:opacity .45s"/>
+        <text class="nl" x="394" y="613" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7" font-weight="700" fill="rgba(252,211,77,.7)" letter-spacing=".2em" style="opacity:.2;transition:opacity .45s">FINANCIAL</text>
+        <text class="nl" x="394" y="631" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="14" font-weight="800" fill="#e2e8f5" style="opacity:.2;transition:opacity .45s">FINANCIAL RETURN</text>
+        <text class="nd" x="394" y="698" text-anchor="middle" font-family="Inter,sans-serif" font-size="11.5" font-weight="600" fill="rgba(226,232,245,.85)" style="opacity:0;transition:opacity .55s .1s">Revenue up · rework costs down</text>
+        <text class="nd" x="394" y="714" text-anchor="middle" font-family="Inter,sans-serif" font-size="10.5" fill="rgba(180,196,230,.6)" style="opacity:0;transition:opacity .55s .1s">every saved hour is a billable hour</text>
+      </g>
 
-      <!-- ── NODE 5: CLIENT TRUST ── pink #ec4899 -->
-      <circle cx="261" cy="455" r="50" fill="rgba(131,24,67,.45)" stroke="#ec4899" stroke-width="2" filter="url(#ef5)"/>
-      <text x="261" y="449" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7" font-weight="700" fill="rgba(249,168,212,.55)" letter-spacing="0.2em">REPUTATION</text>
-      <text x="261" y="464" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="13" font-weight="800" fill="#e2e8f5" letter-spacing="0.03em">CLIENT TRUST</text>
-      <!-- callout left -->
-      <line x1="210" y1="455" x2="194" y2="455" stroke="rgba(236,72,153,.35)" stroke-width="1"/>
-      <text x="190" y="449" text-anchor="end" font-family="Inter,sans-serif" font-size="12" font-weight="600" fill="rgba(226,232,245,.8)">Referrals &amp; repeat work</text>
-      <text x="190" y="465" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="rgba(180,196,230,.5)">trust builds premium &amp; loyalty</text>
+      <!-- NODE 5: CLIENT TRUST — pink -->
+      <g id="nd5">
+        <circle class="ng" cx="261" cy="455" r="70" fill="#ec4899" fill-opacity=".18" opacity="0" style="transition:opacity .45s"/>
+        <circle class="nc" cx="261" cy="455" r="52" fill="rgba(131,24,67,.5)" stroke="#ec4899" stroke-width="2.5" style="opacity:.18;transition:opacity .45s"/>
+        <text class="nl" x="261" y="447" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7" font-weight="700" fill="rgba(249,168,212,.7)" letter-spacing=".2em" style="opacity:.2;transition:opacity .45s">REPUTATION</text>
+        <text class="nl" x="261" y="465" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="14" font-weight="800" fill="#e2e8f5" style="opacity:.2;transition:opacity .45s">CLIENT TRUST</text>
+        <text class="nd" x="192" y="451" text-anchor="end" font-family="Inter,sans-serif" font-size="11.5" font-weight="600" fill="rgba(226,232,245,.85)" style="opacity:0;transition:opacity .55s .1s">Referrals &amp; repeat work</text>
+        <text class="nd" x="192" y="467" text-anchor="end" font-family="Inter,sans-serif" font-size="10.5" fill="rgba(180,196,230,.6)" style="opacity:0;transition:opacity .55s .1s">trust enables premium pricing</text>
+      </g>
 
-      <!-- ── NODE 6: WELLBEING ── purple #a78bfa -->
-      <circle cx="309" cy="247" r="50" fill="rgba(49,46,129,.45)" stroke="#a78bfa" stroke-width="2" filter="url(#ef6)"/>
-      <text x="309" y="241" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7" font-weight="700" fill="rgba(165,180,252,.55)" letter-spacing="0.2em">WELLBEING</text>
-      <text x="309" y="256" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="13" font-weight="800" fill="#e2e8f5" letter-spacing="0.03em">MORALE RISES</text>
-      <!-- callout left -->
-      <line x1="258" y1="247" x2="242" y2="247" stroke="rgba(167,139,250,.35)" stroke-width="1"/>
-      <text x="238" y="241" text-anchor="end" font-family="Inter,sans-serif" font-size="12" font-weight="600" fill="rgba(226,232,245,.8)">Less stress · more pride</text>
-      <text x="238" y="257" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="rgba(180,196,230,.5)">team health &amp; morale improve</text>
+      <!-- NODE 6: MORALE RISES — purple -->
+      <g id="nd6">
+        <circle class="ng" cx="309" cy="247" r="70" fill="#a78bfa" fill-opacity=".18" opacity="0" style="transition:opacity .45s"/>
+        <circle class="nc" cx="309" cy="247" r="52" fill="rgba(49,46,129,.5)" stroke="#a78bfa" stroke-width="2.5" style="opacity:.18;transition:opacity .45s"/>
+        <text class="nl" x="309" y="239" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7" font-weight="700" fill="rgba(165,180,252,.7)" letter-spacing=".2em" style="opacity:.2;transition:opacity .45s">WELLBEING</text>
+        <text class="nl" x="309" y="257" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="14" font-weight="800" fill="#e2e8f5" style="opacity:.2;transition:opacity .45s">MORALE RISES</text>
+        <text class="nd" x="238" y="243" text-anchor="end" font-family="Inter,sans-serif" font-size="11.5" font-weight="600" fill="rgba(226,232,245,.85)" style="opacity:0;transition:opacity .55s .1s">Less stress · more pride</text>
+        <text class="nd" x="238" y="259" text-anchor="end" font-family="Inter,sans-serif" font-size="10.5" fill="rgba(180,196,230,.6)" style="opacity:0;transition:opacity .55s .1s">team health &amp; morale improve</text>
+      </g>
+
+      <!-- Traveler orb (JS-controlled, starts hidden) -->
+      <circle id="travGlow" cx="-100" cy="-100" r="22" fill="white" fill-opacity=".22" style="transition:fill .2s"/>
+      <circle id="trav" cx="-100" cy="-100" r="9" fill="white" opacity="0" style="transition:fill .2s"/>
 
       <!-- Bottom quote -->
-      <line x1="200" y1="756" x2="800" y2="756" stroke="rgba(79,142,247,0.1)" stroke-width="1"/>
-      <text x="500" y="776" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="13.5" font-weight="700" fill="rgba(226,232,245,.6)" letter-spacing="0.03em">The loop runs itself. And it pays for itself.</text>
+      <line x1="180" y1="756" x2="820" y2="756" stroke="rgba(79,142,247,0.1)" stroke-width="1"/>
+      <text x="500" y="776" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="13.5" font-weight="700" fill="rgba(226,232,245,.55)" letter-spacing="0.03em">The loop runs itself. And it pays for itself.</text>
     </svg>
   </div>
 </div>
@@ -1383,6 +1391,148 @@ document.querySelectorAll('.reveal-group').forEach(group => {
   });
   menu.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
   document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+})();
+
+// ── CYCLE DIAGRAM ANIMATION ──
+(function(){
+  const modal = document.getElementById('cycleModal');
+  if (!modal) return;
+
+  const COLORS = ['#4F8EF7','#8b5cf6','#06b6d4','#10b981','#f59e0b','#ec4899','#a78bfa'];
+  const ARC_IDS = ['a01','a12','a23','a34','a45','a56','a60'];
+  const NODE_IDS = ['nd0','nd1','nd2','nd3','nd4','nd5','nd6'];
+
+  let raf = null, loopTO = null;
+
+  function activateNode(id) {
+    const g = document.getElementById(id);
+    if (!g) return;
+    g.querySelector('.ng').style.opacity = '1';
+    g.querySelector('.nc').style.opacity = '1';
+    g.querySelectorAll('.nl').forEach(el => el.style.opacity = '1');
+    setTimeout(() => g.querySelectorAll('.nd').forEach(el => el.style.opacity = '1'), 150);
+  }
+
+  function resetAll() {
+    NODE_IDS.forEach(id => {
+      const g = document.getElementById(id);
+      if (!g) return;
+      g.querySelector('.ng').style.opacity = '0';
+      g.querySelector('.nc').style.opacity = '0.18';
+      g.querySelectorAll('.nl').forEach(el => el.style.opacity = '0.2');
+      g.querySelectorAll('.nd').forEach(el => el.style.opacity = '0');
+    });
+    ARC_IDS.forEach(id => {
+      const a = document.getElementById(id);
+      if (!a) return;
+      a.style.strokeOpacity = '0.1';
+      a.removeAttribute('stroke-dasharray');
+      a.removeAttribute('stroke-dashoffset');
+    });
+    const trav = document.getElementById('trav');
+    const travG = document.getElementById('travGlow');
+    if (trav) { trav.style.opacity = '0'; trav.setAttribute('cx','-100'); trav.setAttribute('cy','-100'); }
+    if (travG) { travG.style.opacity = '0'; travG.setAttribute('cx','-100'); travG.setAttribute('cy','-100'); }
+  }
+
+  function travelArc(idx, onDone) {
+    const arc = document.getElementById(ARC_IDS[idx]);
+    const trav = document.getElementById('trav');
+    const travG = document.getElementById('travGlow');
+    if (!arc || !trav || !travG) { if (onDone) onDone(); return; }
+
+    const color = COLORS[idx];
+    const len = arc.getTotalLength();
+
+    // Set up arc drawing (will reveal behind the orb)
+    arc.style.strokeOpacity = '0.85';
+    arc.setAttribute('stroke-dasharray', len);
+    arc.setAttribute('stroke-dashoffset', len);
+
+    // Set traveler colour
+    trav.setAttribute('fill', color);
+    travG.setAttribute('fill', color);
+    trav.style.opacity = '1';
+    travG.style.opacity = '1';
+
+    const DUR = 680;
+    const t0 = performance.now();
+
+    function tick(now) {
+      const raw = Math.min((now - t0) / DUR, 1);
+      const ease = raw < 0.5 ? 2*raw*raw : -1+(4-2*raw)*raw;
+      const pt = arc.getPointAtLength(ease * len);
+
+      // Draw arc behind orb
+      arc.setAttribute('stroke-dashoffset', len * (1 - ease));
+
+      // Move orb
+      trav.setAttribute('cx', pt.x); trav.setAttribute('cy', pt.y);
+      travG.setAttribute('cx', pt.x); travG.setAttribute('cy', pt.y);
+
+      if (raw < 1) {
+        raf = requestAnimationFrame(tick);
+      } else {
+        // Arc stays drawn, hide orb
+        arc.removeAttribute('stroke-dasharray');
+        arc.removeAttribute('stroke-dashoffset');
+        trav.style.opacity = '0';
+        travG.style.opacity = '0';
+        if (onDone) setTimeout(onDone, 60);
+      }
+    }
+    raf = requestAnimationFrame(tick);
+  }
+
+  function doStep(n) {
+    activateNode(NODE_IDS[n]);
+    setTimeout(() => {
+      travelArc(n, () => {
+        if (n === 6) {
+          // Loop complete — brief pause then restart
+          loopTO = setTimeout(startCycle, 1600);
+        } else {
+          doStep(n + 1);
+        }
+      });
+    }, 460);
+  }
+
+  function runInjection(cb) {
+    const injP = document.getElementById('injP');
+    if (!injP) { cb(); return; }
+    injP.setAttribute('cy', '40');
+    injP.setAttribute('fill', '#4F8EF7');
+    injP.style.opacity = '1';
+    const t0 = performance.now(), DUR = 360;
+    function tick(now) {
+      const p = Math.min((now - t0) / DUR, 1);
+      injP.setAttribute('cy', 40 + p * 55);
+      injP.style.opacity = String(1 - p * 0.5);
+      if (p < 1) requestAnimationFrame(tick);
+      else { injP.style.opacity = '0'; cb(); }
+    }
+    requestAnimationFrame(tick);
+  }
+
+  function startCycle() {
+    resetAll();
+    setTimeout(() => runInjection(() => doStep(0)), 300);
+  }
+
+  // Start/stop on modal open/close
+  const obs = new MutationObserver(() => {
+    if (modal.classList.contains('open')) {
+      if (raf) cancelAnimationFrame(raf);
+      if (loopTO) clearTimeout(loopTO);
+      startCycle();
+    } else {
+      if (raf) cancelAnimationFrame(raf);
+      if (loopTO) clearTimeout(loopTO);
+      resetAll();
+    }
+  });
+  obs.observe(modal, { attributes: true, attributeFilter: ['class'] });
 })();
 </script>
 </body>
