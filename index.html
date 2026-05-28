@@ -322,6 +322,27 @@ footer{
 @media(max-width:900px){.port-grid{grid-template-columns:1fr!important}.svc-grid,.contact-grid{grid-template-columns:1fr}.svc-card-web{grid-column:auto}.svc-web-inner{flex-direction:column;gap:20px}.testi-wrap{padding:36px 32px}}
 @media(max-width:640px){.hero-title{font-size:2.4rem}.stats-bar{flex-wrap:wrap;gap:16px;padding:20px 20px;justify-content:center}.stat-div{display:none}.footer-inner{flex-direction:column;gap:32px}.footer-links{gap:32px}.nav-links{display:none}.nav-cta{display:none}.nav-burger{display:flex}.hero-badges{gap:8px}.s-title{font-size:1.85rem}.form-row{grid-template-columns:1fr}.testi-text{font-size:1rem}.testi-wrap{padding:28px 24px}.container{padding:0 18px}.hero-sub{font-size:1rem}}
 
+/* ── NODE DETAIL PANEL ── */
+.nd-panel{position:fixed;inset:0;z-index:495;background:rgba(9,11,17,0.97);backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);display:flex;align-items:center;justify-content:center;padding:24px;visibility:hidden;opacity:0;transition:opacity .3s,visibility .3s;overflow-y:auto}
+.nd-panel.open{visibility:visible;opacity:1}
+.nd-card{width:100%;max-width:660px;background:rgba(17,19,28,0.9);border-radius:20px;border:1px solid rgba(255,255,255,0.07);overflow:hidden}
+.nd-top{padding:28px 32px 24px;border-bottom:1px solid rgba(255,255,255,0.06)}
+.nd-back{display:inline-flex;align-items:center;gap:7px;background:none;border:none;color:rgba(180,196,230,0.55);font-size:0.8rem;font-weight:600;cursor:pointer;padding:0;margin-bottom:20px;font-family:var(--sans);transition:color .2s}
+.nd-back:hover{color:var(--text)}
+.nd-cat-badge{display:inline-block;font-size:0.68rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;padding:4px 12px;border-radius:100px;margin-bottom:10px}
+.nd-title{font-family:var(--grotesk);font-size:2rem;font-weight:800;color:var(--text);letter-spacing:-0.03em;margin-bottom:10px;line-height:1.1}
+.nd-tagline{font-size:0.95rem;color:var(--muted);line-height:1.7;font-style:italic;border-left:3px solid;padding-left:14px;margin:0}
+.nd-stat-row{display:flex;align-items:center;gap:20px;padding:20px 32px;background:rgba(0,0,0,0.25);border-bottom:1px solid rgba(255,255,255,0.05)}
+.nd-stat-num{font-family:var(--grotesk);font-size:2.6rem;font-weight:800;letter-spacing:-0.05em;line-height:1}
+.nd-stat-desc{font-size:0.85rem;color:var(--muted);line-height:1.5;max-width:340px}
+.nd-stat-desc strong{display:block;color:var(--text);font-weight:600;margin-bottom:2px}
+.nd-body{padding:24px 32px}
+.nd-point{display:flex;gap:12px;margin-bottom:18px;align-items:flex-start}
+.nd-point-icon{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:800;flex-shrink:0;margin-top:2px}
+.nd-point-text{font-size:0.88rem;color:var(--muted);line-height:1.75}
+.nd-point-text strong{color:var(--text);font-weight:600}
+.nd-source{padding:14px 32px 24px;font-size:0.75rem;color:rgba(180,196,230,0.3);border-top:1px solid rgba(255,255,255,0.04);margin-top:4px}
+
 /* ── CYCLE MODAL ── */
 .cycle-modal{position:fixed;inset:0;z-index:490;background:rgba(9,11,17,0.97);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);display:flex;align-items:center;justify-content:center;padding:20px;visibility:hidden;opacity:0;transition:opacity 0.3s,visibility 0.3s}
 .cycle-modal.open{visibility:visible;opacity:1}
@@ -963,8 +984,8 @@ footer{
       <text id="cLbl1" x="500" y="393" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="11" font-weight="700" fill="rgba(126,179,255,0.45)" letter-spacing="0.22em" style="transition:opacity .4s">THE</text>
       <text id="cLbl2" x="500" y="415" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="17" font-weight="800" fill="rgba(126,179,255,0.55)" letter-spacing="0.18em" style="transition:opacity .4s">LOOP</text>
       <!-- Center dynamic (shows current active node) -->
-      <text id="cAct1" x="500" y="387" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="8" font-weight="700" fill="rgba(79,142,247,0)" letter-spacing="0.22em" style="transition:fill .4s,opacity .4s" opacity="0">—</text>
-      <text id="cAct2" x="500" y="408" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="16" font-weight="800" fill="rgba(226,232,245,0)" letter-spacing="0.04em" style="transition:fill .4s,opacity .4s" opacity="0">—</text>
+      <text id="cAct1" x="500" y="385" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="9" font-weight="700" fill="rgba(79,142,247,0)" letter-spacing="0.22em" style="transition:fill .4s,opacity .4s" opacity="0">—</text>
+      <text id="cAct2" x="500" y="409" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="19" font-weight="800" fill="rgba(226,232,245,0)" letter-spacing="0.04em" style="transition:fill .4s,opacity .4s" opacity="0">—</text>
 
       <!-- Injection badge -->
       <rect x="394" y="10" width="212" height="30" rx="7" fill="rgba(79,142,247,0.12)" stroke="#4F8EF7" stroke-opacity="0.5" stroke-width="1.5"/>
@@ -984,71 +1005,78 @@ footer{
       <path id="a60" d="M 342,212 A 245,245 0 0,1 451,160" fill="none" stroke="#a78bfa" stroke-width="3.5" stroke-linecap="round" style="stroke-opacity:0.1"/>
 
       <!-- NODE 0: TIME SAVED — blue -->
-      <g id="nd0">
+      <g id="nd0" style="cursor:pointer" onclick="openNodeDetail(0)">
         <circle class="ng" cx="500" cy="155" r="78" fill="#4F8EF7" fill-opacity=".18" opacity="0" style="transition:opacity .45s"/>
         <circle class="nc" cx="500" cy="155" r="56" fill="rgba(30,58,138,.55)" stroke="#4F8EF7" stroke-width="2.5" style="opacity:.18;transition:opacity .45s"/>
-        <text class="nl" x="500" y="147" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7" font-weight="700" fill="rgba(126,179,255,.7)" letter-spacing=".2em" style="opacity:.2;transition:opacity .45s">ENTRY POINT</text>
-        <text class="nl" x="500" y="165" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="15" font-weight="800" fill="#e2e8f5" style="opacity:.2;transition:opacity .45s">TIME SAVED</text>
-        <text class="nd" x="500" y="224" text-anchor="middle" font-family="Inter,sans-serif" font-size="11.5" font-weight="600" fill="rgba(226,232,245,.85)" style="opacity:0;transition:opacity .55s .1s">The system creates margin</text>
-        <text class="nd" x="500" y="240" text-anchor="middle" font-family="Inter,sans-serif" font-size="10.5" fill="rgba(180,196,230,.6)" style="opacity:0;transition:opacity .55s .1s">for everything that follows</text>
+        <text class="nl" x="500" y="144" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7" font-weight="700" fill="rgba(126,179,255,.7)" letter-spacing=".2em" style="opacity:.2;transition:opacity .45s">ENTRY POINT</text>
+        <text class="nl" x="500" y="160" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="14" font-weight="800" fill="#e2e8f5" style="opacity:.2;transition:opacity .45s">TIME</text>
+        <text class="nl" x="500" y="176" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="14" font-weight="800" fill="#e2e8f5" style="opacity:.2;transition:opacity .45s">SAVED</text>
+        <text class="nd" x="500" y="226" text-anchor="middle" font-family="Inter,sans-serif" font-size="11.5" font-weight="600" fill="rgba(226,232,245,.85)" style="opacity:0;transition:opacity .55s .1s">The system creates margin</text>
+        <text class="nd" x="500" y="242" text-anchor="middle" font-family="Inter,sans-serif" font-size="10.5" fill="rgba(180,196,230,.6)" style="opacity:0;transition:opacity .55s .1s">for everything that follows</text>
       </g>
 
       <!-- NODE 1: QUALITY RISES — violet -->
-      <g id="nd1">
+      <g id="nd1" style="cursor:pointer" onclick="openNodeDetail(1)">
         <circle class="ng" cx="691" cy="247" r="70" fill="#8b5cf6" fill-opacity=".18" opacity="0" style="transition:opacity .45s"/>
         <circle class="nc" cx="691" cy="247" r="52" fill="rgba(76,29,149,.5)" stroke="#8b5cf6" stroke-width="2.5" style="opacity:.18;transition:opacity .45s"/>
-        <text class="nl" x="691" y="240" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7" font-weight="700" fill="rgba(196,181,253,.7)" letter-spacing=".2em" style="opacity:.2;transition:opacity .45s">PSYCHOLOGICAL</text>
-        <text class="nl" x="691" y="258" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="14" font-weight="800" fill="#e2e8f5" style="opacity:.2;transition:opacity .45s">QUALITY RISES</text>
+        <text class="nl" x="691" y="236" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7" font-weight="700" fill="rgba(196,181,253,.7)" letter-spacing=".2em" style="opacity:.2;transition:opacity .45s">PSYCHOLOGICAL</text>
+        <text class="nl" x="691" y="252" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="14" font-weight="800" fill="#e2e8f5" style="opacity:.2;transition:opacity .45s">QUALITY</text>
+        <text class="nl" x="691" y="268" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="14" font-weight="800" fill="#e2e8f5" style="opacity:.2;transition:opacity .45s">RISES</text>
         <text class="nd" x="762" y="244" text-anchor="start" font-family="Inter,sans-serif" font-size="11.5" font-weight="600" fill="rgba(226,232,245,.85)" style="opacity:0;transition:opacity .55s .1s">Less pressure on the team</text>
         <text class="nd" x="762" y="260" text-anchor="start" font-family="Inter,sans-serif" font-size="10.5" fill="rgba(180,196,230,.6)" style="opacity:0;transition:opacity .55s .1s">more focus → better output</text>
       </g>
 
       <!-- NODE 2: FEWER COMEBACKS — cyan -->
-      <g id="nd2">
+      <g id="nd2" style="cursor:pointer" onclick="openNodeDetail(2)">
         <circle class="ng" cx="739" cy="455" r="70" fill="#06b6d4" fill-opacity=".18" opacity="0" style="transition:opacity .45s"/>
         <circle class="nc" cx="739" cy="455" r="52" fill="rgba(22,78,99,.5)" stroke="#06b6d4" stroke-width="2.5" style="opacity:.18;transition:opacity .45s"/>
-        <text class="nl" x="739" y="447" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7" font-weight="700" fill="rgba(103,232,249,.7)" letter-spacing=".2em" style="opacity:.2;transition:opacity .45s">PROCESS</text>
-        <text class="nl" x="739" y="465" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="14" font-weight="800" fill="#e2e8f5" style="opacity:.2;transition:opacity .45s">FEWER COMEBACKS</text>
+        <text class="nl" x="739" y="441" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7" font-weight="700" fill="rgba(103,232,249,.7)" letter-spacing=".2em" style="opacity:.2;transition:opacity .45s">PROCESS</text>
+        <text class="nl" x="739" y="457" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="14" font-weight="800" fill="#e2e8f5" style="opacity:.2;transition:opacity .45s">FEWER</text>
+        <text class="nl" x="739" y="473" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="14" font-weight="800" fill="#e2e8f5" style="opacity:.2;transition:opacity .45s">COMEBACKS</text>
         <text class="nd" x="808" y="451" text-anchor="start" font-family="Inter,sans-serif" font-size="11.5" font-weight="600" fill="rgba(226,232,245,.85)" style="opacity:0;transition:opacity .55s .1s">Errors stop at the source</text>
         <text class="nd" x="808" y="467" text-anchor="start" font-family="Inter,sans-serif" font-size="10.5" fill="rgba(180,196,230,.6)" style="opacity:0;transition:opacity .55s .1s">not at the client's door</text>
       </g>
 
       <!-- NODE 3: MORE CAPACITY — emerald -->
-      <g id="nd3">
+      <g id="nd3" style="cursor:pointer" onclick="openNodeDetail(3)">
         <circle class="ng" cx="606" cy="621" r="70" fill="#10b981" fill-opacity=".18" opacity="0" style="transition:opacity .45s"/>
         <circle class="nc" cx="606" cy="621" r="52" fill="rgba(6,78,59,.5)" stroke="#10b981" stroke-width="2.5" style="opacity:.18;transition:opacity .45s"/>
-        <text class="nl" x="606" y="613" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7" font-weight="700" fill="rgba(110,231,183,.7)" letter-spacing=".2em" style="opacity:.2;transition:opacity .45s">BUSINESS</text>
-        <text class="nl" x="606" y="631" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="14" font-weight="800" fill="#e2e8f5" style="opacity:.2;transition:opacity .45s">MORE CAPACITY</text>
-        <text class="nd" x="606" y="698" text-anchor="middle" font-family="Inter,sans-serif" font-size="11.5" font-weight="600" fill="rgba(226,232,245,.85)" style="opacity:0;transition:opacity .55s .1s">Space to grow and take on more</text>
-        <text class="nd" x="606" y="714" text-anchor="middle" font-family="Inter,sans-serif" font-size="10.5" fill="rgba(180,196,230,.6)" style="opacity:0;transition:opacity .55s .1s">without burning the team out</text>
+        <text class="nl" x="606" y="607" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7" font-weight="700" fill="rgba(110,231,183,.7)" letter-spacing=".2em" style="opacity:.2;transition:opacity .45s">BUSINESS</text>
+        <text class="nl" x="606" y="623" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="14" font-weight="800" fill="#e2e8f5" style="opacity:.2;transition:opacity .45s">MORE</text>
+        <text class="nl" x="606" y="639" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="14" font-weight="800" fill="#e2e8f5" style="opacity:.2;transition:opacity .45s">CAPACITY</text>
+        <text class="nd" x="606" y="700" text-anchor="middle" font-family="Inter,sans-serif" font-size="11.5" font-weight="600" fill="rgba(226,232,245,.85)" style="opacity:0;transition:opacity .55s .1s">Space to grow and take on more</text>
+        <text class="nd" x="606" y="716" text-anchor="middle" font-family="Inter,sans-serif" font-size="10.5" fill="rgba(180,196,230,.6)" style="opacity:0;transition:opacity .55s .1s">without burning the team out</text>
       </g>
 
       <!-- NODE 4: FINANCIAL RETURN — amber -->
-      <g id="nd4">
+      <g id="nd4" style="cursor:pointer" onclick="openNodeDetail(4)">
         <circle class="ng" cx="394" cy="621" r="70" fill="#f59e0b" fill-opacity=".18" opacity="0" style="transition:opacity .45s"/>
         <circle class="nc" cx="394" cy="621" r="52" fill="rgba(120,53,15,.5)" stroke="#f59e0b" stroke-width="2.5" style="opacity:.18;transition:opacity .45s"/>
-        <text class="nl" x="394" y="613" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7" font-weight="700" fill="rgba(252,211,77,.7)" letter-spacing=".2em" style="opacity:.2;transition:opacity .45s">FINANCIAL</text>
-        <text class="nl" x="394" y="631" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="14" font-weight="800" fill="#e2e8f5" style="opacity:.2;transition:opacity .45s">FINANCIAL RETURN</text>
-        <text class="nd" x="394" y="698" text-anchor="middle" font-family="Inter,sans-serif" font-size="11.5" font-weight="600" fill="rgba(226,232,245,.85)" style="opacity:0;transition:opacity .55s .1s">Revenue up · rework costs down</text>
-        <text class="nd" x="394" y="714" text-anchor="middle" font-family="Inter,sans-serif" font-size="10.5" fill="rgba(180,196,230,.6)" style="opacity:0;transition:opacity .55s .1s">every saved hour is a billable hour</text>
+        <text class="nl" x="394" y="607" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7" font-weight="700" fill="rgba(252,211,77,.7)" letter-spacing=".2em" style="opacity:.2;transition:opacity .45s">FINANCIAL</text>
+        <text class="nl" x="394" y="623" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="14" font-weight="800" fill="#e2e8f5" style="opacity:.2;transition:opacity .45s">FINANCIAL</text>
+        <text class="nl" x="394" y="639" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="14" font-weight="800" fill="#e2e8f5" style="opacity:.2;transition:opacity .45s">RETURN</text>
+        <text class="nd" x="394" y="700" text-anchor="middle" font-family="Inter,sans-serif" font-size="11.5" font-weight="600" fill="rgba(226,232,245,.85)" style="opacity:0;transition:opacity .55s .1s">Revenue up · rework costs down</text>
+        <text class="nd" x="394" y="716" text-anchor="middle" font-family="Inter,sans-serif" font-size="10.5" fill="rgba(180,196,230,.6)" style="opacity:0;transition:opacity .55s .1s">every saved hour is a billable hour</text>
       </g>
 
       <!-- NODE 5: CLIENT TRUST — pink -->
-      <g id="nd5">
+      <g id="nd5" style="cursor:pointer" onclick="openNodeDetail(5)">
         <circle class="ng" cx="261" cy="455" r="70" fill="#ec4899" fill-opacity=".18" opacity="0" style="transition:opacity .45s"/>
         <circle class="nc" cx="261" cy="455" r="52" fill="rgba(131,24,67,.5)" stroke="#ec4899" stroke-width="2.5" style="opacity:.18;transition:opacity .45s"/>
-        <text class="nl" x="261" y="447" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7" font-weight="700" fill="rgba(249,168,212,.7)" letter-spacing=".2em" style="opacity:.2;transition:opacity .45s">REPUTATION</text>
-        <text class="nl" x="261" y="465" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="14" font-weight="800" fill="#e2e8f5" style="opacity:.2;transition:opacity .45s">CLIENT TRUST</text>
+        <text class="nl" x="261" y="441" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7" font-weight="700" fill="rgba(249,168,212,.7)" letter-spacing=".2em" style="opacity:.2;transition:opacity .45s">REPUTATION</text>
+        <text class="nl" x="261" y="457" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="14" font-weight="800" fill="#e2e8f5" style="opacity:.2;transition:opacity .45s">CLIENT</text>
+        <text class="nl" x="261" y="473" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="14" font-weight="800" fill="#e2e8f5" style="opacity:.2;transition:opacity .45s">TRUST</text>
         <text class="nd" x="192" y="451" text-anchor="end" font-family="Inter,sans-serif" font-size="11.5" font-weight="600" fill="rgba(226,232,245,.85)" style="opacity:0;transition:opacity .55s .1s">Referrals &amp; repeat work</text>
         <text class="nd" x="192" y="467" text-anchor="end" font-family="Inter,sans-serif" font-size="10.5" fill="rgba(180,196,230,.6)" style="opacity:0;transition:opacity .55s .1s">trust enables premium pricing</text>
       </g>
 
       <!-- NODE 6: MORALE RISES — purple -->
-      <g id="nd6">
+      <g id="nd6" style="cursor:pointer" onclick="openNodeDetail(6)">
         <circle class="ng" cx="309" cy="247" r="70" fill="#a78bfa" fill-opacity=".18" opacity="0" style="transition:opacity .45s"/>
         <circle class="nc" cx="309" cy="247" r="52" fill="rgba(49,46,129,.5)" stroke="#a78bfa" stroke-width="2.5" style="opacity:.18;transition:opacity .45s"/>
-        <text class="nl" x="309" y="239" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7" font-weight="700" fill="rgba(165,180,252,.7)" letter-spacing=".2em" style="opacity:.2;transition:opacity .45s">WELLBEING</text>
-        <text class="nl" x="309" y="257" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="14" font-weight="800" fill="#e2e8f5" style="opacity:.2;transition:opacity .45s">MORALE RISES</text>
+        <text class="nl" x="309" y="236" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7" font-weight="700" fill="rgba(165,180,252,.7)" letter-spacing=".2em" style="opacity:.2;transition:opacity .45s">WELLBEING</text>
+        <text class="nl" x="309" y="252" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="14" font-weight="800" fill="#e2e8f5" style="opacity:.2;transition:opacity .45s">MORALE</text>
+        <text class="nl" x="309" y="268" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="14" font-weight="800" fill="#e2e8f5" style="opacity:.2;transition:opacity .45s">RISES</text>
         <text class="nd" x="238" y="243" text-anchor="end" font-family="Inter,sans-serif" font-size="11.5" font-weight="600" fill="rgba(226,232,245,.85)" style="opacity:0;transition:opacity .55s .1s">Less stress · more pride</text>
         <text class="nd" x="238" y="259" text-anchor="end" font-family="Inter,sans-serif" font-size="10.5" fill="rgba(180,196,230,.6)" style="opacity:0;transition:opacity .55s .1s">team health &amp; morale improve</text>
       </g>
@@ -1062,6 +1090,27 @@ footer{
       <text x="500" y="769" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="13.5" font-weight="700" fill="rgba(226,232,245,.55)" letter-spacing="0.03em">The loop runs itself. And it pays for itself.</text>
       <text x="500" y="790" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="rgba(180,196,230,0.25)">Click anywhere outside to close · ESC</text>
     </svg>
+  </div>
+</div>
+
+<!-- NODE DETAIL PANEL -->
+<div class="nd-panel" id="ndPanel">
+  <div class="nd-card" id="ndCard">
+    <div class="nd-top">
+      <button class="nd-back" id="ndBack">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 5-7 7 7 7"/></svg>
+        Back to cycle
+      </button>
+      <div class="nd-cat-badge" id="ndBadge">—</div>
+      <h2 class="nd-title" id="ndTitle">—</h2>
+      <p class="nd-tagline" id="ndTagline">—</p>
+    </div>
+    <div class="nd-stat-row">
+      <div class="nd-stat-num" id="ndStatNum">—</div>
+      <div class="nd-stat-desc"><strong id="ndStatLabel">—</strong><span id="ndStatSub">—</span></div>
+    </div>
+    <div class="nd-body" id="ndPoints"></div>
+    <div class="nd-source" id="ndSource">—</div>
   </div>
 </div>
 
@@ -1418,6 +1467,148 @@ document.querySelectorAll('.reveal-group').forEach(group => {
   menu.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
   document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
 })();
+
+// ── NODE DETAIL PANELS ──
+const NODE_DETAILS = [
+  {
+    cat:'Entry Point', color:'#4F8EF7',
+    title:'Time Saved',
+    tagline:'The system creates margin. Margin creates everything else.',
+    statNum:'40%', statLabel:'of a knowledge worker\'s week', statSub:' spent on repetitive or low-value tasks — McKinsey Global Institute',
+    points:[
+      {t:'Automation typically saves 20–40% of a professional\'s working week.',d:'That\'s not a nice-to-have. It\'s a 2-day shift in what your team can actually focus on (McKinsey Global Institute, 2017).'},
+      {t:'Context switching costs 20–40 minutes of recovery per interruption.',d:'Systems that eliminate repetitive tasks remove the interruptions themselves — not just the task (University of California, Irvine).'},
+      {t:'The value isn\'t in the time saved. It\'s in what starts to compound.',d:'Every freed hour is re-invested. Better work. More work. Less stress. The rest of this loop depends on this one link.'},
+    ],
+    source:'Sources: McKinsey Global Institute (2017), University of California Irvine — Gloria Mark research on interruption recovery'
+  },
+  {
+    cat:'Psychological', color:'#8b5cf6',
+    title:'Quality Rises',
+    tagline:'People don\'t do their best work under pressure. They do it in space.',
+    statNum:'5×', statLabel:'output quality in flow state', statSub:' vs. normal working conditions — Csikszentmihalyi, decades of flow research',
+    points:[
+      {t:'Cognitive overload reduces decision quality by 25–50%.',d:'Rushing doesn\'t improve output — it degrades it. Harvard Business Review research consistently shows that pressure narrows thinking and increases errors.'},
+      {t:'Peak performance requires three conditions: safety, time, and clear objectives.',d:'Mihaly Csikszentmihalyi\'s flow theory, backed by 30+ years of research: quality work is a psychological state, not just a skill.'},
+      {t:'When teams aren\'t firefighting, something remarkable happens.',d:'Error rates drop. Creative problem-solving improves. Work satisfaction rises. All simultaneously — because they share the same root cause.'},
+    ],
+    source:'Sources: Csikszentmihalyi (Flow, 1990), Harvard Business Review on cognitive load and decision quality'
+  },
+  {
+    cat:'Process', color:'#06b6d4',
+    title:'Fewer Comebacks',
+    tagline:'Fixing it after delivery costs 100× more than fixing it at the source.',
+    statNum:'100×', statLabel:'cost of a defect caught post-delivery', statSub:' vs. caught at requirements stage — IBM Systems Science Institute',
+    points:[
+      {t:'IBM documented the 1x–100x cost multiplier across thousands of projects.',d:'A defect found at the requirements stage costs 1 unit to fix. The same defect found after delivery costs 100 units. This isn\'t theory — it\'s measured data.'},
+      {t:'Rework accounts for 25–40% of total project cost in most service businesses.',d:'It\'s the invisible line item. It never appears on a quote, but it consistently consumes a quarter of the budget (Project Management Institute research).'},
+      {t:'"Quality is Free" — Philip Crosby, 1979.',d:'Crosby proved that prevention costs a fraction of correction. Zero-defect culture doesn\'t cost more — the absence of it does.'},
+    ],
+    source:'Sources: IBM Systems Science Institute, Philip Crosby (Quality is Free, 1979), Project Management Institute'
+  },
+  {
+    cat:'Business Growth', color:'#10b981',
+    title:'More Capacity',
+    tagline:'Every hour freed from rework is an hour you can sell.',
+    statNum:'85%', statLabel:'is the optimal team utilisation rate', statSub:' — teams at 100% consistently underperform vs. those with breathing room (HBR)',
+    points:[
+      {t:'Rework is an invisible bottleneck — it consumes capacity without appearing on any schedule.',d:'Goldratt\'s Theory of Constraints (1984): organisational throughput is limited by its biggest bottleneck. Rework is that bottleneck in most service businesses.'},
+      {t:'Teams operating at 80–85% capacity consistently outperform those at 100%.',d:'The buffer enables quality, creative thinking, and the ability to respond to opportunities. A team at 100% has no room to be excellent — only to survive (Harvard Business Review).'},
+      {t:'Freed capacity compounds: a team saving 10 hours/week can either grow or improve.',d:'Both options are better than the status quo. Capacity is the prerequisite for every other business decision you want to make.'},
+    ],
+    source:'Sources: Eliyahu Goldratt (The Goal, 1984), Harvard Business Review on capacity utilisation'
+  },
+  {
+    cat:'Financial', color:'#f59e0b',
+    title:'Financial Return',
+    tagline:'Quality doesn\'t cost more. Poor quality does.',
+    statNum:'15–40%', statLabel:'of revenue consumed by quality failure costs', statSub:' in most service businesses — Juran Institute and Philip Crosby research',
+    points:[
+      {t:'Quality-related costs run at 15–40% of revenue — almost entirely failure costs.',d:'Prevention and appraisal costs are minimal. The overwhelming majority is failure: rework, callbacks, write-offs, and lost clients (Juran Institute, Crosby).'},
+      {t:'Acquiring a new client costs 5–7× more than retaining one.',d:'Every comeback risks a client relationship. Every flawless delivery strengthens one. Harvard Business Review has documented this consistently across industries.'},
+      {t:'IBM studies showed $8 return for every $1 invested in defect prevention.',d:'The ROI of systematic quality improvement is consistently among the highest available to any business — the numbers aren\'t close.'},
+    ],
+    source:'Sources: Juran Institute, Philip Crosby, Harvard Business Review, IBM quality ROI studies'
+  },
+  {
+    cat:'Reputation', color:'#ec4899',
+    title:'Client Trust',
+    tagline:'Trust is built in drops and lost in buckets.',
+    statNum:'89%', statLabel:'of consumers switch brands after poor experience', statSub:' — Salesforce State of the Connected Customer report',
+    points:[
+      {t:'Referred clients have 16–25% higher lifetime value and 18% lower churn.',d:'Trust compounds through networks. A client who refers you is more valuable than the new client they send — because both stay longer and cost less to serve (Wharton School of Business).'},
+      {t:'Each rework event is statistically a "detractor" experience in NPS terms.',d:'Net Promoter Score research shows that the cost of a comeback isn\'t just the rework — it\'s the referral that doesn\'t happen and the review that might.'},
+      {t:'A 5% increase in client retention drives 25–95% increase in profitability.',d:'The range is wide because it depends on industry — but Bain & Company\'s research is clear: the most profitable lever most businesses have is keeping the clients they have.'},
+    ],
+    source:'Sources: Salesforce Connected Customer Report, Wharton School, Bain & Company (Frederick Reichheld)'
+  },
+  {
+    cat:'Wellbeing', color:'#a78bfa',
+    title:'Morale Rises',
+    tagline:'Less firefighting means more of what people came to do — good work.',
+    statNum:'$8.9T', statLabel:'lost globally to disengagement annually', statSub:' — Gallup State of the Global Workplace 2023',
+    points:[
+      {t:'Chronic stress is not a performance enhancer. It\'s a performance tax.',d:'Gallup\'s research finds disengaged employees cost organisations $3,400–$10,000+ per year each in lost productivity. Burnout costs US businesses $125–190B in healthcare spending alone (Harvard Business School).'},
+      {t:'Psychological safety is the single strongest predictor of team performance.',d:'Google\'s Project Aristotle, the most comprehensive team effectiveness study ever conducted, found that psychological safety — the feeling that you won\'t be punished for raising concerns — outweighed all other factors combined.'},
+      {t:'When people do quality work that doesn\'t come back, they feel competent.',d:'Competence builds pride. Pride builds culture. Culture builds the kind of workplace that attracts and retains good people. This is the human ROI of the loop.'},
+    ],
+    source:'Sources: Gallup (2023), Harvard Business School burnout research, Google Project Aristotle (2016)'
+  },
+];
+
+function openNodeDetail(idx) {
+  const d = NODE_DETAILS[idx];
+  const panel = document.getElementById('ndPanel');
+  const badge = document.getElementById('ndBadge');
+  const title = document.getElementById('ndTitle');
+  const tagline = document.getElementById('ndTagline');
+  const statNum = document.getElementById('ndStatNum');
+  const statLabel = document.getElementById('ndStatLabel');
+  const statSub = document.getElementById('ndStatSub');
+  const points = document.getElementById('ndPoints');
+  const source = document.getElementById('ndSource');
+  if (!panel) return;
+
+  badge.textContent = d.cat;
+  badge.style.background = d.color + '22';
+  badge.style.color = d.color;
+  badge.style.border = '1px solid ' + d.color + '44';
+
+  title.textContent = d.title;
+  title.style.color = d.color;
+
+  tagline.textContent = '"' + d.tagline + '"';
+  tagline.style.borderColor = d.color + '55';
+
+  statNum.textContent = d.statNum;
+  statNum.style.color = d.color;
+  statLabel.textContent = d.statLabel;
+  statSub.textContent = d.statSub;
+
+  points.innerHTML = d.points.map(p => `
+    <div class="nd-point">
+      <div class="nd-point-icon" style="background:${d.color}22;color:${d.color}">↑</div>
+      <div class="nd-point-text"><strong>${p.t}</strong> ${p.d}</div>
+    </div>
+  `).join('');
+
+  source.textContent = d.source;
+  panel.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+document.getElementById('ndBack').addEventListener('click', () => {
+  document.getElementById('ndPanel').classList.remove('open');
+  document.body.style.overflow = 'hidden'; // keep cycle modal scroll locked
+});
+document.getElementById('ndPanel').addEventListener('click', e => {
+  if (e.target === document.getElementById('ndPanel')) {
+    document.getElementById('ndPanel').classList.remove('open');
+  }
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') document.getElementById('ndPanel')?.classList.remove('open');
+});
 
 // ── CYCLE DIAGRAM ANIMATION ──
 (function(){
