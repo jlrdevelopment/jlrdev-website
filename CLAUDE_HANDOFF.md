@@ -1,13 +1,13 @@
 # Claude Handoff — JLR Dev Website & Client Intake Pipeline
-## Last updated: 2026-05-26 (NS confirmed, legal pages added)
+## Last updated: 2026-05-28 (major redesign session — portfolio, about, cycle diagram, mobile fixes)
 
 ---
 
 ## QUICK REFERENCE
 - **GitHub (this project):** `github.com/jlrdevelopment/jlrdev-website` · branch: `main` — only use `jlrdevelopment`
-- **Source folder:** `C:\Users\Jan-Louis.Reynders\OneDrive\JLR_Dev\Projects\preview-dark-full\`
-- **Live site:** `https://jlrdev-website.pages.dev` ✅ · Custom domain `jlrdev.co.za` (NS propagating)
-- **Deploy:** `$env:CLOUDFLARE_API_TOKEN='<token>'; wrangler pages deploy . --project-name=jlrdev-website --branch=main`
+- **Source folder:** `C:\Users\Jan-Louis.Reynders\OneDrive\JLR_Dev\Projects\jlrdev-website\`
+- **Live site:** `https://jlrdev.co.za` ✅ · Cloudflare Pages, custom domain active
+- **Deploy:** `cd "C:\Users\Jan-Louis.Reynders\OneDrive\JLR_Dev\Projects\jlrdev-website"; .\deploy.ps1`
 - **GitHub token (jlrdevelopment):** stored in Windows Credential Manager · embedded in remote URL
 
 ---
