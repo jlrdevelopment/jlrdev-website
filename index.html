@@ -546,10 +546,20 @@ footer{
             <a href="https://www.geocalibre.co.za" target="_blank" rel="noopener noreferrer" style="font-size:0.8rem;color:var(--accent-lt);text-decoration:none;border-bottom:1px solid rgba(79,142,247,0.25);transition:border-color 0.2s" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='rgba(79,142,247,0.25)'">geocalibre.co.za ↗</a>
           </div>
           <h3 class="approach-title">PDF Data Extractor</h3>
-          <div class="case-carousel">
-            <img class="case-slide active" src="gc-ui-0.png" alt="GeoTech PDF Extractor UI — empty state">
-            <img class="case-slide" src="gc-ui-1.png" alt="GeoTech PDF Extractor UI — 33 files loaded">
-            <img class="case-slide" src="gc-ui-2.png" alt="GeoTech PDF Extractor UI — extraction complete">
+          <div style="background:rgba(6,8,14,0.95);border-radius:10px;border:1px solid var(--border);margin:20px 0 16px;overflow:hidden">
+            <div style="display:flex;align-items:center;gap:6px;padding:10px 16px;background:rgba(255,255,255,0.025);border-bottom:1px solid rgba(79,142,247,0.08)">
+              <span style="width:12px;height:12px;border-radius:50%;background:#ff5f57;display:inline-block"></span>
+              <span style="width:12px;height:12px;border-radius:50%;background:#ffbd2e;display:inline-block"></span>
+              <span style="width:12px;height:12px;border-radius:50%;background:#28c840;display:inline-block"></span>
+              <span style="margin-left:auto;font-size:0.68rem;color:rgba(255,255,255,0.18);font-family:monospace;letter-spacing:0.05em">GeoTech_PDF_Extractor.exe</span>
+            </div>
+            <div style="padding:20px 24px;font-family:'SF Mono','Fira Code',monospace;font-size:0.82rem;line-height:2">
+              <div><span style="color:#3b82f6;font-weight:700">$</span><span style="color:#e2e8f0"> GeoTech_PDF_Extractor.exe --batch ./lab_reports --output excel</span></div>
+              <div><span style="color:#28c840">✓</span><span style="color:rgba(148,163,184,0.8)"> Scanning 33 PDF reports...</span></div>
+              <div><span style="color:#28c840">✓</span><span style="color:rgba(148,163,184,0.8)"> Parsing borehole data from 49 samples...</span></div>
+              <div><span style="color:#28c840">✓</span><span style="color:rgba(148,163,184,0.8)"> Extracted 850+ data points → results.xlsx</span></div>
+              <div style="color:rgba(148,163,184,0.4);font-size:0.75rem">&nbsp;&nbsp;Time: 8.2s &nbsp;·&nbsp; Errors: 0 &nbsp;·&nbsp; Accuracy: 100%</div>
+            </div>
           </div>
           <div class="case-stats">
             <div class="case-stat"><span class="case-num">33</span><span class="case-label">PDFs</span></div>
