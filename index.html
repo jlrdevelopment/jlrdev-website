@@ -327,8 +327,8 @@ footer{
 .cycle-modal.open{visibility:visible;opacity:1}
 .cycle-modal-inner{width:100%;max-width:940px;position:relative}
 .cycle-modal-inner svg{width:100%;height:auto;max-height:88vh}
-.cycle-close{position:absolute;top:-46px;right:0;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:8px;color:rgba(180,196,230,0.7);font-size:0.82rem;font-weight:600;padding:8px 18px;cursor:pointer;display:flex;align-items:center;gap:6px;transition:all 0.2s;font-family:var(--sans)}
-.cycle-close:hover{background:rgba(255,255,255,0.12);color:var(--text)}
+.cycle-close{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:8px;color:rgba(180,196,230,0.7);font-size:0.82rem;font-weight:600;padding:8px 18px;cursor:pointer;display:flex;align-items:center;gap:6px;transition:all 0.2s;font-family:var(--sans)}
+.cycle-close:hover{background:rgba(255,255,255,0.14);color:var(--text);border-color:rgba(255,255,255,0.22)}
 #cycleThumb{cursor:pointer;border-radius:10px;overflow:hidden;border:1px solid rgba(79,142,247,0.1);position:relative;transition:border-color 0.25s,box-shadow 0.25s}
 #cycleThumb:hover{border-color:rgba(79,142,247,0.3);box-shadow:0 0 24px rgba(79,142,247,0.1)}
 .cycle-expand-hint{position:absolute;bottom:10px;right:10px;background:rgba(9,11,17,0.88);border:1px solid rgba(79,142,247,0.22);border-radius:6px;padding:5px 12px;font-size:0.68rem;font-weight:600;color:var(--muted2);display:flex;align-items:center;gap:5px;pointer-events:none}
@@ -641,43 +641,60 @@ footer{
             <div id="cycleThumb">
               <svg viewBox="0 0 580 465" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block">
                 <defs>
-                  <marker id="arr" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0.5 L0,6.5 L7,3.5 z" fill="rgba(79,142,247,0.65)"/></marker>
-                  <marker id="arrInj" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0.5 L0,7.5 L8,4 z" fill="#4F8EF7"/></marker>
+                  <marker id="ta0" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0.5 L0,5.5 L6,3z" fill="#4F8EF7"/></marker>
+                  <marker id="ta1" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0.5 L0,5.5 L6,3z" fill="#8b5cf6"/></marker>
+                  <marker id="ta2" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0.5 L0,5.5 L6,3z" fill="#06b6d4"/></marker>
+                  <marker id="ta3" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0.5 L0,5.5 L6,3z" fill="#10b981"/></marker>
+                  <marker id="ta4" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0.5 L0,5.5 L6,3z" fill="#f59e0b"/></marker>
+                  <marker id="ta5" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0.5 L0,5.5 L6,3z" fill="#ec4899"/></marker>
+                  <marker id="ta6" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0.5 L0,5.5 L6,3z" fill="#a78bfa"/></marker>
+                  <marker id="taInj" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0.5 L0,6.5 L7,3.5z" fill="#4F8EF7"/></marker>
                 </defs>
-                <circle cx="290" cy="255" r="165" fill="none" stroke="rgba(79,142,247,0.07)" stroke-width="1.5" stroke-dasharray="3 8"/>
-                <text x="290" y="250" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="10" font-weight="700" fill="rgba(79,142,247,0.18)" letter-spacing="0.15em">THE</text>
-                <text x="290" y="265" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="10" font-weight="700" fill="rgba(79,142,247,0.18)" letter-spacing="0.15em">LOOP</text>
-                <line x1="290" y1="24" x2="290" y2="60" stroke="#4F8EF7" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#arrInj)"/>
-                <rect x="212" y="4" width="156" height="20" rx="5" fill="rgba(79,142,247,0.15)" stroke="rgba(79,142,247,0.35)" stroke-width="1"/>
-                <text x="290" y="18" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="8.5" font-weight="800" fill="#7EB3FF" letter-spacing="0.12em">SMART SYSTEM</text>
-                <line x1="315" y1="102" x2="394" y2="140" stroke="rgba(79,142,247,0.4)" stroke-width="1.5" marker-end="url(#arr)"/>
-                <line x1="425" y1="179" x2="445" y2="265" stroke="rgba(79,142,247,0.4)" stroke-width="1.5" marker-end="url(#arr)"/>
-                <line x1="434" y1="314" x2="379" y2="382" stroke="rgba(79,142,247,0.4)" stroke-width="1.5" marker-end="url(#arr)"/>
-                <line x1="334" y1="404" x2="246" y2="404" stroke="rgba(79,142,247,0.4)" stroke-width="1.5" marker-end="url(#arr)"/>
-                <line x1="201" y1="382" x2="146" y2="314" stroke="rgba(79,142,247,0.4)" stroke-width="1.5" marker-end="url(#arr)"/>
-                <line x1="135" y1="265" x2="155" y2="179" stroke="rgba(79,142,247,0.4)" stroke-width="1.5" marker-end="url(#arr)"/>
-                <line x1="186" y1="140" x2="265" y2="102" stroke="rgba(79,142,247,0.4)" stroke-width="1.5" marker-end="url(#arr)"/>
-                <circle cx="290" cy="90" r="28" fill="rgba(79,142,247,0.2)" stroke="#4F8EF7" stroke-width="2"/>
+                <!-- Guide ring -->
+                <circle cx="290" cy="255" r="165" fill="none" stroke="rgba(79,142,247,0.08)" stroke-width="1" stroke-dasharray="3 8"/>
+                <!-- Center -->
+                <text x="290" y="250" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="9" font-weight="700" fill="rgba(79,142,247,0.14)" letter-spacing="0.15em">THE</text>
+                <text x="290" y="264" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="9" font-weight="700" fill="rgba(79,142,247,0.14)" letter-spacing="0.15em">LOOP</text>
+                <!-- Injection -->
+                <rect x="220" y="4" width="140" height="18" rx="5" fill="rgba(79,142,247,0.12)" stroke="rgba(79,142,247,0.4)" stroke-width="1"/>
+                <text x="290" y="16" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7.5" font-weight="800" fill="#7EB3FF" letter-spacing="0.14em">SMART SYSTEM</text>
+                <line x1="290" y1="22" x2="290" y2="58" stroke="#4F8EF7" stroke-width="1.5" stroke-dasharray="3 2" marker-end="url(#taInj)"/>
+                <!-- Colored arcs -->
+                <path d="M 316,92 A 165,165 0 0,1 401,133" fill="none" stroke="#4F8EF7" stroke-width="2" stroke-opacity=".75" marker-end="url(#ta0)"/>
+                <path d="M 434,174 A 165,165 0 0,1 455,266" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-opacity=".75" marker-end="url(#ta1)"/>
+                <path d="M 443,317 A 165,165 0 0,1 384,391" fill="none" stroke="#06b6d4" stroke-width="2" stroke-opacity=".75" marker-end="url(#ta2)"/>
+                <path d="M 337,413 A 165,165 0 0,1 243,413" fill="none" stroke="#10b981" stroke-width="2" stroke-opacity=".75" marker-end="url(#ta3)"/>
+                <path d="M 196,391 A 165,165 0 0,1 137,317" fill="none" stroke="#f59e0b" stroke-width="2" stroke-opacity=".75" marker-end="url(#ta4)"/>
+                <path d="M 125,266 A 165,165 0 0,1 146,174" fill="none" stroke="#ec4899" stroke-width="2" stroke-opacity=".75" marker-end="url(#ta5)"/>
+                <path d="M 179,133 A 165,165 0 0,1 264,92" fill="none" stroke="#a78bfa" stroke-width="2" stroke-opacity=".75" marker-end="url(#ta6)"/>
+                <!-- Node 0: TIME SAVED — blue, entry (slightly larger) -->
+                <circle cx="290" cy="90" r="30" fill="rgba(79,142,247,0.15)" stroke="#4F8EF7" stroke-width="2"/>
                 <text x="290" y="87" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7.5" font-weight="800" fill="#7EB3FF">TIME</text>
                 <text x="290" y="99" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7.5" font-weight="800" fill="#7EB3FF">SAVED</text>
-                <circle cx="419" cy="152" r="26" fill="rgba(79,142,247,0.1)" stroke="rgba(79,142,247,0.38)" stroke-width="1.5"/>
-                <text x="419" y="149" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7.5" font-weight="800" fill="#7EB3FF">QUALITY</text>
-                <text x="419" y="161" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7.5" font-weight="800" fill="#7EB3FF">RISES</text>
-                <circle cx="451" cy="292" r="26" fill="rgba(79,142,247,0.1)" stroke="rgba(79,142,247,0.38)" stroke-width="1.5"/>
-                <text x="451" y="289" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7.5" font-weight="800" fill="#7EB3FF">FEWER</text>
-                <text x="451" y="301" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7.5" font-weight="800" fill="#7EB3FF">COMEBACKS</text>
-                <circle cx="362" cy="404" r="26" fill="rgba(79,142,247,0.1)" stroke="rgba(79,142,247,0.38)" stroke-width="1.5"/>
-                <text x="362" y="401" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7.5" font-weight="800" fill="#7EB3FF">MORE</text>
-                <text x="362" y="413" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7.5" font-weight="800" fill="#7EB3FF">CAPACITY</text>
-                <circle cx="218" cy="404" r="26" fill="rgba(79,142,247,0.1)" stroke="rgba(79,142,247,0.38)" stroke-width="1.5"/>
-                <text x="218" y="401" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7.5" font-weight="800" fill="#7EB3FF">FINANCIAL</text>
-                <text x="218" y="413" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7.5" font-weight="800" fill="#7EB3FF">RETURN</text>
-                <circle cx="129" cy="292" r="26" fill="rgba(79,142,247,0.1)" stroke="rgba(79,142,247,0.38)" stroke-width="1.5"/>
-                <text x="129" y="289" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7.5" font-weight="800" fill="#7EB3FF">CLIENT</text>
-                <text x="129" y="301" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7.5" font-weight="800" fill="#7EB3FF">TRUST</text>
-                <circle cx="161" cy="152" r="26" fill="rgba(79,142,247,0.1)" stroke="rgba(79,142,247,0.38)" stroke-width="1.5"/>
-                <text x="161" y="149" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7.5" font-weight="800" fill="#7EB3FF">WELLBEING</text>
-                <text x="161" y="161" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7.5" font-weight="800" fill="#7EB3FF">IMPROVES</text>
+                <!-- Node 1: QUALITY RISES — violet -->
+                <circle cx="419" cy="152" r="26" fill="rgba(139,92,246,0.15)" stroke="#8b5cf6" stroke-width="1.5"/>
+                <text x="419" y="149" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7" font-weight="800" fill="#c4b5fd">QUALITY</text>
+                <text x="419" y="161" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7" font-weight="800" fill="#c4b5fd">RISES</text>
+                <!-- Node 2: FEWER COMEBACKS — cyan -->
+                <circle cx="451" cy="292" r="26" fill="rgba(6,182,212,0.15)" stroke="#06b6d4" stroke-width="1.5"/>
+                <text x="451" y="289" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7" font-weight="800" fill="#67e8f9">FEWER</text>
+                <text x="451" y="301" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7" font-weight="800" fill="#67e8f9">COMEBACKS</text>
+                <!-- Node 3: MORE CAPACITY — emerald -->
+                <circle cx="362" cy="404" r="26" fill="rgba(16,185,129,0.15)" stroke="#10b981" stroke-width="1.5"/>
+                <text x="362" y="401" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7" font-weight="800" fill="#6ee7b7">MORE</text>
+                <text x="362" y="413" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7" font-weight="800" fill="#6ee7b7">CAPACITY</text>
+                <!-- Node 4: FINANCIAL RETURN — amber -->
+                <circle cx="218" cy="404" r="26" fill="rgba(245,158,11,0.15)" stroke="#f59e0b" stroke-width="1.5"/>
+                <text x="218" y="401" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7" font-weight="800" fill="#fcd34d">FINANCIAL</text>
+                <text x="218" y="413" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7" font-weight="800" fill="#fcd34d">RETURN</text>
+                <!-- Node 5: CLIENT TRUST — pink -->
+                <circle cx="129" cy="292" r="26" fill="rgba(236,72,153,0.15)" stroke="#ec4899" stroke-width="1.5"/>
+                <text x="129" y="289" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7" font-weight="800" fill="#f9a8d4">CLIENT</text>
+                <text x="129" y="301" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7" font-weight="800" fill="#f9a8d4">TRUST</text>
+                <!-- Node 6: MORALE RISES — purple -->
+                <circle cx="161" cy="152" r="26" fill="rgba(167,139,250,0.15)" stroke="#a78bfa" stroke-width="1.5"/>
+                <text x="161" y="149" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7" font-weight="800" fill="#c4b5fd">MORALE</text>
+                <text x="161" y="161" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7" font-weight="800" fill="#c4b5fd">RISES</text>
               </svg>
               <div class="cycle-expand-hint">
                 <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
@@ -845,10 +862,13 @@ footer{
 <!-- CYCLE MODAL -->
 <div class="cycle-modal" id="cycleModal">
   <div class="cycle-modal-inner">
-    <button class="cycle-close" id="cycleClose">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-      Close
-    </button>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+      <span style="font-family:var(--grotesk);font-size:0.75rem;font-weight:700;color:rgba(79,142,247,0.5);letter-spacing:0.2em;text-transform:uppercase">The Compounding Cycle</span>
+      <button class="cycle-close" id="cycleClose">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        Close &nbsp;<span style="opacity:0.45;font-size:0.75em">ESC</span>
+      </button>
+    </div>
     <svg id="cycleSvg" viewBox="0 0 1000 800" xmlns="http://www.w3.org/2000/svg" style="display:block">
       <style>
         .ring-a{transform-origin:500px 400px;animation:ringSpin 30s linear infinite}
@@ -934,12 +954,15 @@ footer{
       <circle cx="500" cy="400" r="245" fill="none" stroke="rgba(79,142,247,0.08)" stroke-width="1.5"/>
       <circle cx="500" cy="400" r="128" fill="none" stroke="rgba(79,142,247,0.04)" stroke-width="1" stroke-dasharray="2 7"/>
 
-      <!-- Title -->
-      <text x="500" y="24" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="10.5" font-weight="700" fill="rgba(79,142,247,0.4)" letter-spacing="0.28em">THE COMPOUNDING CYCLE</text>
+      <!-- Title (above badge) -->
+      <text x="500" y="7" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="9" font-weight="700" fill="rgba(79,142,247,0.35)" letter-spacing="0.28em">THE COMPOUNDING CYCLE</text>
 
-      <!-- Center -->
-      <text x="500" y="391" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="13" font-weight="800" fill="rgba(79,142,247,0.13)" letter-spacing="0.2em">THE</text>
-      <text x="500" y="411" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="13" font-weight="800" fill="rgba(79,142,247,0.13)" letter-spacing="0.2em">LOOP</text>
+      <!-- Center static (fades out when node activates) -->
+      <text id="cLbl1" x="500" y="391" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="13" font-weight="800" fill="rgba(79,142,247,0.13)" letter-spacing="0.2em" style="transition:opacity .4s">THE</text>
+      <text id="cLbl2" x="500" y="411" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="13" font-weight="800" fill="rgba(79,142,247,0.13)" letter-spacing="0.2em" style="transition:opacity .4s">LOOP</text>
+      <!-- Center dynamic (shows current active node) -->
+      <text id="cAct1" x="500" y="387" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="8" font-weight="700" fill="rgba(79,142,247,0)" letter-spacing="0.22em" style="transition:fill .4s,opacity .4s" opacity="0">—</text>
+      <text id="cAct2" x="500" y="408" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="16" font-weight="800" fill="rgba(226,232,245,0)" letter-spacing="0.04em" style="transition:fill .4s,opacity .4s" opacity="0">—</text>
 
       <!-- Injection badge -->
       <rect x="394" y="10" width="212" height="30" rx="7" fill="rgba(79,142,247,0.12)" stroke="#4F8EF7" stroke-opacity="0.5" stroke-width="1.5"/>
@@ -1033,8 +1056,9 @@ footer{
       <circle id="trav" cx="-100" cy="-100" r="9" fill="white" opacity="0" style="transition:fill .2s"/>
 
       <!-- Bottom quote -->
-      <line x1="180" y1="756" x2="820" y2="756" stroke="rgba(79,142,247,0.1)" stroke-width="1"/>
-      <text x="500" y="776" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="13.5" font-weight="700" fill="rgba(226,232,245,.55)" letter-spacing="0.03em">The loop runs itself. And it pays for itself.</text>
+      <line x1="180" y1="750" x2="820" y2="750" stroke="rgba(79,142,247,0.1)" stroke-width="1"/>
+      <text x="500" y="769" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="13.5" font-weight="700" fill="rgba(226,232,245,.55)" letter-spacing="0.03em">The loop runs itself. And it pays for itself.</text>
+      <text x="500" y="790" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="rgba(180,196,230,0.25)">Click anywhere outside to close · ESC</text>
     </svg>
   </div>
 </div>
@@ -1401,8 +1425,32 @@ document.querySelectorAll('.reveal-group').forEach(group => {
   const COLORS = ['#4F8EF7','#8b5cf6','#06b6d4','#10b981','#f59e0b','#ec4899','#a78bfa'];
   const ARC_IDS = ['a01','a12','a23','a34','a45','a56','a60'];
   const NODE_IDS = ['nd0','nd1','nd2','nd3','nd4','nd5','nd6'];
+  const CENTER_LABELS = [
+    ['ENTRY POINT','TIME SAVED'],['PSYCHOLOGICAL','QUALITY RISES'],
+    ['PROCESS','FEWER COMEBACKS'],['BUSINESS','MORE CAPACITY'],
+    ['FINANCIAL','FINANCIAL RETURN'],['REPUTATION','CLIENT TRUST'],
+    ['WELLBEING','MORALE RISES'],
+  ];
 
   let raf = null, loopTO = null;
+
+  function setCenter(nodeIdx) {
+    const lbl = CENTER_LABELS[nodeIdx];
+    const c1 = document.getElementById('cLbl1'), c2 = document.getElementById('cLbl2');
+    const a1 = document.getElementById('cAct1'), a2 = document.getElementById('cAct2');
+    if (!c1||!c2||!a1||!a2) return;
+    c1.style.opacity = '0'; c2.style.opacity = '0';
+    a1.textContent = lbl[0]; a2.textContent = lbl[1];
+    a1.setAttribute('fill', COLORS[nodeIdx]); a2.setAttribute('fill','rgba(226,232,245,0.88)');
+    a1.setAttribute('opacity','0.85'); a2.setAttribute('opacity','1');
+  }
+  function resetCenter() {
+    const c1=document.getElementById('cLbl1'),c2=document.getElementById('cLbl2');
+    const a1=document.getElementById('cAct1'),a2=document.getElementById('cAct2');
+    if(c1) c1.style.opacity='1'; if(c2) c2.style.opacity='1';
+    if(a1){a1.setAttribute('opacity','0');a1.setAttribute('fill','rgba(79,142,247,0)');}
+    if(a2){a2.setAttribute('opacity','0');a2.setAttribute('fill','rgba(226,232,245,0)');}
+  }
 
   function activateNode(id) {
     const g = document.getElementById(id);
@@ -1411,6 +1459,9 @@ document.querySelectorAll('.reveal-group').forEach(group => {
     g.querySelector('.nc').style.opacity = '1';
     g.querySelectorAll('.nl').forEach(el => el.style.opacity = '1');
     setTimeout(() => g.querySelectorAll('.nd').forEach(el => el.style.opacity = '1'), 150);
+    // Update center display
+    const idx = NODE_IDS.indexOf(id);
+    if (idx >= 0) setCenter(idx);
   }
 
   function resetAll() {
@@ -1433,6 +1484,7 @@ document.querySelectorAll('.reveal-group').forEach(group => {
     const travG = document.getElementById('travGlow');
     if (trav) { trav.style.opacity = '0'; trav.setAttribute('cx','-100'); trav.setAttribute('cy','-100'); }
     if (travG) { travG.style.opacity = '0'; travG.setAttribute('cx','-100'); travG.setAttribute('cy','-100'); }
+    resetCenter();
   }
 
   function travelArc(idx, onDone) {
@@ -1455,7 +1507,7 @@ document.querySelectorAll('.reveal-group').forEach(group => {
     trav.style.opacity = '1';
     travG.style.opacity = '1';
 
-    const DUR = 680;
+    const DUR = 1100;
     const t0 = performance.now();
 
     function tick(now) {
@@ -1490,12 +1542,12 @@ document.querySelectorAll('.reveal-group').forEach(group => {
       travelArc(n, () => {
         if (n === 6) {
           // Loop complete — brief pause then restart
-          loopTO = setTimeout(startCycle, 1600);
+          loopTO = setTimeout(startCycle, 2200);
         } else {
           doStep(n + 1);
         }
       });
-    }, 460);
+    }, 600);
   }
 
   function runInjection(cb) {
