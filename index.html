@@ -4,6 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JLR Dev — Software that does the work.</title>
+<meta name="description" content="Jan-Louis Reynders — software developer & AI consultant in Bloemfontein, SA. I build automation tools, data pipelines, desktop apps, and websites that remove the manual work slowing your business down.">
+<meta name="author" content="Jan-Louis Reynders">
+<link rel="canonical" href="https://jlrdev.co.za">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://jlrdev.co.za">
+<meta property="og:title" content="JLR Dev — Software that does the work.">
+<meta property="og:description" content="Custom automation tools, data pipelines, desktop apps & websites. Based in SA, working remotely worldwide.">
+<meta property="og:image" content="https://jlrdev.co.za/logo-light.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="JLR Dev — Software that does the work.">
+<meta name="twitter:description" content="Custom automation tools, data pipelines, desktop apps & websites. Based in SA, working remotely worldwide.">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230A1628'/><text x='2' y='23' font-family='Arial Black,Arial,sans-serif' font-size='14' font-weight='900' fill='%234F8EF7'>&lt;</text><text x='9' y='23' font-family='Arial Black,Arial,sans-serif' font-size='13' font-weight='900' fill='%23ffffff'>JLR</text><text x='24' y='23' font-family='Arial Black,Arial,sans-serif' font-size='12' font-weight='900' fill='%234F8EF7'>/></text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -345,7 +356,7 @@ footer{
 
 /* ── RESPONSIVE ── */
 @media(max-width:1024px){.proc-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:900px){.svc-grid,.about-grid,.contact-grid{grid-template-columns:1fr}.svc-card-web{grid-column:auto}.svc-web-inner{flex-direction:column;gap:20px}.about-grid{gap:40px}.testi-wrap{padding:36px 32px}}
+@media(max-width:900px){.port-grid{grid-template-columns:1fr!important}.svc-grid,.about-grid,.contact-grid{grid-template-columns:1fr}.svc-card-web{grid-column:auto}.svc-web-inner{flex-direction:column;gap:20px}.about-grid{gap:40px}.testi-wrap{padding:36px 32px}}
 @media(max-width:640px){.hero-title{font-size:2.8rem}.stats-bar{flex-wrap:wrap;gap:16px;padding:20px 24px;justify-content:center}.stat-div{display:none}.footer-inner{flex-direction:column;gap:32px}.footer-links{gap:32px}.nav-links{display:none}.nav-cta{display:none}.nav-burger{display:flex}.hero-badges{gap:8px}.s-title{font-size:2rem}.form-row{grid-template-columns:1fr}.testi-text{font-size:1.05rem}}
 
 /* ── MOBILE HAMBURGER ── */
@@ -455,7 +466,7 @@ footer{
         <div class="stat-div"></div>
         <div class="stat"><span class="stat-n">~1</span><span class="stat-s">wk</span><span class="stat-l">To First Prototype</span></div>
         <div class="stat-div"></div>
-        <div class="stat"><span class="stat-n">0</span><span class="stat-l">Setup Required</span></div>
+        <div class="stat"><span class="stat-n">24</span><span class="stat-s">h</span><span class="stat-l">Reply Guarantee</span></div>
       </div>
     </div>
   </section>
@@ -539,7 +550,7 @@ footer{
         <h2 class="s-title">Work I've <span style="background:linear-gradient(135deg,#7EB3FF,#4FC3F7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">shipped</span></h2>
         <p class="s-sub">Real tools. Real results. Real clients.</p>
       </div>
-      <div class="reveal" style="max-width:780px;margin:0 auto">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:1100px;margin:0 auto" class="reveal port-grid">
         <div class="case-card">
           <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:4px">
             <span class="s-tag" style="text-align:left;margin:0">Case Study · GeoCalibre Geotechnical</span>
@@ -568,6 +579,50 @@ footer{
             <div class="case-stat"><span class="case-num">8s</span><span class="case-label">Runtime</span></div>
           </div>
           <p class="case-quote">Replaced a full day of manual data entry — extracted in 8 seconds with 100% accuracy</p>
+        </div>
+
+        <!-- FIELD PRO CARD -->
+        <div class="case-card" style="position:relative">
+          <div style="position:absolute;top:20px;right:20px;padding:3px 12px;border-radius:100px;background:rgba(139,92,246,0.12);border:1px solid rgba(139,92,246,0.25);color:#c4b5fd;font-size:0.68rem;font-weight:700;letter-spacing:0.07em;text-transform:uppercase">In Progress</div>
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:4px">
+            <span class="s-tag" style="text-align:left;margin:0">PWA · GeoCalibre Geotechnical</span>
+          </div>
+          <h3 class="approach-title">Field Pro — Offline PWA</h3>
+          <div style="background:rgba(6,8,14,0.95);border-radius:10px;border:1px solid var(--border);margin:20px 0 16px;overflow:hidden">
+            <div style="display:flex;align-items:center;gap:6px;padding:10px 16px;background:rgba(255,255,255,0.025);border-bottom:1px solid rgba(79,142,247,0.08)">
+              <span style="width:12px;height:12px;border-radius:50%;background:#ff5f57;display:inline-block"></span>
+              <span style="width:12px;height:12px;border-radius:50%;background:#ffbd2e;display:inline-block"></span>
+              <span style="width:12px;height:12px;border-radius:50%;background:#28c840;display:inline-block"></span>
+              <span style="margin-left:auto;font-size:0.68rem;color:rgba(255,255,255,0.18);font-family:monospace;letter-spacing:0.05em">field-pro · React + Supabase</span>
+            </div>
+            <div style="padding:20px 24px;font-family:'SF Mono','Fira Code',monospace;font-size:0.82rem;line-height:2">
+              <div><span style="color:#3b82f6;font-weight:700">features</span></div>
+              <div><span style="color:#28c840">✓</span><span style="color:rgba(148,163,184,0.8)"> Offline-first soil profiling</span></div>
+              <div><span style="color:#28c840">✓</span><span style="color:rgba(148,163,184,0.8)"> Syncs to Supabase on reconnect</span></div>
+              <div><span style="color:#28c840">✓</span><span style="color:rgba(148,163,184,0.8)"> Installs like a native app</span></div>
+            </div>
+          </div>
+          <div class="case-stats">
+            <div class="case-stat"><span class="case-num">React</span><span class="case-label">Frontend</span></div>
+            <div class="case-stat"><span class="case-num">PWA</span><span class="case-label">Offline</span></div>
+            <div class="case-stat"><span class="case-num">Supa</span><span class="case-label">Database</span></div>
+            <div class="case-stat"><span class="case-num">Live</span><span class="case-label">Netlify</span></div>
+          </div>
+          <p class="case-quote">Replaces paper-based field data capture — works without signal underground</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL -->
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="testi-wrap reveal">
+        <div class="testi-glow"></div>
+        <div class="testi-qm">"</div>
+        <p class="testi-text">"Jan-Louis built a PDF extraction tool that saves us about 20 hours a week. Our team went from manual data entry to one-click exports. It just works."</p>
+        <div class="testi-attr">
+          <strong>Kevin Coertzen</strong> — <a href="https://www.geocalibre.co.za" target="_blank" rel="noopener noreferrer">GeoCalibre Geotechnical Consultancy</a>
         </div>
       </div>
     </div>
@@ -602,20 +657,6 @@ footer{
         <div class="proc-step"><div class="proc-num">02</div><div class="proc-title">Build the Prototype</div><p class="proc-desc">A working version in days, not weeks. You test it with real data and give feedback while the work is still fluid.</p></div>
         <div class="proc-step"><div class="proc-num">03</div><div class="proc-title">Polish &amp; Package</div><p class="proc-desc">Edge cases handled, UI cleaned, packaged into a clean .exe or web app. No setup needed on your end.</p></div>
         <div class="proc-step"><div class="proc-num">04</div><div class="proc-title">Deliver &amp; Support</div><p class="proc-desc">Handover with documentation. Direct line to me if something needs tweaking. No ticket queue, no waiting.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TESTIMONIAL -->
-  <section class="section" style="padding-top:0">
-    <div class="container">
-      <div class="testi-wrap reveal">
-        <div class="testi-glow"></div>
-        <div class="testi-qm">"</div>
-        <p class="testi-text">"Jan-Louis built a PDF extraction tool that saves us about 20 hours a week. Our team went from manual data entry to one-click exports. It just works."</p>
-        <div class="testi-attr">
-          <strong>Kevin Coertzen</strong> — <a href="https://www.geocalibre.co.za" target="_blank" rel="noopener noreferrer">GeoCalibre Geotechnical Consultancy</a>
-        </div>
       </div>
     </div>
   </section>
@@ -678,6 +719,29 @@ footer{
     </div>
   </section>
 
+  <!-- FOOTER CTA -->
+  <div class="footer-cta">
+    <div class="container">
+      <div class="footer-cta-inner reveal">
+        <div>
+          <p class="fcta-label">Ready to start?</p>
+          <h2 class="fcta-title">Let's build something<br>that saves you time.</h2>
+          <p class="fcta-sub">Tell me what's slowing your business down. I'll come back with a plan — usually within 24 hours.</p>
+        </div>
+        <div class="fcta-actions">
+          <a href="#contact" class="btn btn-primary">
+            Start a Project
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+          <a href="https://wa.me/27828525108" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.003 0C5.373 0 0 5.373 0 12c0 2.117.554 4.1 1.52 5.825L.057 23.5a.5.5 0 0 0 .62.607l5.887-1.543A11.943 11.943 0 0 0 12.003 24C18.627 24 24 18.627 24 12S18.627 0 12.003 0zm0 21.818a9.818 9.818 0 0 1-5.016-1.377l-.359-.214-3.726.977.99-3.614-.235-.371A9.818 9.818 0 0 1 2.182 12c0-5.419 4.402-9.818 9.821-9.818 5.418 0 9.815 4.4 9.815 9.818 0 5.418-4.397 9.818-9.815 9.818z"/></svg>
+            WhatsApp Me
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- FOOTER -->
   <footer>
     <div class="container">
@@ -694,6 +758,7 @@ footer{
           <div class="footer-col">
             <h4>Navigation</h4>
             <a href="#services">Services</a>
+            <a href="#portfolio">Portfolio</a>
             <a href="#about">About</a>
             <a href="#process">Process</a>
             <a href="#contact">Contact</a>
@@ -703,6 +768,11 @@ footer{
             <a href="mailto:jan-louis@jlrdev.co.za">jan-louis@jlrdev.co.za</a>
             <a href="https://wa.me/27828525108" target="_blank" rel="noopener noreferrer">082 852 5108</a>
             <a href="#contact">Start a Project</a>
+          </div>
+          <div class="footer-col">
+            <h4>Connect</h4>
+            <a href="https://www.linkedin.com/in/jan-louis-reynders" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="https://github.com/jlrdevelopment" target="_blank" rel="noopener noreferrer">GitHub</a>
           </div>
           <div class="footer-col">
             <h4>Legal</h4>
@@ -861,19 +931,22 @@ const feedback = document.getElementById('formFeedback');
 if (form && submitBtn && feedback) {
   form.addEventListener('submit', async e => {
     e.preventDefault();
-    submitBtn.disabled = true; submitBtn.textContent = 'Sending...';
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="animation:spin 0.8s linear infinite"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg> Sending...';
     try {
       const data = Object.fromEntries(new FormData(form).entries());
       const res = await fetch(form.action, { method:'POST', body:JSON.stringify(data), headers:{'Content-Type':'application/json','Accept':'application/json'} });
       if (res.ok) {
         feedback.className = 'form-feedback success';
         feedback.textContent = "Message sent — I'll be in touch within 24 hours.";
-        form.reset(); submitBtn.textContent = 'Sent ✓';
+        form.reset();
+        submitBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Sent';
       } else throw new Error();
     } catch {
       feedback.className = 'form-feedback error';
       feedback.textContent = 'Something went wrong. Email me directly at jan-louis@jlrdev.co.za';
-      submitBtn.disabled = false; submitBtn.textContent = 'Send Message';
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = 'Send Message <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="m22 2-7 20-4-9-9-4Z"/></svg>';
     }
   });
 }
@@ -1026,6 +1099,7 @@ document.querySelectorAll('.reveal-group').forEach(group => {
   </svg>
 </a>
 <style>
+@keyframes spin{to{transform:rotate(360deg)}}
 @keyframes waPulse{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,0.45)}50%{box-shadow:0 4px 32px rgba(37,211,102,0.75),0 0 0 8px rgba(37,211,102,0.12)}}
 #waBtn:hover{transform:scale(1.1);box-shadow:0 6px 28px rgba(37,211,102,0.65);animation:none}
 </style>
