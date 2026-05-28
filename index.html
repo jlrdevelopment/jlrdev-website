@@ -360,6 +360,12 @@ footer{
 @media(max-width:900px){.port-grid{grid-template-columns:1fr!important}.svc-grid,.about-grid,.contact-grid{grid-template-columns:1fr}.svc-card-web{grid-column:auto}.svc-web-inner{flex-direction:column;gap:20px}.about-grid{gap:40px}.testi-wrap{padding:36px 32px}}
 @media(max-width:640px){.hero-title{font-size:2.8rem}.stats-bar{flex-wrap:wrap;gap:16px;padding:20px 24px;justify-content:center}.stat-div{display:none}.footer-inner{flex-direction:column;gap:32px}.footer-links{gap:32px}.nav-links{display:none}.nav-cta{display:none}.nav-burger{display:flex}.hero-badges{gap:8px}.s-title{font-size:2rem}.form-row{grid-template-columns:1fr}.testi-text{font-size:1.05rem}}
 
+/* ── KAIZEN TOOLTIP ── */
+.kaizen-label{position:relative;display:inline-flex;align-items:center;gap:6px;cursor:default;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#5eead4;margin-bottom:0}
+.kaizen-tooltip{position:absolute;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%);width:270px;background:rgba(9,11,17,0.97);border:1px solid rgba(94,234,212,0.2);border-radius:12px;padding:14px 16px;font-size:0.78rem;color:var(--muted);line-height:1.65;opacity:0;pointer-events:none;transition:opacity 0.2s;z-index:50;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);text-transform:none;letter-spacing:0;font-weight:400;font-family:var(--sans);white-space:normal}
+.kaizen-tooltip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:6px solid transparent;border-top-color:rgba(94,234,212,0.2)}
+.kaizen-label:hover .kaizen-tooltip{opacity:1}
+
 /* ── MOBILE HAMBURGER ── */
 .nav-burger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:8px 4px;-webkit-tap-highlight-color:transparent}
 .nav-burger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:transform 0.3s,opacity 0.2s,background 0.2s}
@@ -645,20 +651,40 @@ footer{
           </span>
         </div>
         <h2 class="s-title">Built like it was engineered.<br><span style="background:linear-gradient(135deg,#7EB3FF,#4FC3F7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Because it was.</span></h2>
-        <p style="font-size:0.95rem;color:var(--muted);line-height:1.82;margin-bottom:16px">I'm a registered Engineering Technologist (ECSA) — trained to deconstruct complex systems, identify failure points, and design solutions that hold up under real-world conditions. That thinking doesn't stop when I open a code editor.</p>
-        <p style="font-size:0.95rem;color:var(--muted);line-height:1.82;margin-bottom:32px">Combine that with a Postgraduate Diploma in Business Administration from UFS, and you have a developer who understands what a problem actually costs — in hours, in money, in people. I don't measure success in features shipped. I measure it in time given back.</p>
+        <p style="font-size:0.95rem;color:var(--muted);line-height:1.82;margin-bottom:16px">Most software problems are really systems problems. I'm a registered Engineering Technologist (ECSA) — trained to find where things fail before they do. I came to software through a genuine interest in systems and what makes them break.</p>
+        <p style="font-size:0.95rem;color:var(--muted);line-height:1.82;margin-bottom:32px">The ECSA registration and a Postgraduate Diploma in Business Administration from UFS are just evidence that I take both sides of a problem seriously — the technical and the human cost of getting it wrong.</p>
 
         <div class="phil-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:32px;text-align:left">
           <div style="background:rgba(79,142,247,0.05);border:1px solid rgba(79,142,247,0.15);border-radius:var(--radius);padding:24px 26px">
             <p style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent);margin-bottom:12px">The cycle</p>
             <p style="font-size:0.85rem;color:var(--muted);line-height:1.85;margin:0">Saved time reduces errors. Fewer errors mean fewer comebacks. Fewer comebacks free up focus. Focus produces quality. Quality reduces stress. Reduced stress sustains performance. <span style="color:var(--text);font-weight:500">The loop runs itself.</span></p>
           </div>
-          <div style="background:rgba(13,148,136,0.05);border:1px solid rgba(13,148,136,0.15);border-radius:var(--radius);padding:24px 26px">
-            <p style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#5eead4;margin-bottom:12px">改善 — Kaizen</p>
-            <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:10px">
-              <span style="font-family:var(--grotesk);font-size:2.4rem;font-weight:800;color:var(--text);letter-spacing:-0.05em;line-height:1">37.78<span style="font-size:1.2rem;color:#5eead4">×</span></span>
+          <div style="background:rgba(13,148,136,0.05);border:1px solid rgba(13,148,136,0.15);border-radius:var(--radius);padding:24px 26px;position:relative;overflow:hidden">
+            <div style="position:absolute;top:-30px;right:-30px;width:100px;height:100px;border-radius:50%;background:radial-gradient(circle,rgba(13,148,136,0.18),transparent 70%);pointer-events:none"></div>
+            <div class="kaizen-label">
+              改善 — Kaizen
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.45;flex-shrink:0"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+              <div class="kaizen-tooltip">
+                <strong style="color:var(--text);font-size:0.82rem">改善 (Kaizen)</strong> — Japanese: <em>"change for better"</em><br><br>
+                The philosophy of continuous improvement through small, consistent gains. Not a single breakthrough — a system that compounds. Originally from Japanese manufacturing, now a core principle in business and software.
+              </div>
             </div>
-            <p style="font-size:0.82rem;color:var(--muted);line-height:1.7;margin:0">1% better every day for a year. Not a revolution — a system. <span style="font-family:monospace;font-size:0.78rem;color:rgba(94,234,212,0.6)">1.01³⁶⁵ = 37.78</span></p>
+            <div style="display:flex;align-items:flex-end;gap:3px;height:44px;margin:14px 0 12px">
+              <div style="flex:1;height:3%;background:rgba(94,234,212,0.2);border-radius:2px 2px 0 0"></div>
+              <div style="flex:1;height:4%;background:rgba(94,234,212,0.25);border-radius:2px 2px 0 0"></div>
+              <div style="flex:1;height:7%;background:rgba(94,234,212,0.3);border-radius:2px 2px 0 0"></div>
+              <div style="flex:1;height:10%;background:rgba(94,234,212,0.38);border-radius:2px 2px 0 0"></div>
+              <div style="flex:1;height:16%;background:rgba(94,234,212,0.46);border-radius:2px 2px 0 0"></div>
+              <div style="flex:1;height:25%;background:rgba(94,234,212,0.55);border-radius:2px 2px 0 0"></div>
+              <div style="flex:1;height:40%;background:rgba(94,234,212,0.65);border-radius:2px 2px 0 0"></div>
+              <div style="flex:1;height:62%;background:rgba(94,234,212,0.8);border-radius:2px 2px 0 0"></div>
+              <div style="flex:1;height:100%;background:#5eead4;border-radius:2px 2px 0 0;box-shadow:0 0 8px rgba(94,234,212,0.5)"></div>
+            </div>
+            <div style="display:flex;align-items:baseline;gap:4px;margin-bottom:6px">
+              <span style="font-family:var(--grotesk);font-size:2.6rem;font-weight:800;color:var(--text);letter-spacing:-0.05em;line-height:1">37.78</span>
+              <span style="font-size:1.3rem;font-weight:800;color:#5eead4;line-height:1">×</span>
+            </div>
+            <p style="font-size:0.8rem;color:var(--muted);line-height:1.65;margin:0">1% better every day for a year. <span style="font-family:monospace;font-size:0.74rem;color:rgba(94,234,212,0.5)">1.01³⁶⁵ = 37.78</span></p>
           </div>
         </div>
 
