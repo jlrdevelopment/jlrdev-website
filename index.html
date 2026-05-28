@@ -460,17 +460,6 @@ footer{
     </div>
   </section>
 
-  <!-- TRUSTED BY -->
-  <div class="trusted">
-    <div class="container">
-      <p class="trusted-label">Recent Work</p>
-      <a href="https://www.geocalibre.co.za" target="_blank" rel="noopener noreferrer" style="text-decoration:none">
-        <p class="trusted-name">GeoCalibre</p>
-        <p class="trusted-sub">Geotechnical Consultancy · Bloemfontein</p>
-      </a>
-    </div>
-  </div>
-
   <!-- SERVICES -->
   <section class="section" id="services">
     <div class="container">
@@ -542,37 +531,49 @@ footer{
     </div>
   </section>
 
+  <!-- PORTFOLIO -->
+  <section class="section" id="portfolio">
+    <div class="container">
+      <div class="reveal">
+        <span class="s-tag">Portfolio</span>
+        <h2 class="s-title">Work I've <span style="background:linear-gradient(135deg,#7EB3FF,#4FC3F7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">shipped</span></h2>
+        <p class="s-sub">Real tools. Real results. Real clients.</p>
+      </div>
+      <div class="reveal" style="max-width:780px;margin:0 auto">
+        <div class="case-card">
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:4px">
+            <span class="s-tag" style="text-align:left;margin:0">Case Study · GeoCalibre Geotechnical</span>
+            <a href="https://www.geocalibre.co.za" target="_blank" rel="noopener noreferrer" style="font-size:0.8rem;color:var(--accent-lt);text-decoration:none;border-bottom:1px solid rgba(79,142,247,0.25);transition:border-color 0.2s" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='rgba(79,142,247,0.25)'">geocalibre.co.za ↗</a>
+          </div>
+          <h3 class="approach-title">PDF Data Extractor</h3>
+          <div class="case-carousel">
+            <img class="case-slide active" src="gc-ui-0.png" alt="GeoTech PDF Extractor UI — empty state">
+            <img class="case-slide" src="gc-ui-1.png" alt="GeoTech PDF Extractor UI — 33 files loaded">
+            <img class="case-slide" src="gc-ui-2.png" alt="GeoTech PDF Extractor UI — extraction complete">
+          </div>
+          <div class="case-stats">
+            <div class="case-stat"><span class="case-num">33</span><span class="case-label">PDFs</span></div>
+            <div class="case-stat"><span class="case-num">49</span><span class="case-label">Samples</span></div>
+            <div class="case-stat"><span class="case-num">850+</span><span class="case-label">Data points</span></div>
+            <div class="case-stat"><span class="case-num">8s</span><span class="case-label">Runtime</span></div>
+          </div>
+          <p class="case-quote">Replaced a full day of manual data entry — extracted in 8 seconds with 100% accuracy</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ABOUT -->
   <section class="section" id="about">
     <div class="container">
-      <div class="about-grid">
-        <div class="reveal">
-          <div class="case-card">
-            <span class="s-tag" style="text-align:left">Case Study</span>
-            <h3 class="approach-title">GeoCalibre — PDF Data Extractor</h3>
-            <div class="case-carousel">
-              <img class="case-slide active" src="gc-ui-0.png" alt="GeoTech PDF Extractor UI — empty state">
-              <img class="case-slide" src="gc-ui-1.png" alt="GeoTech PDF Extractor UI — 33 files loaded">
-              <img class="case-slide" src="gc-ui-2.png" alt="GeoTech PDF Extractor UI — extraction complete">
-            </div>
-            <div class="case-stats">
-              <div class="case-stat"><span class="case-num">33</span><span class="case-label">PDFs</span></div>
-              <div class="case-stat"><span class="case-num">49</span><span class="case-label">Samples</span></div>
-              <div class="case-stat"><span class="case-num">850+</span><span class="case-label">Data points</span></div>
-              <div class="case-stat"><span class="case-num">1</span><span class="case-label">Excel file</span></div>
-            </div>
-            <p class="case-quote">Extracted in 8 seconds — replaced a full day of manual data entry</p>
-          </div>
-        </div>
-        <div class="about-copy reveal">
-          <span class="s-tag" style="text-align:left">About Me</span>
-          <h2 class="s-title" style="text-align:left">I build systems that make <span style="background:linear-gradient(135deg,#7EB3FF,#4FC3F7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">your work easier</span></h2>
-          <p>I'm a systems builder who turns repetitive tasks into automated tools. My first client was a specialist geotechnical consultancy — I built them a PDF data extraction app that saved 20+ hours per week.</p>
-          <p>I work across industries, remotely with businesses across South Africa and internationally. If you have a manual process that takes too long, I can probably automate it.</p>
-          <div class="about-actions">
-            <a href="#contact" class="btn btn-primary">Start a Project</a>
-            <a href="#process" class="btn btn-ghost">How It Works</a>
-          </div>
+      <div class="about-copy reveal" style="max-width:640px;margin:0 auto;text-align:center">
+        <span class="s-tag">About Me</span>
+        <h2 class="s-title">I build systems that make <span style="background:linear-gradient(135deg,#7EB3FF,#4FC3F7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">your work easier</span></h2>
+        <p>I'm a systems builder who turns repetitive tasks into automated tools. My first client was a specialist geotechnical consultancy — I built them a PDF data extraction app that saved 20+ hours per week.</p>
+        <p>I work across industries, remotely with businesses across South Africa and internationally. If you have a manual process that takes too long, I can probably automate it.</p>
+        <div class="about-actions" style="justify-content:center">
+          <a href="#contact" class="btn btn-primary">Start a Project</a>
+          <a href="#process" class="btn btn-ghost">How It Works</a>
         </div>
       </div>
     </div>
