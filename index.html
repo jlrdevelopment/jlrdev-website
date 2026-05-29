@@ -338,16 +338,17 @@ footer{
 @keyframes navUnderline{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 
 /* ── FAQ ── */
-.faq-grid{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:0}
-.faq-item{border-bottom:1px solid var(--border);overflow:hidden}
-.faq-item:first-child{border-top:1px solid var(--border)}
-.faq-q{display:flex;align-items:center;justify-content:space-between;padding:20px 0;cursor:pointer;font-family:var(--grotesk);font-size:1rem;font-weight:600;color:var(--text);gap:16px;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none}
+.faq-grid{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:0;background:rgba(13,15,22,0.82);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-radius:var(--radius);border:1px solid var(--border);overflow:hidden}
+.faq-item{border-bottom:1px solid var(--border);padding:0 28px;overflow:hidden}
+.faq-item:last-child{border-bottom:none}
+.faq-q{display:flex;align-items:center;justify-content:space-between;padding:22px 0;cursor:pointer;font-family:var(--grotesk);font-size:1rem;font-weight:600;color:var(--text);gap:16px;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none}
 .faq-q:hover{color:var(--accent-lt)}
 .faq-icon{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--border-hi);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .3s,border-color .2s,background .2s;color:var(--accent)}
 .faq-item.open .faq-icon{transform:rotate(45deg);border-color:var(--accent);background:var(--accent-dim)}
 .faq-a{max-height:0;overflow:hidden;transition:max-height .38s cubic-bezier(.4,0,.2,1),padding .38s}
-.faq-item.open .faq-a{max-height:300px}
-.faq-a-inner{padding:0 0 20px;font-size:0.9rem;color:var(--muted);line-height:1.8}
+.faq-item.open .faq-a{max-height:600px}
+.faq-a-inner{padding:0 0 22px;font-size:0.92rem;color:var(--muted);line-height:1.85}
+.faq-a-inner strong{color:var(--text)}
 
 /* ── FORM SUCCESS ANIMATION ── */
 @keyframes checkPop{0%{transform:scale(0) rotate(-10deg);opacity:0}60%{transform:scale(1.2) rotate(3deg)}100%{transform:scale(1) rotate(0);opacity:1}}
@@ -979,7 +980,13 @@ footer{
             What does it cost?
             <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
           </div>
-          <div class="faq-a"><div class="faq-a-inner">Projects are priced per deliverable, not by the hour. A focused automation tool typically starts around R8,000–R20,000. Websites from R8,000. Larger systems are scoped individually. I'll always give you a fixed price before starting — no billing surprises. Not VAT registered, so what you see is what you pay.</div></div>
+          <div class="faq-a"><div class="faq-a-inner">Fixed-price per deliverable — no hourly billing, no surprises. Typical ranges:<br><br>
+<strong>Websites</strong> — R6,500 to R22,000 depending on scope and complexity<br>
+<strong>Automation tools &amp; scripts</strong> — R5,500 to R18,000<br>
+<strong>Desktop applications (.exe)</strong> — R12,000 to R45,000<br>
+<strong>Data extraction &amp; pipelines</strong> — R8,000 to R25,000<br>
+<strong>Web apps &amp; PWAs</strong> — R18,000 to R65,000<br><br>
+You get a fixed quote before any work starts. I'm not VAT registered, so there are no add-ons. For larger or ongoing projects, phased pricing is available. Complex or custom systems are scoped individually — contact me with the details and I'll give you an honest number.</div></div>
         </div>
         <div class="faq-item">
           <div class="faq-q" onclick="toggleFaq(this)">
