@@ -320,7 +320,57 @@ footer{
 @media(max-width:1024px){.proc-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:640px){.phil-grid{grid-template-columns:1fr!important}.section{padding:64px 0}}
 @media(max-width:900px){.port-grid{grid-template-columns:1fr!important}.svc-grid,.contact-grid{grid-template-columns:1fr}.svc-card-web{grid-column:auto}.svc-web-inner{flex-direction:column;gap:20px}.testi-wrap{padding:36px 32px}}
-@media(max-width:640px){.hero-title{font-size:2.4rem}.stats-bar{flex-wrap:wrap;gap:16px;padding:20px 20px;justify-content:center}.stat-div{display:none}.footer-inner{flex-direction:column;gap:32px}.footer-links{gap:32px}.nav-links{display:none}.nav-cta{display:none}.nav-burger{display:flex}.hero-badges{gap:8px}.s-title{font-size:1.85rem}.form-row{grid-template-columns:1fr}.testi-text{font-size:1rem}.testi-wrap{padding:28px 24px}.container{padding:0 18px}.hero-sub{font-size:1rem}}
+@media(max-width:640px){
+  /* Core layout */
+  .hero-title{font-size:2.2rem}
+  .hero-sub{font-size:0.97rem}
+  .s-title{font-size:1.75rem}
+  .container{padding:0 16px}
+  .section{padding:56px 0}
+
+  /* Hero stats — 2x2 grid */
+  .stats-bar{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:18px 16px;border-radius:14px}
+  .stat-div{display:none}
+  .stat{padding:8px 0}
+  .stat-n{font-size:1.6rem}
+
+  /* Nav */
+  .nav-links{display:none}
+  .nav-cta{display:none}
+  .nav-burger{display:flex}
+
+  /* Hero badges */
+  .hero-badges{gap:6px}
+  .badge{font-size:0.72rem;padding:5px 12px}
+
+  /* Services — reduce padding on mobile */
+  .svc-card{padding:24px 20px}
+  .svc-icon{width:44px;height:44px;margin-bottom:16px}
+
+  /* Process — single column on phone */
+  .proc-grid{grid-template-columns:1fr!important}
+  .proc-step{padding:20px 18px}
+
+  /* Testimonial */
+  .testi-wrap{padding:24px 20px}
+  .testi-text{font-size:0.97rem}
+  .testi-qm{font-size:3.5rem}
+
+  /* Contact form */
+  .form-row{grid-template-columns:1fr}
+  .contact-grid{gap:32px}
+  .hint-chips-wrap{display:none} /* hide hint chips on mobile — too cluttered */
+
+  /* Footer */
+  .footer-inner{flex-direction:column;gap:28px}
+  .footer-links{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .footer-bottom{flex-direction:column;text-align:center;gap:8px}
+
+  /* About */
+  .about-copy p{font-size:0.9rem}
+  .nd-stat-num{font-size:2rem}
+  .nd-title{font-size:1.5rem}
+}
 
 /* ── NODE DETAIL PANEL ── */
 .nd-panel{position:fixed;inset:0;z-index:495;background:rgba(9,11,17,0.97);backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);display:flex;align-items:center;justify-content:center;padding:24px;visibility:hidden;opacity:0;transition:opacity .3s,visibility .3s;overflow-y:auto}
@@ -400,6 +450,9 @@ footer{
 }
 #cycleThumb{cursor:pointer;border-radius:10px;overflow:hidden;border:1px solid rgba(79,142,247,0.1);position:relative;transition:border-color 0.25s,box-shadow 0.25s}
 #cycleThumb:hover{border-color:rgba(79,142,247,0.3);box-shadow:0 0 24px rgba(79,142,247,0.1)}
+#cycleThumbMobile{display:none;cursor:pointer;border-radius:12px;border:1px solid rgba(79,142,247,0.15);background:rgba(79,142,247,0.05);padding:20px;text-align:center;transition:border-color 0.25s,background 0.25s}
+#cycleThumbMobile:active{background:rgba(79,142,247,0.1)}
+@media(max-width:640px){#cycleThumb{display:none}#cycleThumbMobile{display:block}}
 .cycle-expand-hint{position:absolute;bottom:10px;right:10px;background:rgba(9,11,17,0.88);border:1px solid rgba(79,142,247,0.22);border-radius:6px;padding:5px 12px;font-size:0.68rem;font-weight:600;color:var(--muted2);display:flex;align-items:center;gap:5px;pointer-events:none}
 
 /* ── KAIZEN TOOLTIP ── */
@@ -772,6 +825,23 @@ footer{
               </div>
             </div>
             <p style="font-size:0.78rem;color:var(--text);font-weight:600;margin:8px 0 0;text-align:center">The loop runs itself. And it pays for itself.</p>
+            <!-- Mobile teaser (shows instead of SVG on phone) -->
+            <div id="cycleThumbMobile" onclick="document.getElementById('cycleModal').classList.add('open');document.body.style.overflow='hidden'">
+              <div style="display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:14px">
+                <span style="padding:5px 14px;border-radius:100px;font-size:0.72rem;font-weight:700;background:rgba(79,142,247,0.12);color:#7EB3FF;border:1px solid rgba(79,142,247,0.2)">Time Saved</span>
+                <span style="padding:5px 14px;border-radius:100px;font-size:0.72rem;font-weight:700;background:rgba(139,92,246,0.12);color:#c4b5fd;border:1px solid rgba(139,92,246,0.2)">Quality Rises</span>
+                <span style="padding:5px 14px;border-radius:100px;font-size:0.72rem;font-weight:700;background:rgba(6,182,212,0.12);color:#67e8f9;border:1px solid rgba(6,182,212,0.2)">Fewer Comebacks</span>
+                <span style="padding:5px 14px;border-radius:100px;font-size:0.72rem;font-weight:700;background:rgba(16,185,129,0.12);color:#6ee7b7;border:1px solid rgba(16,185,129,0.2)">More Capacity</span>
+                <span style="padding:5px 14px;border-radius:100px;font-size:0.72rem;font-weight:700;background:rgba(245,158,11,0.12);color:#fcd34d;border:1px solid rgba(245,158,11,0.2)">Financial Return</span>
+                <span style="padding:5px 14px;border-radius:100px;font-size:0.72rem;font-weight:700;background:rgba(236,72,153,0.12);color:#f9a8d4;border:1px solid rgba(236,72,153,0.2)">Client Trust</span>
+                <span style="padding:5px 14px;border-radius:100px;font-size:0.72rem;font-weight:700;background:rgba(167,139,250,0.12);color:#c4b5fd;border:1px solid rgba(167,139,250,0.2)">Morale Rises</span>
+              </div>
+              <p style="font-size:0.78rem;color:var(--muted);margin:0 0 10px">The compounding cycle — tap to explore each stage with research &amp; data.</p>
+              <div style="display:inline-flex;align-items:center;gap:6px;font-size:0.78rem;font-weight:600;color:var(--accent)">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                Tap to open full diagram
+              </div>
+            </div>
           </div>
           <div style="background:rgba(13,148,136,0.05);border:1px solid rgba(13,148,136,0.15);border-radius:var(--radius);padding:24px 26px;position:relative">
             <div style="position:absolute;top:-30px;right:-30px;width:100px;height:100px;border-radius:50%;background:radial-gradient(circle,rgba(13,148,136,0.18),transparent 70%);pointer-events:none"></div>
@@ -843,7 +913,7 @@ footer{
             <div class="field">
               <label>Message</label>
               <textarea name="message" rows="5" placeholder="e.g. I run a small logistics company. Every Monday my team spends 4 hours copying data from 3 spreadsheets into a report. We use Excel and a custom system. My budget is around R15 000 and I need it done within 6 weeks." required></textarea>
-              <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:8px">
+              <div class="hint-chips-wrap" style="margin-top:10px;display:flex;flex-wrap:wrap;gap:8px">
                 <span style="font-size:0.72rem;color:var(--muted);width:100%;margin-bottom:2px;text-transform:uppercase;letter-spacing:0.08em">Helpful to include:</span>
                 <span class="hint-chip" onclick="addHint(this)">The task that takes the most time is</span>
                 <span class="hint-chip" onclick="addHint(this)">I currently use</span>
@@ -1472,6 +1542,7 @@ document.querySelectorAll('.reveal-group').forEach(group => {
 @keyframes spin{to{transform:rotate(360deg)}}
 @keyframes waPulse{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,0.45)}50%{box-shadow:0 4px 32px rgba(37,211,102,0.75),0 0 0 8px rgba(37,211,102,0.12)}}
 #waBtn:hover{transform:scale(1.1);box-shadow:0 6px 28px rgba(37,211,102,0.65);animation:none}
+#waBtn{transition:opacity 0.3s,transform 0.2s,box-shadow 0.2s}
 </style>
 <script>
 (function(){
@@ -1662,6 +1733,16 @@ document.getElementById('ndPanel').addEventListener('click', e => {
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') document.getElementById('ndPanel')?.classList.remove('open');
 });
+
+// ── HIDE WHATSAPP FLOAT WHEN FORM FOCUSED ON MOBILE ──
+(function(){
+  const waBtn = document.getElementById('waBtn');
+  if (!waBtn) return;
+  document.querySelectorAll('.contact-form input, .contact-form textarea').forEach(el => {
+    el.addEventListener('focus', () => { waBtn.style.opacity = '0'; waBtn.style.pointerEvents = 'none'; });
+    el.addEventListener('blur', () => { waBtn.style.opacity = '1'; waBtn.style.pointerEvents = ''; });
+  });
+})();
 
 // ── CYCLE DIAGRAM ANIMATION ──
 (function(){
