@@ -1763,7 +1763,7 @@ document.addEventListener('keydown', e => {
       travelArc(n, () => {
         if (n === 6) {
           // Loop complete — brief pause then restart
-          loopTO = setTimeout(startCycle, 2200);
+          loopTO = setTimeout(startCycle, 900);
         } else {
           doStep(n + 1);
         }
