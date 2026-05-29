@@ -325,10 +325,31 @@ footer{
 /* ── NODE DETAIL PANEL ── */
 .nd-panel{position:fixed;inset:0;z-index:495;background:rgba(9,11,17,0.97);backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);display:flex;align-items:center;justify-content:center;padding:24px;visibility:hidden;opacity:0;transition:opacity .3s,visibility .3s;overflow-y:auto}
 .nd-panel.open{visibility:visible;opacity:1}
-.nd-card{width:100%;max-width:660px;background:rgba(17,19,28,0.9);border-radius:20px;border:1px solid rgba(255,255,255,0.07);overflow:hidden}
+.nd-card{width:100%;max-width:660px;background:rgba(17,19,28,0.9);border-radius:20px;border:1px solid rgba(255,255,255,0.07);overflow:hidden;position:relative}
 .nd-top{padding:28px 32px 24px;border-bottom:1px solid rgba(255,255,255,0.06)}
 .nd-back{display:inline-flex;align-items:center;gap:7px;background:none;border:none;color:rgba(180,196,230,0.55);font-size:0.8rem;font-weight:600;cursor:pointer;padding:0;margin-bottom:20px;font-family:var(--sans);transition:color .2s}
 .nd-back:hover{color:var(--text)}
+/* Mobile close bar — fixed at bottom on small screens */
+.nd-mobile-close{display:none}
+@media(max-width:640px){
+  .nd-panel{padding:0;align-items:flex-end}
+  .nd-card{border-radius:20px 20px 0 0;max-height:92vh;overflow-y:auto;padding-bottom:72px}
+  .nd-top{padding:20px 20px 18px}
+  .nd-body{padding:16px 20px}
+  .nd-stat-row{padding:16px 20px}
+  .nd-source{padding:12px 20px 16px}
+  .nd-mobile-close{
+    display:flex;align-items:center;justify-content:center;gap:10px;
+    position:fixed;bottom:0;left:0;right:0;z-index:496;
+    background:rgba(13,15,22,0.97);backdrop-filter:blur(16px);
+    border-top:1px solid rgba(79,142,247,0.15);
+    padding:14px 24px;
+    font-family:var(--sans);font-size:0.9rem;font-weight:600;
+    color:rgba(180,196,230,0.8);cursor:pointer;border:none;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .nd-mobile-close:active{background:rgba(79,142,247,0.12)}
+}
 .nd-cat-badge{display:inline-block;font-size:0.68rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;padding:4px 12px;border-radius:100px;margin-bottom:10px}
 .nd-title{font-family:var(--grotesk);font-size:2rem;font-weight:800;color:var(--text);letter-spacing:-0.03em;margin-bottom:10px;line-height:1.1}
 .nd-tagline{font-size:0.95rem;color:var(--muted);line-height:1.7;font-style:italic;border-left:3px solid;padding-left:14px;margin:0}
@@ -1140,6 +1161,11 @@ footer{
     <div class="nd-body" id="ndPoints"></div>
     <div class="nd-source" id="ndSource">—</div>
   </div>
+  <!-- Mobile sticky close bar -->
+  <button class="nd-mobile-close" id="ndMobileClose">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 5-7 7 7 7"/></svg>
+    Back to cycle
+  </button>
 </div>
 
 <!-- SCRIPTS -->
@@ -1625,10 +1651,12 @@ function openNodeDetail(idx) {
   document.body.style.overflow = 'hidden';
 }
 
-document.getElementById('ndBack').addEventListener('click', () => {
+function closeNdPanel() {
   document.getElementById('ndPanel').classList.remove('open');
-  document.body.style.overflow = 'hidden'; // keep cycle modal scroll locked
-});
+  document.body.style.overflow = 'hidden';
+}
+document.getElementById('ndBack').addEventListener('click', closeNdPanel);
+document.getElementById('ndMobileClose').addEventListener('click', closeNdPanel);
 document.getElementById('ndPanel').addEventListener('click', e => {
   if (e.target === document.getElementById('ndPanel')) {
     document.getElementById('ndPanel').classList.remove('open');
