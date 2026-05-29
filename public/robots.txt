@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://jlrdev.co.za/sitemap.xml

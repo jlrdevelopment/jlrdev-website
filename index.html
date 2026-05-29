@@ -15,6 +15,22 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="JLR Dev — Software that does the work.">
 <meta name="twitter:description" content="Custom automation tools, data pipelines, desktop apps & websites. Based in SA, working remotely worldwide.">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"ProfessionalService",
+  "name":"JLR Dev",
+  "url":"https://jlrdev.co.za",
+  "logo":"https://jlrdev.co.za/logo-light.png",
+  "description":"Software developer & AI consultant building automation tools, data pipelines, desktop apps and websites that save businesses time.",
+  "founder":{"@type":"Person","name":"Jan-Louis Reynders","jobTitle":"Software Developer & AI Consultant","email":"jan-louis@jlrdev.co.za"},
+  "address":{"@type":"PostalAddress","addressLocality":"Bloemfontein","addressRegion":"Free State","addressCountry":"ZA"},
+  "telephone":"+27828525108",
+  "email":"jan-louis@jlrdev.co.za",
+  "areaServed":["ZA","Worldwide"],
+  "serviceType":["Software Development","Automation","Data Pipelines","Desktop Applications","Website Design","AI Integration"]
+}
+</script>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230A1628'/><text x='2' y='23' font-family='Arial Black,Arial,sans-serif' font-size='14' font-weight='900' fill='%234F8EF7'>&lt;</text><text x='9' y='23' font-family='Arial Black,Arial,sans-serif' font-size='13' font-weight='900' fill='%23ffffff'>JLR</text><text x='24' y='23' font-family='Arial Black,Arial,sans-serif' font-size='12' font-weight='900' fill='%234F8EF7'>/></text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -310,6 +326,33 @@ footer{
 .footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:24px;border-top:1px solid var(--border);font-size:0.8rem;color:var(--muted2);flex-wrap:wrap;gap:12px}
 
 
+/* ── SCROLL TO TOP ── */
+.stt{position:fixed;bottom:96px;right:28px;z-index:199;width:42px;height:42px;border-radius:50%;background:rgba(79,142,247,0.12);border:1px solid rgba(79,142,247,0.25);color:var(--accent);display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transform:translateY(12px);transition:opacity .3s,transform .3s,background .2s;pointer-events:none}
+.stt.show{opacity:1;transform:translateY(0);pointer-events:auto}
+.stt:hover{background:rgba(79,142,247,0.22);border-color:var(--accent)}
+@media(max-width:640px){.stt{bottom:80px;right:16px;width:38px;height:38px}}
+
+/* ── ACTIVE NAV ── */
+.nav-links a.nav-active{color:var(--text)}
+.nav-links a.nav-active::after{content:'';display:block;height:2px;background:var(--accent);border-radius:2px;margin-top:2px;animation:navUnderline .25s ease}
+@keyframes navUnderline{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+/* ── FAQ ── */
+.faq-grid{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:0}
+.faq-item{border-bottom:1px solid var(--border);overflow:hidden}
+.faq-item:first-child{border-top:1px solid var(--border)}
+.faq-q{display:flex;align-items:center;justify-content:space-between;padding:20px 0;cursor:pointer;font-family:var(--grotesk);font-size:1rem;font-weight:600;color:var(--text);gap:16px;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none}
+.faq-q:hover{color:var(--accent-lt)}
+.faq-icon{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--border-hi);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .3s,border-color .2s,background .2s;color:var(--accent)}
+.faq-item.open .faq-icon{transform:rotate(45deg);border-color:var(--accent);background:var(--accent-dim)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .38s cubic-bezier(.4,0,.2,1),padding .38s}
+.faq-item.open .faq-a{max-height:300px}
+.faq-a-inner{padding:0 0 20px;font-size:0.9rem;color:var(--muted);line-height:1.8}
+
+/* ── FORM SUCCESS ANIMATION ── */
+@keyframes checkPop{0%{transform:scale(0) rotate(-10deg);opacity:0}60%{transform:scale(1.2) rotate(3deg)}100%{transform:scale(1) rotate(0);opacity:1}}
+.form-success-icon{animation:checkPop .45s cubic-bezier(.34,1.56,.64,1) forwards}
+
 /* ── REVEAL ── */
 .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.7s cubic-bezier(0.4,0,0.2,1),transform 0.7s cubic-bezier(0.4,0,0.2,1)}
 .reveal.visible{opacity:1;transform:translateY(0)}
@@ -495,6 +538,7 @@ footer{
         <a href="#about">About</a>
         <a href="#portfolio">Portfolio</a>
         <a href="#process">Process</a>
+        <a href="#faq">FAQ</a>
         <a href="#contact">Contact</a>
       </div>
       <a href="#contact" class="nav-cta">Start a Project</a>
@@ -509,6 +553,7 @@ footer{
     <a href="#about" class="mob-link">About</a>
     <a href="#portfolio" class="mob-link">Portfolio</a>
     <a href="#process" class="mob-link">Process</a>
+    <a href="#faq" class="mob-link">FAQ</a>
     <a href="#contact" class="mob-link">Contact</a>
     <div class="mob-cta-wrap">
       <a href="#contact" class="btn btn-primary">Start a Project</a>
@@ -712,6 +757,18 @@ footer{
           </div>
           <p class="case-quote">Replaces paper-based field data capture — works without signal underground</p>
         </div>
+
+        <!-- MORE COMING CARD -->
+        <div class="case-card reveal" style="border-style:dashed;border-color:rgba(79,142,247,0.15);background:rgba(79,142,247,0.03);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:260px;gap:14px">
+          <div style="width:48px;height:48px;border-radius:50%;border:1.5px dashed rgba(79,142,247,0.3);display:flex;align-items:center;justify-content:center;color:var(--accent)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </div>
+          <div>
+            <p style="font-family:var(--grotesk);font-size:0.95rem;font-weight:700;color:var(--text);margin-bottom:6px">More projects in progress</p>
+            <p style="font-size:0.82rem;color:var(--muted);line-height:1.6;max-width:200px;margin:0 auto">Building the pipeline. New case studies added as projects ship.</p>
+          </div>
+          <a href="#contact" class="btn btn-ghost" style="font-size:0.8rem;padding:10px 20px">Start your project</a>
+        </div>
       </div>
     </div>
   </section>
@@ -893,6 +950,61 @@ footer{
     </div>
   </section>
 
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="reveal">
+        <span class="s-tag">FAQ</span>
+        <h2 class="s-title">Common <span style="background:linear-gradient(135deg,#7EB3FF,#4FC3F7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">questions</span></h2>
+        <p class="s-sub">Straight answers. No sales pitch.</p>
+      </div>
+      <div class="faq-grid reveal">
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            How long does a typical project take?
+            <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+          </div>
+          <div class="faq-a"><div class="faq-a-inner">Most projects go from first conversation to working prototype within 1–2 weeks. Full delivery depends on complexity — a focused automation tool is typically 2–4 weeks. A full website is 2–3 weeks. I'll always give you a realistic timeline upfront, before any work starts.</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            What does it cost?
+            <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+          </div>
+          <div class="faq-a"><div class="faq-a-inner">Projects are priced per deliverable, not by the hour. A focused automation tool typically starts around R8,000–R20,000. Websites from R8,000. Larger systems are scoped individually. I'll always give you a fixed price before starting — no billing surprises. Not VAT registered, so what you see is what you pay.</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Do you work with clients outside South Africa?
+            <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+          </div>
+          <div class="faq-a"><div class="faq-a-inner">Yes. I work fully remotely. Current clients are based in South Africa, but the work is location-independent. If you have a problem I can solve, geography isn't an obstacle. Payment in ZAR or USD via EFT or card.</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            What do you need from me to get started?
+            <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+          </div>
+          <div class="faq-a"><div class="faq-a-inner">Just a description of your problem — what's taking too long, what goes wrong, what a good outcome looks like. A short voice note, message, or email is enough to get started. I'll ask the right questions from there. No formal brief required.</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            What happens after delivery?
+            <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+          </div>
+          <div class="faq-a"><div class="faq-a-inner">You get full documentation and direct access to me if something needs adjusting. No ticket queue, no waiting on a support team. Most tools I build require zero ongoing maintenance — but when they do, I'm available. I build relationships, not just software.</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Do I need technical knowledge to work with you?
+            <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+          </div>
+          <div class="faq-a"><div class="faq-a-inner">None at all. My job is to translate your business problem into a working tool — not to make you learn technology. If you can describe the problem in plain language, I can build the solution. Everything I deliver is designed to work without any setup or technical know-how on your end.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CONTACT -->
   <section class="section" id="contact">
     <div class="container">
@@ -970,6 +1082,7 @@ footer{
             <a href="#portfolio">Portfolio</a>
             <a href="#about">About</a>
             <a href="#process">Process</a>
+            <a href="#faq">FAQ</a>
             <a href="#contact">Contact</a>
           </div>
           <div class="footer-col">
@@ -998,6 +1111,11 @@ footer{
   </footer>
 
 </div><!-- /ui -->
+
+<!-- SCROLL TO TOP -->
+<button class="stt" id="sttBtn" aria-label="Scroll to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
 
 <!-- CYCLE MODAL -->
 <div class="cycle-modal" id="cycleModal">
@@ -1240,11 +1358,38 @@ footer{
 // Progress bar + nav scroll
 const pb = document.getElementById('pb');
 const nav = document.getElementById('nav');
+const sttBtn = document.getElementById('sttBtn');
 window.addEventListener('scroll', () => {
   const p = window.scrollY / (document.body.scrollHeight - window.innerHeight);
   pb.style.width = (p*100)+'%';
   nav.classList.toggle('scrolled', window.scrollY > 60);
-});
+  // scroll to top visibility
+  if (sttBtn) sttBtn.classList.toggle('show', window.scrollY > 400);
+}, {passive:true});
+
+// ── ACTIVE NAV ──
+(function(){
+  const sections = document.querySelectorAll('section[id], div[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      navLinks.forEach(a => {
+        a.classList.toggle('nav-active', a.getAttribute('href') === '#' + e.target.id);
+      });
+    });
+  }, {rootMargin:'-40% 0px -55% 0px'});
+  sections.forEach(s => io.observe(s));
+})();
+
+// ── FAQ ACCORDION ──
+function toggleFaq(btn) {
+  const item = btn.parentElement;
+  const isOpen = item.classList.contains('open');
+  // close all
+  document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
 
 // Typewriter — backspace current word then type next
 (function(){
@@ -1378,7 +1523,7 @@ if (form && submitBtn && feedback) {
       const res = await fetch(form.action, { method:'POST', body:JSON.stringify(data), headers:{'Content-Type':'application/json','Accept':'application/json'} });
       if (res.ok) {
         feedback.className = 'form-feedback success';
-        feedback.textContent = "Message sent — I'll be in touch within 24 hours.";
+        feedback.innerHTML = '<span class="form-success-icon" style="display:inline-flex;align-items:center;gap:8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5eead4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Message sent — I\'ll be in touch within 24 hours.</span>';
         form.reset();
         submitBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Sent';
       } else throw new Error();
