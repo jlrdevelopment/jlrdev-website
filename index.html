@@ -413,6 +413,12 @@ footer{
   .about-copy p{font-size:0.9rem}
   .nd-stat-num{font-size:2rem}
   .nd-title{font-size:1.5rem}
+
+  /* Portfolio terminal — bigger on mobile */
+  .port-terminal{font-size:0.9rem!important;line-height:2.1!important}
+
+  /* More coming card — stack on mobile */
+  .port-more{flex-direction:column!important;align-items:flex-start!important;gap:16px!important}
 }
 
 /* ── NODE DETAIL PANEL ── */
@@ -697,7 +703,7 @@ footer{
         <h2 class="s-title"><span style="background:linear-gradient(135deg,#7EB3FF,#4FC3F7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Selected</span> work</h2>
         <p class="s-sub">Real tools. Real clients. Built to last.</p>
       </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:1100px;margin:0 auto" class="reveal port-grid">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:1100px;margin:0 auto;grid-template-rows:auto auto" class="reveal port-grid">
         <div class="case-card">
           <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:4px">
             <span class="s-tag" style="text-align:left;margin:0">Case Study · GeoCalibre Geotechnical</span>
@@ -711,7 +717,7 @@ footer{
               <span style="width:12px;height:12px;border-radius:50%;background:#28c840;display:inline-block"></span>
               <span style="margin-left:auto;font-size:0.68rem;color:rgba(255,255,255,0.18);font-family:monospace;letter-spacing:0.05em">GeoTech_PDF_Extractor.exe</span>
             </div>
-            <div style="padding:20px 24px;font-family:'SF Mono','Fira Code',monospace;font-size:0.82rem;line-height:2">
+            <div class="port-terminal" style="padding:20px 24px;font-family:'SF Mono','Fira Code',monospace;font-size:0.82rem;line-height:2">
               <div><span style="color:#3b82f6;font-weight:700">$</span><span style="color:#e2e8f0"> GeoTech_PDF_Extractor.exe --batch ./lab_reports --output excel</span></div>
               <div><span style="color:#28c840">✓</span><span style="color:rgba(148,163,184,0.8)"> Scanning 33 PDF reports...</span></div>
               <div><span style="color:#28c840">✓</span><span style="color:rgba(148,163,184,0.8)"> Parsing borehole data from 49 samples...</span></div>
@@ -742,7 +748,7 @@ footer{
               <span style="width:12px;height:12px;border-radius:50%;background:#28c840;display:inline-block"></span>
               <span style="margin-left:auto;font-size:0.68rem;color:rgba(255,255,255,0.18);font-family:monospace;letter-spacing:0.05em">field-pro · React + Supabase</span>
             </div>
-            <div style="padding:20px 24px;font-family:'SF Mono','Fira Code',monospace;font-size:0.82rem;line-height:2">
+            <div class="port-terminal" style="padding:20px 24px;font-family:'SF Mono','Fira Code',monospace;font-size:0.82rem;line-height:2">
               <div><span style="color:#3b82f6;font-weight:700">features</span></div>
               <div><span style="color:#28c840">✓</span><span style="color:rgba(148,163,184,0.8)"> Offline-first soil profiling</span></div>
               <div><span style="color:#28c840">✓</span><span style="color:rgba(148,163,184,0.8)"> Syncs to Supabase on reconnect</span></div>
@@ -759,15 +765,17 @@ footer{
         </div>
 
         <!-- MORE COMING CARD -->
-        <div class="case-card reveal" style="border-style:dashed;border-color:rgba(79,142,247,0.15);background:rgba(79,142,247,0.03);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:260px;gap:14px">
-          <div style="width:48px;height:48px;border-radius:50%;border:1.5px dashed rgba(79,142,247,0.3);display:flex;align-items:center;justify-content:center;color:var(--accent)">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        <div class="case-card reveal port-more" style="grid-column:1/-1;border-style:dashed;border-color:rgba(79,142,247,0.15);background:rgba(79,142,247,0.03);display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:24px;padding:28px 32px;flex-wrap:wrap">
+          <div style="display:flex;align-items:center;gap:16px">
+            <div style="width:44px;height:44px;border-radius:50%;border:1.5px dashed rgba(79,142,247,0.3);display:flex;align-items:center;justify-content:center;color:var(--accent);flex-shrink:0">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </div>
+            <div>
+              <p style="font-family:var(--grotesk);font-size:1rem;font-weight:700;color:var(--text);margin-bottom:4px">More projects in the pipeline</p>
+              <p style="font-size:0.83rem;color:var(--muted);line-height:1.6;margin:0">Building the portfolio. New case studies added as projects ship.</p>
+            </div>
           </div>
-          <div>
-            <p style="font-family:var(--grotesk);font-size:0.95rem;font-weight:700;color:var(--text);margin-bottom:6px">More projects in progress</p>
-            <p style="font-size:0.82rem;color:var(--muted);line-height:1.6;max-width:200px;margin:0 auto">Building the pipeline. New case studies added as projects ship.</p>
-          </div>
-          <a href="#contact" class="btn btn-ghost" style="font-size:0.8rem;padding:10px 20px">Start your project</a>
+          <a href="#contact" class="btn btn-ghost" style="font-size:0.85rem;padding:11px 24px;flex-shrink:0">Start your project →</a>
         </div>
       </div>
     </div>
